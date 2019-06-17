@@ -1,2 +1,2 @@
 # SheetHeroM
-SheetHeroM - repo für mobile
+SheetHeroM - repo für mobile/tablet
