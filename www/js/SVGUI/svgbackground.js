@@ -12,7 +12,7 @@ class Background {
   }
 
   createSVG() {
-
+    console.log($('body').width());
 
     $.svg('svg')
       .css({
@@ -35,7 +35,7 @@ class Background {
           fill: this.color
         })
       );
-
+console.log($('#game').width(),$('#game').height());
   }
 
 
