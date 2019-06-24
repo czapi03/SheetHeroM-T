@@ -19,7 +19,8 @@ class Background {
         height: $(window).height(),
         width: $(window).width(),
         padding: 0,
-        margin:0
+        margin:0,
+        "vertical-align": 0
 
       })
       .appendTo('#game')
