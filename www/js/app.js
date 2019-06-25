@@ -1,6 +1,6 @@
 //some code
 
-document.addEventListener('deviceready', function() {
+// document.addEventListener('deviceready', function() {
 
 
   $('document').ready(function() {
@@ -17,4 +17,4 @@ document.addEventListener('deviceready', function() {
 
 
   })
-})
+// })
