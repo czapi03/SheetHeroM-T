@@ -1,3 +1,18 @@
+@font-face { font-family: 'PollerOne';
+             src: url('../assets/fonts/PollerOne.ttf') format('truetype'); }
+
+
+
+
+
+
+
+* {
+  padding: 0;
+  margin: 0;
+
+
+}
 body,html {
   padding: 0;
   margin: 0;
@@ -20,19 +35,14 @@ svg {
 
 }
 
-
-
-* {
-  padding: 0;
-  margin: 0;
-
-
-}
-
 .blue{
   fill: #3ed673;
 }
 
 body {
   background-image: url("../assets/images/159.jpg")
+}
+
+tspan {
+font-family: PollerOne;
 }
