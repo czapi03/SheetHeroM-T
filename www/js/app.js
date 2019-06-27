@@ -1,17 +1,17 @@
 //some code
-window.onerror = function( err ) {
-  console.log( err );
-  return true;
-}
-console.log = function(s) {
-    $( '#debug').html(s).css({padding:10});
-}
 document.addEventListener('deviceready', function() {
 
 
   $('document').ready(function() {
     console.log('app.js');
 
+    window.onerror = function( err ) {
+      console.log( err );
+      return true;
+    }
+    console.log = function(s) {
+      $( '#debug').html(s).css({padding:10});
+    }
 
     console.log($(window).width(), $(window).height());
 
