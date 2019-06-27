@@ -20,18 +20,16 @@ document.addEventListener('deviceready', function() {
   $('document').ready(function() {
     console.log('app.js');
 
-
-
-
-
-    // x,y,width,height,color
-    // var rect1 = new Background(0, 0, $(window).width(), $(window).height(), "#a09d9a");
-
-    var pianoclick = new PianoOnClick();
-
     $('defs > path').on("click",function(){
       $(this).toggleClass('blue')
     })
+
+    $('#camera').on("click",function(){
+      console.log('hier ist camera');
+      // navigator.getPicture();
+    })
+    var pianoclick = new PianoOnClick();
+
 
 
   })
