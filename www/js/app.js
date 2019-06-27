@@ -1,10 +1,11 @@
 //some code
 
-// document.addEventListener('deviceready', function() {
+document.addEventListener('deviceready', function() {
 
 
   $('document').ready(function() {
     console.log('app.js');
+
 
     console.log($(window).width(), $(window).height());
 
@@ -19,4 +20,4 @@
 
 
   })
-// })
+})
