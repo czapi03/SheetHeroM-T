@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget id="at.wifiwien.wienwou" version="0.1.0-b012" xmlns="http://www.w3.org/ns/widget" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="at.wifiwien.wienwou" version="0.1.0-b013" xmlns="http://www.w3.org/ns/widget" xmlns:gap="http://phonegap.com/ns/1.0">
   <name>SheetHero</name>
   <description>Learn Sheet music the easy way!</description>
   <author email="manuel.czapek@gmx.net" href="http://www.wifiwien.at">
@@ -11,7 +11,9 @@
 
   <!-- fullscreenmods für Appgefühl -->
   <preference name="Fullscreen" value="true" />
-
+  <plugin name="cordova-plugin-console" spec="~1.1.0" source="npm" />
+  <plugin name="cordova-plugin-file" spec="~6.0.1" source="npm" />
+  <plugin name="cordova-plugin-media" spec="~5.0.2" source="npm" />
 
 
   <platform name="android">
