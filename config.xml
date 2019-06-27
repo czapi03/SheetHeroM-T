@@ -6,7 +6,7 @@
     Team Manuel
   </author>
   <content src="index.html" />
-  <preferences name="android-minSdkVersion" value="26" />
+  <preferences name="android-minSdkVersion" value="28" />
   <preference name="Orientation" value="landscape" />
 
   <!-- fullscreenmods für Appgefühl -->
