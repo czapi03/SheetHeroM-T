@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="at.wifiwien.wienwou" version="0.1.0-b038" xmlns="http://www.w3.org/ns/widget" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="at.wifiwien.wienwou" version="0.1.0-b039" xmlns="http://www.w3.org/ns/widget" xmlns:gap="http://phonegap.com/ns/1.0">
   <name>SheetHero</name>
   <description>Learn Sheet music! Zack Zack Zack</description>
   <author email="manuel.czapek@gmx.net" href="http://www.wifiwien.at">
@@ -10,10 +10,10 @@
 
   <preference name="Orientation" value="landscape"/>
   <preference name="Fullscreen" value="true"/>
-  <preference name="phonegap-version" value="cli-8.0.0" />
-  <plugin name="cordova-plugin-camera" spec="~4.0.3" source="npm"/>
+  <!-- <preference name="phonegap-version" value="cli-8.0.0" /> -->
+  <plugin name="cordova-plugin-camera" spec="~2.1.1" source="npm"/>
   <plugin name="cordova-plugin-file" spec="~6.0.1" source="npm"/>
-  <plugin name="cordova-plugin-media" spec="~5.0.2" source="npm"/>
+  <plugin name="cordova-plugin-media" spec="~3.0.0" source="npm"/>
 
   <platform name="android">
     <icon density="ldpi" src="www/assets/images/resizedmozart.png"/>
