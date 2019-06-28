@@ -6,7 +6,7 @@ class PianoOnClick {
       console.log(mykey);
 
       // var media = new Media('../../assets/wav/' + mykey + '.wav', function() {
-      var media = new Media("/android_asset/www/assets/"+ mykey +".wav", function() {
+      var media = new Media("/android_asset/www/assets/wav"+ mykey +".wav", function() {
         console.log('geht');
       }, function(err) {
 
