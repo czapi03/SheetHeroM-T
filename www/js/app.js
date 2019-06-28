@@ -16,6 +16,7 @@ console.log = function(s) {
 
 document.addEventListener('deviceready', function() {
 
+console.log(Media);
 
 
   $('document').ready(function() {
