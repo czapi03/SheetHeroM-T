@@ -27,7 +27,16 @@ document.addEventListener('deviceready', function() {
 
     $('#camera').on("click",function(){
       console.log('hier ist camera');
-      navigator.camera.getPicture();
+
+      function onSuccees(){
+        console.log("succuess");
+      }
+      function onFail(){
+        console.log("fail");
+      }
+
+
+      navigator.camera.getPicture(onSuccess,onFail);
     })
     var pianoclick = new PianoOnClick();
 
