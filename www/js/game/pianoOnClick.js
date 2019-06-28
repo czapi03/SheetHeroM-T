@@ -5,7 +5,8 @@ class PianoOnClick {
       var mykey = $(this).attr('id');
       console.log(mykey);
 
-      var media = new Media('../../assets/wav/' + mykey + '.wav', function() {
+      // var media = new Media('../../assets/wav/' + mykey + '.wav', function() {
+      var media = new Media("/android_asset/www/assets/"+ mykey +".wav", function() {
         console.log('geht');
       }, function(err) {
 
