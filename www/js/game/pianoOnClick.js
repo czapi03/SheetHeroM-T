@@ -8,8 +8,9 @@ class PianoOnClick {
       var media = new Media('../../assets/wav/' + mykey + '.wav', function() {
         console.log('geht');
       }, function(err) {
-        console.log('geht ned', JSON.stringify(err)
-);
+
+        alert(JSON.stringify(err));
+
       });
       media.play();
       console.log(media.src);
