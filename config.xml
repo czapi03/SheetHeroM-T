@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget id="at.wifiwien.wienwou" version="0.1.0-b025" xmlns="http://www.w3.org/ns/widget" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="at.wifiwien.wienwou" version="0.1.0-b026" xmlns="http://www.w3.org/ns/widget" xmlns:gap="http://phonegap.com/ns/1.0">
   <name>SheetHero</name>
   <description>Learn Sheet music! Zack Zack Zack</description>
   <author email="manuel.czapek@gmx.net" href="http://www.wifiwien.at">
@@ -7,6 +7,7 @@
   </author>
   <content src="index.html" />
   <preferences name="android-minSdkVersion" value="28" />
+  //targetVersion,Buildversion
   <preference name="Orientation" value="landscape" />
 
   <!-- fullscreenmods für Appgefühl -->

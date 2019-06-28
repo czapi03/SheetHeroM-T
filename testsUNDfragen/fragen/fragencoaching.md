@@ -1,22 +1,32 @@
 
 # Fragen
-* Anforderungen nicht einhaltbar mit meinem Projekt
-  * Serverseitige JavaScript-Laufzeitumgebung (Node)
+
+## 21.06.2019
+<!-- * Anforderungen nicht einhaltbar mit meinem Projekt -->
+  <!-- * Serverseitige JavaScript-Laufzeitumgebung (Node) -->
+
+## 28.06.19
 
 ## Mobile
+* die App wurde für eine ältere Android version programmiert?
+* Cordova im Verzeichnis richtig installiert? Platform? Browser,Android?
+* warum ist Media not defined?
+* Plugin funktioniert nicht?
+* Plugin im HTML nicht erlaubt? default src *?
+* HTML-Tags nicht richtig? Versionen?
+* Plugin fehler bei Installation von Camera? The platform "browser" does not appear to be a valid cordova platform. It is missing API.js. browser not supported.)
+* Security Warning shelljs?
 
-* SVG hintergrund? 
 
-
-
-## Dekstop
-
-* Erstellung von betriebssystemspezifischen Paketen (wie beispielsweise exe, dmg, deb, etc.)?
 
 
 ## 21.06.2019 COACHING
 
-*zeit und lvl reset mobile
+<!-- *zeit und lvl reset mobile -->
+
+## 28.06.2019 COACHING
+
+-android SDK
 
 
 
