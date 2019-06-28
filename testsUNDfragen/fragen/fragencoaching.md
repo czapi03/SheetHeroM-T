@@ -27,6 +27,10 @@
 ## 28.06.2019 COACHING
 
 -android SDK
+-CSP
+- window.media
+-camera plugin testen
+- npm audio Plugin
 
 
 

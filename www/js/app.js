@@ -16,7 +16,7 @@ console.log = function(s) {
 
 document.addEventListener('deviceready', function() {
 
-  console.log(Media);
+
 
   $('document').ready(function() {
     console.log('app.js');
@@ -27,7 +27,7 @@ document.addEventListener('deviceready', function() {
 
     $('#camera').on("click",function(){
       console.log('hier ist camera');
-      // navigator.getPicture();
+      navigator.getPicture();
     })
     var pianoclick = new PianoOnClick();
 
