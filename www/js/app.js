@@ -28,7 +28,7 @@ document.addEventListener('deviceready', function() {
     $('#camera').on("click",function(){
       console.log('hier ist camera');
 
-      function onSuccees(){
+      function onSuccess(){
         console.log("succuess");
       }
       function onFail(){
