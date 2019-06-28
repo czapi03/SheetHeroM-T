@@ -22,6 +22,7 @@ document.addEventListener('deviceready', function() {
   $('document').ready(function() {
     console.log('app.js');
 
+
     $('defs > path').on("click",function(){
       $(this).toggleClass('blue')
     })
