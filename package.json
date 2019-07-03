@@ -1,1 +1,13 @@
-{"devDependencies":{"cordova-plugin-camera":"~4.0.3","cordova-plugin-file":"~6.0.1","cordova-plugin-media":"~5.0.2"},"cordova":{"plugins":{"cordova-plugin-camera":{},"cordova-plugin-file":{},"cordova-plugin-media":{}}}}
+{
+  "devDependencies": {
+    "cordova-plugin-file": "~6.0.1",
+    "cordova-plugin-media": "~5.0.2"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-camera": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-media": {}
+    }
+  }
+}

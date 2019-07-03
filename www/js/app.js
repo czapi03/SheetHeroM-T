@@ -23,24 +23,13 @@ document.addEventListener('deviceready', function() {
     console.log('app.js');
 
 
-    $('defs > path').on("click",function(){
+    $('.pianoOnClick').on("click",function(){
       $(this).toggleClass('blue')
     })
 
-    $('#camera').on("click",function(){
-      console.log('hier ist camera');
 
-      function onSuccess(){
-        console.log("succuess");
-      }
-      function onFail(){
-        console.log("fail");
-      }
-
-
-      navigator.camera.getPicture(onSuccess,onFail);
-    })
     var pianoclick = new PianoOnClick();
+    var game = new Game();
 
 
 

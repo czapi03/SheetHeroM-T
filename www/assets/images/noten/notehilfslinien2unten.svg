@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="339.7812499999999 84.375 29.68750000000034 22.5" width="29.69" height="22.5">
+  <defs>
+    <path d="M339.78 106.88L369.47 106.88L369.47 105.35C367.11 105.35 363.46 105.35 358.51 105.35C358.16 105.35 357.63 105.35 356.91 105.35L339.78 105.35L339.78 106.88Z" id="a183C7IPH"></path>
+    <path d="M339.78 91.53L369.47 91.53L369.47 90C367.11 90 363.46 90 358.51 90C358.16 90 357.63 90 356.91 90L339.78 90L339.78 91.53Z" id="cYILX9RQM"></path>
+    <path d="M363.53 91.25C363.53 87.46 359.54 84.38 354.62 84.38C349.71 84.38 345.72 87.46 345.72 91.25C345.72 95.04 349.71 98.13 354.62 98.13C359.54 98.13 363.53 95.04 363.53 91.25Z" id="aGyeGBEUx"></path>
+  </defs>
+  <g>
+    <g>
+      <g>
+        <use xlink:href="#a183C7IPH" opacity="1" fill="#3a3a3a" fill-opacity="1"></use>
+      </g>
+      <g>
+        <use xlink:href="#cYILX9RQM" opacity="1" fill="#3a3a3a" fill-opacity="1"></use>
+      </g>
+      <g>
+        <use xlink:href="#aGyeGBEUx" opacity="1" fill="#000000" fill-opacity="1"></use>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,41 +1,39 @@
-@font-face { font-family: 'PollerOne';
-             src: url('../assets/fonts/PollerOne.ttf') format('truetype'); }
+@font-face {
+  font-family: 'PollerOne';
+  src: url('../assets/fonts/PollerOne.ttf') format('truetype');
+}
 
-
-
-
-#debug{
+#debug {
   position: absolute;
   top: 0;
   left: 0;
-}
-#camera{
-  position: absolute;
-  top:0;
-  right: 0;
-  font-size: 3em;
 }
 
 * {
   padding: 0;
   margin: 0;
-
-
 }
-body,html {
+
+body, html {
   padding: 0;
   margin: 0;
   /* font-size: 0; */
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-   -khtml-user-select: none; /* Konqueror HTML */
-     -moz-user-select: none; /* Firefox */
-      -ms-user-select: none; /* Internet Explorer/Edge */
-          user-select: none; /* Non-prefixed version, currently
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
                                 supported by Chrome and Opera */
 }
 
-#game{
+#game {
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -48,10 +46,9 @@ body,html {
 svg {
   height: 100%;
   width: 100%;
-
 }
 
-.blue{
+.blue {
   fill: #3ed673;
 }
 
@@ -60,5 +57,124 @@ body {
 }
 
 tspan {
-font-family: PollerOne;
+  font-family: PollerOne;
+}
+
+#nc4 {
+  position: absolute;
+  height: 4%;
+  width: 4.5%;
+  top: 50%;
+  right: 0%;
+}
+
+#nd4 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 48.2%;
+  right: 0%;
+}
+
+#ne4 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 46%;
+  right: 0%;
+}
+
+#nf4 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 44.1%;
+  right: 0%;
+}
+
+#ng4 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 41.9%;
+  right: 0;
+}
+
+#na4 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 39.8%;
+  right: 0%;
+}
+
+#nh4 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 37.6%;
+  right: 0%;
+}
+
+#nc5 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 35.6%;
+  right: 0%;
+}
+
+#nd5 {
+  position: absolute;
+      height: 5%;
+      width: 3.5%;
+      top: 33.4%;
+      right: 0%;
+}
+
+#ne5 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 31.4%;
+  right: 0%;
+}
+#nf5 {
+  position: absolute;
+      height: 5%;
+      width: 3.5%;
+      top: 29.1%;
+      right: 0%;
+}
+#ng5 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 27.2%;
+  right: 0%;
+}
+#na5 {
+  position: absolute;
+  height: 4%;
+  width: 4.5%;
+  top: 25.2%;
+  right: 0%;
+}
+#nh5 {
+  position: absolute;
+  height: 4%;
+  width: 4.5%;
+  top: 23.6%;
+  right: 0%;
+}
+#nc6 {
+  position: absolute;
+  height: 6%;
+  width: 4.5%;
+  top: 21.6%;
+  right: 0%;
+}
+
+.note{
+display: none;
 }

@@ -11,7 +11,7 @@
   <preference name="Orientation" value="landscape"/>
   <preference name="Fullscreen" value="true"/>
   <preference name="phonegap-version" value="cli-8.0.0" />
-  <plugin name="cordova-plugin-camera" spec="~4.0.3" source="npm"/>
+
   <plugin name="cordova-plugin-file" spec="~6.0.1" source="npm"/>
   <plugin name="cordova-plugin-media" spec="~5.0.2" source="npm"/>
 
