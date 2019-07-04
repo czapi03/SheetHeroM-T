@@ -30,7 +30,7 @@ class MoveNote {
 
         _this.pace+=0.25;
       // }
-      if(_this.pace ==66){
+      if(_this.pace ==84){
         clearInterval(motor)
       }
       $('#'+test[rnd]+'').css({
