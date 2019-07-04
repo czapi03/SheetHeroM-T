@@ -4,60 +4,73 @@ console.log("movenotes");
 var test = [
   "nc4",
   "nd4",
-  "ng4"
+  "ne4",
+  "nf4",
+  "ng4",
+  "na4",
+  "nh4",
+  "nc5",
+  "nd5",
+  "ne5",
+  "nf5",
+  "ng5",
+  "na5",
+  "nh5",
+  "nc6",
 ]
 
 
 
 class MoveNote {
-  constructor(pace){
+  constructor(pace) {
     this.pace = 0;
+    this.status = false;
     this.moveMe();
 
 
   }
 
 
-  moveMe(){
+  moveMe() {
     var _this = this;
 
-    var rnd = getRandomInt(test.length);
-    console.log(rnd);
 
 
-    var motor = setInterval(function () {
-      // if(_this.pace <=66){
 
-        _this.pace+=0.25;
-      // }
-      if(_this.pace ==84){
-        clearInterval(motor)
-      }
-      $('#'+test[rnd]+'').css({
-        display:"block",
-         right: "" + _this.pace + "%"
+      var rnd = getRandomInt(test.length);
+
+
+      $('#' + test[rnd] + '').css({
+        display: "block"
       })
 
-      if(_this.pace ==33){
+      var motor = setInterval(function() {
+        _this.pace += 0.25;
 
 
-      var motor2 = setInterval(function () {
 
-
-        $('#'+test[2]+'').css({
-          display:"block",
-          right: "" + (_this.pace-33) + "%"
+        if (_this.pace == 80) {
+          clearInterval(motor)
+          $('#' + test[rnd] + '').css({
+            display: "none"
+          })
+        }
+        $('#' + test[rnd] + '').css({
+          right: "" + _this.pace + "%"
         })
-        }, 20);
 
-      }
+        if (_this.pace == 33) {
+          var moveNote = new MoveNote();
+        }
+        if (_this.pace == 66) {
+          $('#' + test[rnd] + '').css({
+            display: "block"
+          })
+        }
 
+      }, 20);
 
-
-
-    }, 20);
-
-    console.log(_this.pace);
+      // console.log(_this.pace);
 
 
   }
