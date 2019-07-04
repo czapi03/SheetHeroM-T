@@ -1,4 +1,4 @@
-console.log('StartOnClick');
+console.log('StartOnClick0');
 
 class StartOnClick {
   constructor(notestoplay, pace, duration, finishline) {
@@ -10,7 +10,7 @@ class StartOnClick {
         // });
         // alert("test")
         var move = new MoveNote();
-
+        console.log('StartOnClickbutton');
 
 
 

@@ -11,3 +11,15 @@ $.svg = function( tag ) {
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
+
+//console log mobile
+window.onerror = function(err) {
+  console.log(err);
+  return true;
+}
+console.log = function(s) {
+  $("<div>").html(s).css({
+    padding: 5,
+    "background": "#e57b7b"
+  }).appendTo('#debug')
+}
