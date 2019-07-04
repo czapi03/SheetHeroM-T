@@ -1,15 +1,15 @@
 //some code
-//
-// window.onerror = function(err) {
-//   console.log(err);
-//   return true;
-// }
-// console.log = function(s) {
-//   $("<div>").html(s).css({
-//     padding: 5,
-//     "background": "#e57b7b"
-//   }).appendTo('#debug')
-// }
+
+window.onerror = function(err) {
+  console.log(err);
+  return true;
+}
+console.log = function(s) {
+  $("<div>").html(s).css({
+    padding: 5,
+    "background": "#e57b7b"
+  }).appendTo('#debug')
+}
 
 
 
@@ -33,7 +33,7 @@ document.addEventListener('deviceready', function() {
     var game = new Game();
     // var move = new MoveNote();
     var start = new StartOnClick();
-  
+
 
 
 
