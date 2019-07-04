@@ -7,7 +7,7 @@
 
 ## 28.06.19
 
-## Mobile
+### Mobile
 * die App wurde für eine ältere Android version programmiert?
 * Cordova im Verzeichnis richtig installiert? Platform? Browser,Android?
 * warum ist Media not defined?
@@ -16,6 +16,14 @@
 * HTML-Tags nicht richtig? Versionen?
 * Plugin fehler bei Installation von Camera? The platform "browser" does not appear to be a valid cordova platform. It is missing API.js. browser not supported.)
 * Security Warning shelljs?
+
+
+## 04.07.19
+*[BUG]warum StartOnClick nicht definiert ist?
+*[BUG]aufbau gamemechanic..? lieber svg generieren, als html elemente angreifen?
+*console fürs handy? WICHTIG
+*Offene Nachricht WIFIplatform
+
 
 
 
@@ -32,6 +40,7 @@
 -camera plugin testen
 - npm audio Plugin
 
+## 04.07.2019
 
 
 
