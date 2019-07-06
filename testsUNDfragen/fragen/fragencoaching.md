@@ -42,7 +42,8 @@
 - npm audio Plugin
 
 ## 04.07.2019
-
+game logic
+weinre
 
 
 
