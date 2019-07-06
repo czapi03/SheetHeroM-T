@@ -23,7 +23,8 @@
 *[BUG]aufbau gamemechanic..? lieber svg generieren, als html elemente angreifen?
 *console fürs handy? WICHTIG
 *Offene Nachricht WIFIplatform
-
+*JDK 8? oder umweg?
+*[BUG] klaviatur nach etlichen drücken errorcode 1(sollte eig nur bei pathproblemen sein?)
 
 
 

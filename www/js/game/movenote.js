@@ -34,9 +34,6 @@ class MoveNote {
   moveMe() {
     var _this = this;
 
-
-
-
       var rnd = getRandomInt(test.length);
 
 
