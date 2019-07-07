@@ -27,6 +27,7 @@ document.addEventListener('deviceready', function() {
       $(this).toggleClass('blue')
     })
 
+    console.log("neu10");
 
 
     var pianoclick = new PianoOnClick();
