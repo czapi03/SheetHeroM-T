@@ -1,65 +1,64 @@
 console.log("--movenote--");
 
 class MoveNote {
-  constructor(speed,note) {
+  constructor(speed, note) {
     this.speed = speed;
     this.note = note;
-    this.distance = 0;
+    this.position = 0;
     this.hit = false;
     this.colorhit = "#56ce46";
     this.colorfail = "#F80E0E";
-    this.clone = $('#n'+note+'').clone().attr('id','clonen'+note+'').appendTo('body')
+    this.finishline = 66;
+    this.position = 0;
+    this.clone = $('#n' + note + '').clone().attr('id', 'clonen' + note + '');
     // this.childsofclone = $(")
-    this.status = false;
+    this.hitfunction = $('#game').on('hit', function() {
+
+      this.hit = true;
+
+      this.clone.find("*").attr('fill', "green")
+
+    }.bind(this))
     this.moveMe();
-
-
   }
+
+
+
 
 
   moveMe() {
     var _this = this;
+    _this.clone.appendTo('#clones')
+    _this.clone.css({
+      display: "block"
+    })
 
-    console.log($(_this.clone));
-    _this.clone.css({display:"block"})
-
-
-
-    var moveme = setInterval(function () {
-       _this.distance+= _this.speed;
-
-       if (_this.distance== 33){
-
-         $('#game').trigger('halftime')
-
-
-       }
+    var moveme = setInterval(function() {
+      _this.position += _this.speed;
 
 
 
+      if (_this.position == 33) {
+        $('#game').trigger('halftime')
+      }
+      if (_this.position == 66 && _this.hit == false) {
 
 
-       if (_this.distance==66){
+        _this.clone.find("*").attr("fill", "#F80E0E");
 
+      }
+      if (_this.position == 84) {
 
-         $(''+this.clone+" *").attr("fill","red");
+        clearInterval(moveme);
+        _this.clone.remove()
 
-       }
+      }
+      _this.clone.css({
+        right: "" + _this.position + "%"
 
-       if(_this.distance == 84){
+      })
 
-         clearInterval(moveme);
-       }
-
-                  _this.clone.css({
-                    right: ""+_this.distance+"%"
-
-                  })
-
-                }, 20);
-
-
-
+    }, 20);
 
   }
 

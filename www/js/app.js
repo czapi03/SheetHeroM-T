@@ -1,19 +1,5 @@
 //some code
 
-// window.onerror = function(err) {
-//   console.log(err);
-//   return true;
-// }
-// console.log = function(s) {
-//   $("<div>").html(s).css({
-//     padding: 5,
-//     "background": "#e57b7b"
-//   }).appendTo('#debug')
-// }
-
-
-
-
 document.addEventListener('deviceready', function() {
 
 // console.log(Media);
@@ -22,21 +8,25 @@ document.addEventListener('deviceready', function() {
   $('document').ready(function() {
     console.log('--app.js--');
 
+    var noten = ["c4","c5","f5","c6"]
 
-    
 
 
-    $('.pianoOnClick').on("click",function(){
-      $(this).toggleClass('blue')
-    })
 
 
 
 
     var pianoclick = new PianoOnClick();
     // var move = new MoveNote();
-    var start = new Game();
+    var start = new Game(noten,0.25,20,1000,"test");
 
+    $('.pianoOnClick').on("click",function(){
+      $(this).toggleClass('blue')
+
+
+
+
+    })
 
 
 
