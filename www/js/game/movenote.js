@@ -16,7 +16,7 @@ class MoveNote {
             'class': "cloned"
             });
 
-    this.clonearray = $('.cloned');
+
     // this.childsofclone = $(")
     this.keyhitfunction();
     this.moveMe();
@@ -28,21 +28,26 @@ class MoveNote {
 
     $('#game').on('keyhit', function(event,mykey) {
 
-
-      this.clonearray.each(()=>{
+      $('.cloned').each(function(){
         console.log("test");
-      })
+      });
 
 
 
 
-      // if(mykey==this.note){
-      //
-      //   console.log(mykey);
-      //   this.hit = true;
-      //
-      //   this.clone.find("*").attr('fill', "green")
-      // }
+
+
+
+
+
+
+      if(mykey==this.note){
+
+        console.log(mykey);
+        this.hit = true;
+
+        this.clone.find("*").attr('fill', "green")
+      }
 
     }.bind(this))
 
