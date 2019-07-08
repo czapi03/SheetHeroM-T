@@ -28,7 +28,7 @@ class MoveNote {
 
   moveMe() {
     var _this = this;
-    _this.clone.appendTo('#clones')
+    _this.clone.appendTo('#gametest')
     _this.clone.css({
       display: "block"
     })

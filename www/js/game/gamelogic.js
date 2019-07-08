@@ -19,8 +19,6 @@ class Game {
 
         $('#game').on('halftime', function() {
 
-
-
           this.rndnote = getRandomInt(this.notestoplay.length);
           var move = new MoveNote(this.speed, this.notestoplay[this.rndnote]);
 
