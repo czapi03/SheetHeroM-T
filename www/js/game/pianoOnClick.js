@@ -2,10 +2,15 @@ class PianoOnClick {
   constructor() {
     this.allkeys = $('.pianoOnClick').on('click', function() {
 
-      $('#game').trigger('hit')
-
       var mykey = $(this).attr('id');
-      // console.log(mykey);
+
+      $('#game').trigger('keyhit',mykey)
+
+      
+
+
+
+
 
       // // var media = new Media('assets/wav/' + mykey + '.wav', function() {
       // var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
@@ -18,7 +23,7 @@ class PianoOnClick {
       //
       // });
       // media.play();
-      // // console.log(media.src);
+
 
 
 

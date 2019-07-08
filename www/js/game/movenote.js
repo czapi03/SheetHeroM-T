@@ -10,25 +10,49 @@ class MoveNote {
     this.colorfail = "#F80E0E";
     this.finishline = 66;
     this.position = 0;
-    this.clone = $('#n' + note + '').clone().attr('id', 'clonen' + note + '');
+    this.clone = $('#n' + note).clone()
+      .attr({
+            'id': 'clonen' + note,
+            'class': "cloned"
+            });
+
+    this.clonearray = $('.cloned');
     // this.childsofclone = $(")
-    this.hitfunction = $('#game').on('hit', function() {
-
-      this.hit = true;
-
-      this.clone.find("*").attr('fill', "green")
-
-    }.bind(this))
+    this.keyhitfunction();
     this.moveMe();
   }
 
 
+    keyhitfunction(){
+
+
+    $('#game').on('keyhit', function(event,mykey) {
+
+
+      this.clonearray.each(()=>{
+        console.log("test");
+      })
+
+
+
+
+      // if(mykey==this.note){
+      //
+      //   console.log(mykey);
+      //   this.hit = true;
+      //
+      //   this.clone.find("*").attr('fill', "green")
+      // }
+
+    }.bind(this))
+
+  }
 
 
 
   moveMe() {
     var _this = this;
-    _this.clone.appendTo('#gametest')
+    _this.clone.appendTo('#clones')
     _this.clone.css({
       display: "block"
     })
