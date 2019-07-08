@@ -1,4 +1,4 @@
-console.log('JSdoku');
+console.log('--JSdoku--');
 
 
 //HILFSFUNKTION: SVG element mit Namespace erzeugen, da Jquery nicht fähig.
@@ -13,13 +13,13 @@ function getRandomInt(max) {
 }
 
 //console log mobile
-window.onerror = function(err) {
-  console.log(err);
-  return true;
-}
-console.log = function(s) {
-  $("<div>").html(s).css({
-    padding: 5,
-    "background": "#e57b7b"
-  }).appendTo('#debug')
-}
+// window.onerror = function(err) {
+//   console.log(err);
+//   return true;
+// }
+// console.log = function(s) {
+//   $("<div>").html(s).css({
+//     padding: 5,
+//     "background": "#e57b7b"
+//   }).appendTo('#debug')
+// }

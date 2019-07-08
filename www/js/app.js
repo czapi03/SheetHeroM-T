@@ -20,20 +20,22 @@ document.addEventListener('deviceready', function() {
 
 
   $('document').ready(function() {
-    console.log('app.js');
+    console.log('--app.js--');
+
+
+    
 
 
     $('.pianoOnClick').on("click",function(){
       $(this).toggleClass('blue')
     })
 
-    console.log("neu12");
+
 
 
     var pianoclick = new PianoOnClick();
-    var game = new Game();
     // var move = new MoveNote();
-    var start = new StartOnClick();
+    var start = new Game();
 
 
 

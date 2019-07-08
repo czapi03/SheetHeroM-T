@@ -59,6 +59,9 @@ body {
 tspan {
   font-family: PollerOne;
 }
+.note{
+  display: none;
+}
 
 #nc4 {
   position: absolute;
@@ -175,6 +178,119 @@ tspan {
   right: 0%;
 }
 
-.note{
-display: none;
+
+
+#clonenc4 {
+  position: absolute;
+  height: 4%;
+  width: 4.5%;
+  top: 50%;
+  right: 0%;
+}
+
+#clonend4 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 48.2%;
+  right: 0%;
+}
+
+#clonene4 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 46%;
+  right: 0%;
+}
+
+#clonenf4 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 44.1%;
+  right: 0%;
+}
+
+#cloneng4 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 41.9%;
+  right: 0;
+}
+
+#clonena4 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 39.8%;
+  right: 0%;
+}
+
+#clonenh4 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 37.6%;
+  right: 0%;
+}
+
+#clonenc5 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 35.6%;
+  right: 0%;
+}
+
+#clonend5 {
+  position: absolute;
+      height: 5%;
+      width: 3.5%;
+      top: 33.4%;
+      right: 0%;
+}
+
+#clonene5 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 31.4%;
+  right: 0%;
+}
+#clonenf5 {
+  position: absolute;
+      height: 5%;
+      width: 3.5%;
+      top: 29.1%;
+      right: 0%;
+}
+#cloneng5 {
+  position: absolute;
+  height: 5%;
+  width: 3.5%;
+  top: 27.2%;
+  right: 0%;
+}
+#clonena5 {
+  position: absolute;
+  height: 4%;
+  width: 4.5%;
+  top: 25.2%;
+  right: 0%;
+}
+#clonenh5 {
+  position: absolute;
+  height: 4%;
+  width: 4.5%;
+  top: 23.6%;
+  right: 0%;
+}
+#clonenc6 {
+  position: absolute;
+  height: 6%;
+  width: 4.5%;
+  top: 21.6%;
+  right: 0%;
 }

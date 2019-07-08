@@ -1,29 +1,15 @@
-console.log("movenotes");
-
-
-var test = [
-  "nc4",
-  "nd4",
-  "ne4",
-  "nf4",
-  "ng4",
-  "na4",
-  "nh4",
-  "nc5",
-  "nd5",
-  "ne5",
-  "nf5",
-  "ng5",
-  "na5",
-  "nh5",
-  "nc6",
-]
-
-
+console.log("--movenote--");
 
 class MoveNote {
-  constructor(pace) {
-    this.pace = 0;
+  constructor(speed,note) {
+    this.speed = speed;
+    this.note = note;
+    this.distance = 0;
+    this.hit = false;
+    this.colorhit = "#56ce46";
+    this.colorfail = "#F80E0E";
+    this.clone = $('#n'+note+'').clone().attr('id','clonen'+note+'').appendTo('body')
+    // this.childsofclone = $(")
     this.status = false;
     this.moveMe();
 
@@ -34,40 +20,45 @@ class MoveNote {
   moveMe() {
     var _this = this;
 
-      var rnd = getRandomInt(test.length);
-
-
-      $('#' + test[rnd] + '').css({
-        display: "block"
-      })
-
-      var motor = setInterval(function() {
-        _this.pace += 0.25;
+    console.log($(_this.clone));
+    _this.clone.css({display:"block"})
 
 
 
-        if (_this.pace == 80) {
-          clearInterval(motor)
-          $('#' + test[rnd] + '').css({
-            display: "none"
-          })
-        }
-        $('#' + test[rnd] + '').css({
-          right: "" + _this.pace + "%"
-        })
+    var moveme = setInterval(function () {
+       _this.distance+= _this.speed;
 
-        if (_this.pace == 33) {
-          var moveNote = new MoveNote();
-        }
-        if (_this.pace == 66) {
-          $('#' + test[rnd] + '').css({
-            display: "block"
-          })
-        }
+       if (_this.distance== 33){
 
-      }, 20);
+         $('#game').trigger('halftime')
 
-      // console.log(_this.pace);
+
+       }
+
+
+
+
+
+       if (_this.distance==66){
+
+
+         $(''+this.clone+" *").attr("fill","red");
+
+       }
+
+       if(_this.distance == 84){
+
+         clearInterval(moveme);
+       }
+
+                  _this.clone.css({
+                    right: ""+_this.distance+"%"
+
+                  })
+
+                }, 20);
+
+
 
 
   }
