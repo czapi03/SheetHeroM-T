@@ -16,7 +16,7 @@ document.addEventListener('deviceready', function() {
 
 
 
-    var pianoclick = new PianoOnClick();
+    // var pianoclick = new PianoOnClick();
     // var move = new MoveNote();
     var start = new Game(noten,0.25,20,1000,"test");
 

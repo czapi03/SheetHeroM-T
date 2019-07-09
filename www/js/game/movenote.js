@@ -28,10 +28,11 @@ class MoveNote {
 
     $('#game').on('keyhit', function(event,mykey) {
 
-      $('.cloned').each(function(){
-        console.log("test");
+      
+        let test = $('.cloned').map(function(){
+        return this.style.right;
       });
-
+      console.log(test);
 
 
 
