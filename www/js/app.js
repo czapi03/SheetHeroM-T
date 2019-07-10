@@ -8,7 +8,7 @@ document.addEventListener('deviceready', function() {
   $('document').ready(function() {
     console.log('--app.js--');
 
-    var noten = ["c4","c5","f5","c6"]
+    var noten = ["c4","c5","f5","c6","e4","h5"]
 
 
 

@@ -12,47 +12,15 @@ class MoveNote {
     this.position = 0;
     this.clone = $('#n' + note).clone()
       .attr({
-            'id': 'clonen' + note,
-            'class': "cloned"
-            });
+        'id': 'clonen' + note,
+        'class': "cloned"
+      });
 
-
-    // this.childsofclone = $(")
-    this.keyhitfunction();
     this.moveMe();
   }
 
 
-    keyhitfunction(){
 
-
-    $('#game').on('keyhit', function(event,mykey) {
-
-      
-        let test = $('.cloned').map(function(){
-        return this.style.right;
-      });
-      console.log(test);
-
-
-
-
-
-
-
-
-
-      if(mykey==this.note){
-
-        console.log(mykey);
-        this.hit = true;
-
-        this.clone.find("*").attr('fill', "green")
-      }
-
-    }.bind(this))
-
-  }
 
 
 
@@ -63,16 +31,16 @@ class MoveNote {
       display: "block"
     })
 
+
+
     var moveme = setInterval(function() {
       _this.position += _this.speed;
-
 
 
       if (_this.position == 33) {
         $('#game').trigger('halftime')
       }
       if (_this.position == 66 && _this.hit == false) {
-
 
         _this.clone.find("*").attr("fill", "#F80E0E");
 
@@ -87,6 +55,7 @@ class MoveNote {
         right: "" + _this.position + "%"
 
       })
+      // console.log(_this.clone[0].style.right);
 
     }, 20);
 
