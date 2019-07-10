@@ -12,8 +12,9 @@ class MoveNote {
     this.position = 0;
     this.clone = $('#n' + note).clone()
       .attr({
-        'id': 'clonen' + note,
+
         'class': "cloned"
+
       });
 
     this.moveMe();
@@ -30,6 +31,7 @@ class MoveNote {
     _this.clone.css({
       display: "block"
     })
+    _this.clone.addClass('hitable')
 
 
 
@@ -42,6 +44,7 @@ class MoveNote {
       }
       if (_this.position == 66 && _this.hit == false) {
 
+        _this.clone.removeClass('hitable');
         _this.clone.find("*").attr("fill", "#F80E0E");
 
       }

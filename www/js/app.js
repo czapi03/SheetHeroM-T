@@ -10,6 +10,7 @@ document.addEventListener('deviceready', function() {
 
     var noten = ["c4","c5","f5","c6","e4","h5"]
 
+  
 
 
 

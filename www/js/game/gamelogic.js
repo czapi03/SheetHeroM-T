@@ -41,6 +41,7 @@ class Game {
 //startet gamelogic
     this.startButton = $('#gamebutton')
       .on('click', function() {
+          $('.cloned').find("*").attr("fill","#000000")
 
         this.rndnote = getRandomInt(this.notestoplay.length);
 
@@ -57,21 +58,40 @@ class Game {
 
     $('#game').on('keyhit', function(event, keyplayed) {
 
-
-      console.log(keyplayed);
-      // let test = $('.cloned').map(function() {
-      //   return this.style.right;
-      // });
+      keyplayed = "n"+ keyplayed;
 
 
 
+      var highestNote = false
 
-      if (keyplayed == this.note ) {
+      $('.cloned').each(function(i /* == $('.cloned')[i] */) {
 
-        this.hit = true;
+      // console.log("--",  $(this).get(0).style.right);
 
-        this.clone.find("*").attr('fill', "green")
-      }
+
+
+        if (highestNote == false || ($(this).get(0).style.right > highestNote.get(0).style.right && $(this).hasClass('hitable'))) {
+            highestNote = $(this)
+          }
+
+
+      })
+
+      highestNote.css({background:"#56ce46"})
+      
+      console.log(highestNote);
+      // handle highest note
+
+      // console.log(keyplayed);
+      // console.log(highestNote.attr("id"));
+      //
+      // if (keyplayed == highestNote.attr("id") ) {
+      //
+      //   highestNote.css({background:"#56ce46"})
+      //   // this.hit = true;
+      //
+      //   // this.clone.find("*").attr('fill', "green")
+      // }
 
     }.bind(this))
 
