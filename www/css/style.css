@@ -294,3 +294,7 @@ tspan {
   top: 21.6%;
   right: 0%;
 }
+
+.dnone{
+  display: none;
+}

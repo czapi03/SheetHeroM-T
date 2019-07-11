@@ -10,7 +10,7 @@ document.addEventListener('deviceready', function() {
 
     var noten = ["c4","c5","f5","c6","e4","h5"]
 
-  
+
 
 
 
@@ -19,12 +19,12 @@ document.addEventListener('deviceready', function() {
 
     // var pianoclick = new PianoOnClick();
     // var move = new MoveNote();
-    var start = new Game(noten,0.25,20,1000,"test");
+    var start = new Game(1,noten,0.25,60,850,"Mozart",150);
 
     $('.pianoOnClick').on("click",function(){
       $(this).toggleClass('blue')
 
-
+,150
 
 
     })

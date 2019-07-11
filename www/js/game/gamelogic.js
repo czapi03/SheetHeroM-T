@@ -1,13 +1,17 @@
 console.log("--gamelogic--");
 
 class Game {
-  constructor(notestoplay, speed, duration, highscore, award) {
+  constructor(lvl,notestoplay, speed, duration, highscore, awardname,awardpoints,award) {
+    this.lvl = lvl;
     this.notestoplay = notestoplay;
     this.speed = speed;
     this.duration = duration;
     this.highscore = highscore;
+    this.awardname = awardname;
+    this.awardpoints = awardpoints;
     this.award = award;
     this.rndnote = 0;
+    this.lvlloader();
     this.generatenewNote();
     this.keyhitfunction();
 
@@ -77,8 +81,8 @@ class Game {
           highestNote = note
         }
 
-        
-        highestNote.style.backgroundColor = "green"
+
+        $(highestNote).find("*").attr("fill","green")
 
 
 
@@ -112,6 +116,15 @@ class Game {
 
     }.bind(this))
 
+
+  }
+
+  lvlloader(){
+    $('#gamelvl').html(this.lvl)
+    $('#highscore').html(this.highscore)
+    $('#gameduration').html(this.duration)
+    $('#awardname').html(this.awardname)
+    $('#awardpoints').html(this.awardpoints)
 
   }
 
