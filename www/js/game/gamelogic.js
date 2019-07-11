@@ -82,10 +82,11 @@ class Game {
           highestNote = note
         }
 
-        
+
 
       })
-      if (keyplayed == $(highestNote).attr("id") && $(highestNote).hasClass("hitable") ) {
+      if($(highestNote).hasClass("hitable")){
+      // if (keyplayed == $(highestNote).attr("id") && $(highestNote).hasClass("hitable") ) {
 
         $(highestNote).addClass('hit')
         $(highestNote).find("*").attr("fill","green")
