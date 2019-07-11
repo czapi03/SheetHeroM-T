@@ -71,38 +71,30 @@ class Game {
       //   }
       // })
 
-      var highestNote = false
+      var highestNote = null;
 
       $('.cloned').each(function(i, note /* == $('.cloned')[i] */ ) {
+        console.log(note);
+        // console.log(parseInt($(note).get(0).style.right))
 
 
-
-        if (highestNote == false || ($(note).get(0).style.right > $(highestNote).get(0).style.right && $(note).hasClass("hitable"))) {
+        if (!highestNote || ($(note).hasClass("hitable") && parseInt($(note).get(0).style.right) < parseInt($(highestNote).get(0).style.right) )) {
           highestNote = note
         }
 
-
-        $(highestNote).find("*").attr("fill","green")
-
-
-
-
-        // console.log(highestNote);
-        //   // handle highest note
-        //
-        //   // console.log(keyplayed);
-        //   // console.log(highestNote.attr("id"));
-        //   //
-        //   // if (keyplayed == highestNote.attr("id") ) {
-        //   //
-        //   //   highestNote.css({background:"#56ce46"})
-        //   //   // this.hit = true;
-        //   //
-        //   //   // this.clone.find("*").attr('fill', "green")
-        //   // }
-        // })
+        
 
       })
+      if (keyplayed == $(highestNote).attr("id") && $(highestNote).hasClass("hitable") ) {
+
+        $(highestNote).addClass('hit')
+        $(highestNote).find("*").attr("fill","green")
+        $(highestNote).removeClass('hitable')
+
+      }
+
+
+
 
     })
   }
