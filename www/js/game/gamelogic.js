@@ -78,7 +78,7 @@ class Game {
         // console.log(parseInt($(note).get(0).style.right))
 
 
-        if (!highestNote || ($(note).hasClass("hitable") && parseInt($(note).get(0).style.right) < parseInt($(highestNote).get(0).style.right) )) {
+        if (!highestNote || ($(note).hasClass("hitable") && parseInt($(note).get(0).style.right) > parseInt($(highestNote).get(0).style.right) )) {
           highestNote = note
         }
 
