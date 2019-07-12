@@ -1,7 +1,7 @@
 console.log("--gamelogic--");
 
 class Game {
-  constructor(lvl,notestoplay, speed, duration, highscore, awardname,awardpoints,award) {
+  constructor(lvl, notestoplay, speed, duration, highscore, awardname, awardpoints, award) {
     this.lvl = lvl;
     this.notestoplay = notestoplay;
     this.speed = speed;
@@ -78,21 +78,21 @@ class Game {
         // console.log(parseInt($(note).get(0).style.right))
 
 
-        if (!highestNote || ($(note).hasClass("hitable") && parseInt($(note).get(0).style.right) > parseInt($(highestNote).get(0).style.right) )) {
+        if (!highestNote || ($(note).hasClass("hitable") && parseInt($(note).get(0).style.right) > parseInt($(highestNote).get(0).style.right))) {
           highestNote = note
         }
 
 
 
       })
-      if($(highestNote).hasClass("hitable")){
+
       // if (keyplayed == $(highestNote).attr("id") && $(highestNote).hasClass("hitable") ) {
 
-        $(highestNote).addClass('hit')
-        $(highestNote).find("*").attr("fill","green")
-        $(highestNote).removeClass('hitable')
+      $(highestNote).removeClass('hitable')
+      $(highestNote).find("*").attr("fill", "green")
+      $(highestNote).addClass('hit')
 
-      }
+
 
 
 
@@ -112,7 +112,7 @@ class Game {
 
   }
 
-  lvlloader(){
+  lvlloader() {
     $('#gamelvl').html(this.lvl)
     $('#highscore').html(this.highscore)
     $('#gameduration').html(this.duration)

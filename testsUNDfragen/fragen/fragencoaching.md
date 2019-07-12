@@ -27,6 +27,11 @@
 *[BUG] klaviatur nach etlichen drücken errorcode 1(sollte eig nur bei pathproblemen sein?)
 
 
+## 12.07.19
+* warum mein if statement ned geht?
+* warum am handy so langsam?
+
+
 
 
 ## 21.06.2019 COACHING
