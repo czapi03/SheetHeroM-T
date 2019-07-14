@@ -84,6 +84,8 @@ class Game {
 
 
 
+      var highestNote = $('.cloned.hitable').toArray().find(function(note) {
+        return parseInt($(note).get(0).style.right) < 66
       })
 
       // if (keyplayed == $(highestNote).attr("id") && $(highestNote).hasClass("hitable") ) {
