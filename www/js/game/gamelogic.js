@@ -64,29 +64,11 @@ class Game {
 
       keyplayed = "n" + keyplayed;
 
-      // $('.cloned').each(function(i,note){
-      //   if($(note).hasClass("hitable")){
-      //     console.log("yes");
-      //     note.style.backgroundColor ="green"
-      //   }
-      // })
 
-      var highestNote = null;
-
-      $('.cloned').each(function(i, note /* == $('.cloned')[i] */ ) {
-        console.log(note);
-        // console.log(parseInt($(note).get(0).style.right))
-
-
-        if (!highestNote || ($(note).hasClass("hitable") && parseInt($(note).get(0).style.right) > parseInt($(highestNote).get(0).style.right))) {
-          highestNote = note
-        }
-
-
-
+      var highestNote = $('.cloned.hitable').toArray().find(function(note) {
+        return parseInt($(note).get(0).style.right) < 66
       })
 
-      // if (keyplayed == $(highestNote).attr("id") && $(highestNote).hasClass("hitable") ) {
 
       $(highestNote).removeClass('hitable')
       $(highestNote).find("*").attr("fill", "green")

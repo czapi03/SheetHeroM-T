@@ -42,13 +42,13 @@ class MoveNote {
       if (_this.position == 33) {
         $('#game').trigger('halftime')
       }
-      if (_this.position == 66 && _this.clone.hasClass("hitable")) {
+      if (_this.position >= 66 && _this.clone.hasClass("hitable")) {
 
         _this.clone.removeClass('hitable');
         _this.clone.find("*").attr("fill", "#F80E0E");
 
       }
-      if (_this.position == 84) {
+      if (_this.position >= 84) {
 
         clearInterval(moveme);
         _this.clone.remove()
