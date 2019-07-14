@@ -298,3 +298,17 @@ tspan {
 .dnone{
   display: none;
 }
+
+#progresswrapper {
+  position: absolute;
+  top: 68.89%;
+  left: 37.6%;
+  width: 26.3%;
+  height: 5.9%;
+}
+#progressbar {
+  position: absolute;
+  background-color: #56ce46;
+  width: 0%;
+  height: 100%;
+}

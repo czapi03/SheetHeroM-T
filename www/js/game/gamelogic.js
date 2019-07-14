@@ -9,10 +9,11 @@ class Game {
     this.highscore = highscore;
     this.awardname = awardname;
     this.awardpoints = awardpoints;
+    this.progressbarupdate = 0;
     this.award = award;
     this.rndnote = 0;
     this.lvlloader();
-    this.generatenewNote();
+
     this.keyhitfunction();
 
     this.pianoOnClick = $('.pianoOnClick').on('click', function() {
@@ -50,6 +51,7 @@ class Game {
         this.rndnote = getRandomInt(this.notestoplay.length);
 
         var move = new MoveNote(this.speed, this.notestoplay[this.rndnote]);
+        this.generatenewNote();
 
 
 
@@ -64,52 +66,61 @@ class Game {
 
       keyplayed = "n" + keyplayed;
 
-      // $('.cloned').each(function(i,note){
-      //   if($(note).hasClass("hitable")){
-      //     console.log("yes");
-      //     note.style.backgroundColor ="green"
-      //   }
-      // })
-
-      var highestNote = null;
-
-      $('.cloned').each(function(i, note /* == $('.cloned')[i] */ ) {
-        console.log(note);
-        // console.log(parseInt($(note).get(0).style.right))
-
-
-        if (!highestNote || ($(note).hasClass("hitable") && parseInt($(note).get(0).style.right) > parseInt($(highestNote).get(0).style.right))) {
-          highestNote = note
-        }
-
-
 
       var highestNote = $('.cloned.hitable').toArray().find(function(note) {
         return parseInt($(note).get(0).style.right) < 66
       })
 
-      // if (keyplayed == $(highestNote).attr("id") && $(highestNote).hasClass("hitable") ) {
 
-      $(highestNote).removeClass('hitable')
-      $(highestNote).find("*").attr("fill", "green")
-      $(highestNote).addClass('hit')
+      if (keyplayed == $(highestNote).attr("id")) {
+
+        $(highestNote).removeClass('hitable')
+        $(highestNote).find("*").attr("fill", "green")
+        $(highestNote).addClass('hit')
+
+        this.highscore += 25;
+        this.progressbarupdate+=5;
+
+        $('#progressbar').css({width: this.progressbarupdate + "%"})
 
 
 
+      } else {
+        this.highscore -= 25;
+      }
+
+      $('#highscore').html(this.highscore)
 
 
 
-    })
-  }
-
-  generatenewNote() {
-    $('#game').on('halftime', function() {
-
-      this.rndnote = getRandomInt(this.notestoplay.length);
-      var move = new MoveNote(this.speed, this.notestoplay[this.rndnote]);
 
 
     }.bind(this))
+  }
+  progressbarfiller(progress){
+
+    $('#progressbar').css({width: progress+'%'})
+
+
+  }
+
+
+
+
+
+  generatenewNote() {
+    var _this = this;
+
+    var sendNotes = setInterval(function() {
+
+      _this.rndnote = getRandomInt(_this.notestoplay.length);
+      var move = new MoveNote(_this.speed, _this.notestoplay[_this.rndnote]);
+
+    }, 3000);
+
+
+
+
 
 
   }

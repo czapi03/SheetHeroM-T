@@ -39,10 +39,7 @@ class MoveNote {
       _this.position += _this.speed;
 
 
-      if (_this.position == 33) {
-        $('#game').trigger('halftime')
-      }
-      if (_this.position >= 66 && _this.clone.hasClass("hitable")) {
+        if (_this.position >= _this.finishline && _this.clone.hasClass("hitable")) {
 
         _this.clone.removeClass('hitable');
         _this.clone.find("*").attr("fill", "#F80E0E");
