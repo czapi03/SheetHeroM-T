@@ -26,22 +26,23 @@ class Game {
 
 
       //spielt ton
-      // var media = new Media('assets/wav/' + mykey + '.wav', function() {
-      // var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
-      //
-      //     media.release();
-      //
-      // }, function(err) {
-      //
-      //   alert(JSON.stringify(err));
-      //
-      // });
-      // media.play();
+      //var media = new Media('assets/wav/' + mykey + '.wav', function() {
+      var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
+
+          media.release();
+
+      }, function(err) {
+
+        alert(JSON.stringify(err));
+
+      });
+      media.play();
 
 
 
 
     })
+  
 
     //startet gamelogic
     this.startButton = $('#gamebutton')
@@ -116,7 +117,7 @@ class Game {
       _this.rndnote = getRandomInt(_this.notestoplay.length);
       var move = new MoveNote(_this.speed, _this.notestoplay[_this.rndnote]);
 
-    }, 3000);
+    }, 2300);
 
 
 
