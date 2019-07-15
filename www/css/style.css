@@ -52,6 +52,7 @@ svg {
   fill: #3ed673;
 }
 
+
 body {
   background-image: url("../assets/images/159.jpg")
 }
@@ -311,4 +312,19 @@ tspan {
   background-color: #56ce46;
   width: 0%;
   height: 100%;
+}
+
+#dialog {
+  position: absolute;
+  display: none;
+  border: 1px solid black;
+  width: 90%;
+  height: 90%;
+  top: 5%;
+  left: 5%;
+  background-image: url("../assets/images/159.jpg");
+  -webkit-box-shadow: 10px 10px 5px -5px rgba(112,112,112,1);
+  -moz-box-shadow: 10px 10px 5px -5px rgba(112,112,112,1);
+  box-shadow: 10px 10px 5px -5px rgba(112,112,112,1);
+
 }

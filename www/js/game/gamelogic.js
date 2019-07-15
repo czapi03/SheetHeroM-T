@@ -12,6 +12,7 @@ class Game {
     this.progressbarupdate = 0;
     this.award = award;
     this.rndnote = 0;
+    this.sendNotes;
     this.lvlloader();
 
     this.keyhitfunction();
@@ -26,8 +27,8 @@ class Game {
 
 
       //spielt ton
-      //var media = new Media('assets/wav/' + mykey + '.wav', function() {
-      var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
+      var media = new Media('assets/wav/' + mykey + '.wav', function() {
+      // var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
 
           media.release();
 
@@ -42,7 +43,7 @@ class Game {
 
 
     })
-  
+
 
     //startet gamelogic
     this.startButton = $('#gamebutton')
@@ -53,6 +54,7 @@ class Game {
 
         var move = new MoveNote(this.speed, this.notestoplay[this.rndnote]);
         this.generatenewNote();
+        this.timecountdown();
 
 
 
@@ -112,18 +114,35 @@ class Game {
   generatenewNote() {
     var _this = this;
 
-    var sendNotes = setInterval(function() {
+    _this.sendNotes = setInterval(function() {
 
       _this.rndnote = getRandomInt(_this.notestoplay.length);
       var move = new MoveNote(_this.speed, _this.notestoplay[_this.rndnote]);
 
-    }, 2300);
+    }, 2350);
 
+  }
+  timecountdown(){
+    var _this = this;
 
-
-
-
-
+    var timer = setInterval(function () {
+      _this.duration--;
+      console.log(_this.duration);
+      $('#gameduration').html(_this.duration)
+      if(_this.duration <= 5){
+        $('#gameduration').attr("fill","red")
+      }
+      if(_this.duration == 0){
+        clearInterval(timer)
+        clearInterval(_this.sendNotes)
+        $('#dialog').css({
+          display: "block"
+        })
+      }
+      if(_this.duration <10){
+        $('#gameduration').html('0'+_this.duration)
+      }
+    }, 1000);
   }
 
   lvlloader() {
