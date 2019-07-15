@@ -119,7 +119,7 @@ class Game {
       _this.rndnote = getRandomInt(_this.notestoplay.length);
       var move = new MoveNote(_this.speed, _this.notestoplay[_this.rndnote]);
 
-    }, 2350);
+    }, 2350/(_this.speed/0.25));
 
   }
   timecountdown(){
