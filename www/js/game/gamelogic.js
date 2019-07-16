@@ -1,12 +1,13 @@
 console.log("--gamelogic--");
 
 class Game {
-  constructor(lvl, notestoplay, speed, duration, highscore, awardname, awardpoints, award) {
+  constructor(lvl, notestoplay, speed, duration, points,highscoretoreach, awardname, awardpoints, award) {
     this.lvl = lvl;
     this.notestoplay = notestoplay;
     this.speed = speed;
     this.duration = duration;
-    this.highscore = highscore;
+    this.points = points;
+    this.highscoretoreach = highscoretoreach;
     this.awardname = awardname;
     this.awardpoints = awardpoints;
     this.move;
@@ -17,8 +18,8 @@ class Game {
     this.durationtimer;
     this.refreshlvl = $('.refreshbutton').on('click',function(){
       $("#gameduration").html(duration)
-      $("#highscore").html(highscore)
-      this.highscore = highscore;
+      $("#highscore").html(points)
+      this.points = points;
         clearInterval(this.sendNotes)
         window.cancelAnimationFrame(this.move.Req)
         $('.cloned').remove();
@@ -95,18 +96,31 @@ class Game {
         $(highestNote).find("*").attr("fill", "green")
         $(highestNote).addClass('hit')
 
-        this.highscore += 25;
-        this.progressbarupdate+=5;
+        this.points += this.highscoretoreach/25;
+        this.progressbarupdate+=50;
 
         $('#progressbar').css({width: this.progressbarupdate + "%"})
+        if(this.progressbarupdate >= 100){
+          this.progressbarupdate = 0;
+
+        }
+
 
 
 
       } else {
-        this.highscore -= 25;
+        this.points -= this.highscoretoreach/25;
+      }
+      if(this.points < 0){
+        $('#highscore').attr("fill","#F80E0E");
+      }else{
+        $('#highscore').attr("fill","black");
+      }
+      if(this.points >0){
+        $('#highscore').attr("fill","#56ce46");
       }
 
-      $('#highscore').html(this.highscore)
+      $('#highscore').html(this.points)
 
 
 
@@ -149,6 +163,11 @@ class Game {
       if(_this.duration == 0){
         clearInterval(_this.durationtimer)
         clearInterval(_this.sendNotes)
+
+        if(_this.points < (_this.highscoretoreach*0.8)){
+          $('#successresponse').html("Schade")
+        }
+
         $('#dialog').css({
           display: "block"
         })
@@ -160,8 +179,9 @@ class Game {
   }
 
   lvlloader() {
+    $('#highscoretoreach').html("Erreiche "+this.highscoretoreach+" Punkte für Level "+(this.lvl+1))
     $('#gamelvl').html(this.lvl)
-    $('#highscore').html(this.highscore)
+    $('#highscore').html(this.points)
     $('#gameduration').html(this.duration)
     $('#awardname').html(this.awardname)
     $('#awardpoints').html(this.awardpoints)
