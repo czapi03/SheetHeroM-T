@@ -96,7 +96,7 @@ class Game {
         $(highestNote).find("*").attr("fill", "green")
         $(highestNote).addClass('hit')
 
-        this.points += this.highscoretoreach/25;
+        this.points += (this.highscoretoreach/25)*(0.25/this.speed);
         this.progressbarupdate+=50;
 
         $('#progressbar').css({width: this.progressbarupdate + "%"})
@@ -179,7 +179,7 @@ class Game {
   }
 
   lvlloader() {
-    $('#highscoretoreach').html("Erreiche "+this.highscoretoreach+" Punkte für Level "+(this.lvl+1))
+    $('#highscoretoreach').html("Erreiche "+this.highscoretoreach*0.8+" Punkte für Level "+(this.lvl+1))
     $('#gamelvl').html(this.lvl)
     $('#highscore').html(this.points)
     $('#gameduration').html(this.duration)
