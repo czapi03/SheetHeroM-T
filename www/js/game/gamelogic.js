@@ -9,10 +9,24 @@ class Game {
     this.highscore = highscore;
     this.awardname = awardname;
     this.awardpoints = awardpoints;
+    this.move;
     this.progressbarupdate = 0;
     this.award = award;
     this.rndnote = 0;
     this.sendNotes;
+    this.durationtimer;
+    this.refreshlvl = $('.refreshbutton').on('click',function(){
+      $("#gameduration").html(duration)
+      $("#highscore").html(highscore)
+      this.highscore = highscore;
+        clearInterval(this.sendNotes)
+        window.cancelAnimationFrame(this.move.Req)
+        $('.cloned').remove();
+        clearInterval(this.durationtimer)
+        console.log(duration);
+        this.duration = duration;
+
+    }.bind(this))
     this.lvlloader();
 
     this.keyhitfunction();
@@ -52,7 +66,7 @@ class Game {
 
         this.rndnote = getRandomInt(this.notestoplay.length);
 
-        var move = new MoveNote(this.speed, this.notestoplay[this.rndnote]);
+        this.move = new MoveNote(this.speed, this.notestoplay[this.rndnote]);
         this.generatenewNote();
         this.timecountdown();
 
@@ -117,7 +131,7 @@ class Game {
     _this.sendNotes = setInterval(function() {
 
       _this.rndnote = getRandomInt(_this.notestoplay.length);
-      var move = new MoveNote(_this.speed, _this.notestoplay[_this.rndnote]);
+      _this.move = new MoveNote(_this.speed, _this.notestoplay[_this.rndnote]);
 
     }, 2350/(_this.speed/0.25));
 
@@ -125,7 +139,7 @@ class Game {
   timecountdown(){
     var _this = this;
 
-    var timer = setInterval(function () {
+    _this.durationtimer = setInterval(function () {
       _this.duration--;
       console.log(_this.duration);
       $('#gameduration').html(_this.duration)
@@ -133,7 +147,7 @@ class Game {
         $('#gameduration').attr("fill","red")
       }
       if(_this.duration == 0){
-        clearInterval(timer)
+        clearInterval(_this.durationtimer)
         clearInterval(_this.sendNotes)
         $('#dialog').css({
           display: "block"

@@ -8,7 +8,7 @@ document.addEventListener('deviceready', function() {
   $('document').ready(function() {
     console.log('--app.js--');
 
-    var noten = ["c4", "c5", "f5", "c6", "e4", "h5"]
+    var noten = ["c4", "c5"]//, "f5", "c6", "e4", "h5"]
 
 
     var start = new Game(1, noten, 0.25, 30, 0, "Anfänger", 150);

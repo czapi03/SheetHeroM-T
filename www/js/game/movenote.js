@@ -48,6 +48,7 @@ class MoveNote {
 
       this.clone.removeClass('hitable');
       this.clone.find("*").attr("fill", "#F80E0E");
+    
 
     }
     if (this.position >= 84) {

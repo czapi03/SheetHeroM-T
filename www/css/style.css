@@ -13,7 +13,6 @@
   padding: 0;
   margin: 0;
 } */
-
 body, html {
   padding: 0;
   margin: 0;
@@ -52,7 +51,6 @@ svg {
   fill: #3ed673;
 }
 
-
 body {
   background-image: url("../assets/images/159.jpg")
 }
@@ -60,7 +58,8 @@ body {
 tspan {
   font-family: PollerOne;
 }
-.note{
+
+.note {
   display: none;
 }
 
@@ -130,10 +129,10 @@ tspan {
 
 #nd5 {
   position: absolute;
-      height: 5%;
-      width: 3.5%;
-      top: 33.4%;
-      right: 0%;
+  height: 5%;
+  width: 3.5%;
+  top: 33.4%;
+  right: 0%;
 }
 
 #ne5 {
@@ -143,13 +142,15 @@ tspan {
   top: 31.4%;
   right: 0%;
 }
+
 #nf5 {
   position: absolute;
-      height: 5%;
-      width: 3.5%;
-      top: 29.1%;
-      right: 0%;
+  height: 5%;
+  width: 3.5%;
+  top: 29.1%;
+  right: 0%;
 }
+
 #ng5 {
   position: absolute;
   height: 5%;
@@ -157,6 +158,7 @@ tspan {
   top: 27.2%;
   right: 0%;
 }
+
 #na5 {
   position: absolute;
   height: 4%;
@@ -164,6 +166,7 @@ tspan {
   top: 25.2%;
   right: 0%;
 }
+
 #nh5 {
   position: absolute;
   height: 4%;
@@ -171,6 +174,7 @@ tspan {
   top: 23.6%;
   right: 0%;
 }
+
 #nc6 {
   position: absolute;
   height: 6%;
@@ -178,8 +182,6 @@ tspan {
   top: 21.6%;
   right: 0%;
 }
-
-
 
 #clonenc4 {
   position: absolute;
@@ -247,10 +249,10 @@ tspan {
 
 #clonend5 {
   position: absolute;
-      height: 5%;
-      width: 3.5%;
-      top: 33.4%;
-      right: 0%;
+  height: 5%;
+  width: 3.5%;
+  top: 33.4%;
+  right: 0%;
 }
 
 #clonene5 {
@@ -260,13 +262,15 @@ tspan {
   top: 31.4%;
   right: 0%;
 }
+
 #clonenf5 {
   position: absolute;
-      height: 5%;
-      width: 3.5%;
-      top: 29.1%;
-      right: 0%;
+  height: 5%;
+  width: 3.5%;
+  top: 29.1%;
+  right: 0%;
 }
+
 #cloneng5 {
   position: absolute;
   height: 5%;
@@ -274,6 +278,7 @@ tspan {
   top: 27.2%;
   right: 0%;
 }
+
 #clonena5 {
   position: absolute;
   height: 4%;
@@ -281,6 +286,7 @@ tspan {
   top: 25.2%;
   right: 0%;
 }
+
 #clonenh5 {
   position: absolute;
   height: 4%;
@@ -288,6 +294,7 @@ tspan {
   top: 23.6%;
   right: 0%;
 }
+
 #clonenc6 {
   position: absolute;
   height: 6%;
@@ -296,7 +303,7 @@ tspan {
   right: 0%;
 }
 
-.dnone{
+.dnone {
   display: none;
 }
 
@@ -307,6 +314,7 @@ tspan {
   width: 26.3%;
   height: 5.9%;
 }
+
 #progressbar {
   position: absolute;
   background-color: #56ce46;
@@ -316,46 +324,59 @@ tspan {
 
 #dialog {
   position: absolute;
-
   display: flex;
-  /* display: none; */
+  display: none;
   border: 1px solid black;
   width: 90%;
   height: 90%;
   top: 5%;
   left: 5%;
   background-image: url("../assets/images/159.jpg");
-  -webkit-box-shadow: 10px 10px 5px -5px rgba(112,112,112,1);
-  -moz-box-shadow: 10px 10px 5px -5px rgba(112,112,112,1);
-  box-shadow: 10px 10px 5px -5px rgba(112,112,112,1);
-
+  -webkit-box-shadow: 10px 10px 5px -5px rgba(112, 112, 112, 1);
+  -moz-box-shadow: 10px 10px 5px -5px rgba(112, 112, 112, 1);
+  box-shadow: 10px 10px 5px -5px rgba(112, 112, 112, 1);
 }
+
 #dialogcontainer {
-  display: flex;7
-  position: relative;
+  display: flex;
+  7 position: relative;
   width: 100%;
   height: 100%;
 }
-#dialog > * {
+
+#dialog>* {
   font-family: PollerOne;
   text-align: center;
   font-size: 2em;
-
-
 }
+
 #dialogrechts {
   position: relative;
 }
+
 #refreshlvl {
-  font-size: 0.75em;
+  font-size: 0.65em;
+  margin-top: 3%;
+  margin-left: 3%;
 }
-#dialogcontainer > h1,h2 {
+
+#refreshlvl>* {
+  position: absolute;
+  width: 8%;
+  height: 8%;
+  left: 25%;
+  top: 1%;
+}
+
+#dialogcontainer>h1, h2 {
   color: #3a3a3a;
 }
-#dialogcontainer > div {
+
+#dialogcontainer>div {
   /* border: 1px solid red; */
   width: 50%;
 }
+
 #nextlvl {
   position: absolute;
   display: flex;
@@ -368,7 +389,4 @@ tspan {
   border: 2px solid black;
   background-color: #56ce46;
   border-radius: 10px 10px 10px 10px;
-}
-#nextlvl > * {
-
 }
