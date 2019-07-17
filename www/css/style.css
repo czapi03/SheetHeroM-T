@@ -49,8 +49,11 @@ svg {
   width: 100%;
 }
 
-.blue {
+.colorhitrightkey {
   fill: #3ed673;
+}
+.colorhitwrongkey {
+  fill: red;
 }
 
 body {

@@ -1,7 +1,7 @@
 console.log("--gamelogic--");
 
 class Game {
-  constructor(lvl, notestoplay, speed, duration, points,highscoretoreach, awardname, awardpoints, award) {
+  constructor(lvl, notestoplay, speed, duration, points, highscoretoreach, awardname, awardpoints, award) {
     this.lvl = lvl;
     this.notestoplay = notestoplay;
     this.speed = speed;
@@ -16,16 +16,16 @@ class Game {
     this.rndnote = 0;
     this.sendNotes;
     this.durationtimer;
-    this.refreshlvl = $('.refreshbutton').on('click',function(){
+    this.refreshlvl = $('.refreshbutton').on('click', function() {
       $("#gameduration").html(duration)
       $("#highscore").html(points)
       this.points = points;
-        clearInterval(this.sendNotes)
-        window.cancelAnimationFrame(this.move.Req)
-        $('.cloned').remove();
-        clearInterval(this.durationtimer)
-        console.log(duration);
-        this.duration = duration;
+      clearInterval(this.sendNotes)
+      window.cancelAnimationFrame(this.move.Req)
+      $('.cloned').remove();
+      clearInterval(this.durationtimer)
+      console.log(duration);
+      this.duration = duration;
 
     }.bind(this))
     this.lvlloader();
@@ -35,17 +35,21 @@ class Game {
     this.pianoOnClick = $('.pianoOnClick').on('click', function() {
 
       var mykey = $(this).attr('id');
+      console.log(this);
+
 
 
       //spielt note
       $('#game').trigger('keyhit', mykey)
 
 
+
+
       //spielt ton
       var media = new Media('assets/wav/' + mykey + '.wav', function() {
-      // var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
+        // var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
 
-          media.release();
+        media.release();
 
       }, function(err) {
 
@@ -91,16 +95,25 @@ class Game {
 
 
       if (keyplayed == $(highestNote).attr("id")) {
+        keyplayed = keyplayed.slice(1,3)
+
+        $('#'+keyplayed).addClass("colorhitrightkey");
+        setTimeout(function() {
+          $('#'+keyplayed).removeClass('colorhitrightkey')
+
+        }, 300);
 
         $(highestNote).removeClass('hitable')
         $(highestNote).find("*").attr("fill", "green")
         $(highestNote).addClass('hit')
 
-        this.points += (this.highscoretoreach/25)*(0.25/this.speed);
-        this.progressbarupdate+=50;
+        this.points += (this.highscoretoreach / 25) * (0.25 / this.speed);
+        this.progressbarupdate += 50;
 
-        $('#progressbar').css({width: this.progressbarupdate + "%"})
-        if(this.progressbarupdate >= 100){
+        $('#progressbar').css({
+          width: this.progressbarupdate + "%"
+        })
+        if (this.progressbarupdate >= 100) {
           this.progressbarupdate = 0;
 
         }
@@ -109,15 +122,26 @@ class Game {
 
 
       } else {
-        this.points -= this.highscoretoreach/25;
+        this.points -= this.highscoretoreach / 25;
+        keyplayed = keyplayed.slice(1,3)
+
+        $('#'+keyplayed).addClass("colorhitwrongkey");
+
+
+          setTimeout(function() {
+            $('#'+keyplayed).removeClass('colorhitwrongkey')
+
+
+
+          }, 300);
       }
-      if(this.points < 0){
-        $('#highscore').attr("fill","#F80E0E");
-      }else{
-        $('#highscore').attr("fill","black");
+      if (this.points < 0) {
+        $('#highscore').attr("fill", "#F80E0E");
+      } else {
+        $('#highscore').attr("fill", "black");
       }
-      if(this.points >0){
-        $('#highscore').attr("fill","#56ce46");
+      if (this.points > 0) {
+        $('#highscore').attr("fill", "#56ce46");
       }
 
       $('#highscore').html(this.points)
@@ -128,9 +152,11 @@ class Game {
 
     }.bind(this))
   }
-  progressbarfiller(progress){
+  progressbarfiller(progress) {
 
-    $('#progressbar').css({width: progress+'%'})
+    $('#progressbar').css({
+      width: progress + '%'
+    })
 
 
   }
@@ -147,24 +173,24 @@ class Game {
       _this.rndnote = getRandomInt(_this.notestoplay.length);
       _this.move = new MoveNote(_this.speed, _this.notestoplay[_this.rndnote]);
 
-    }, 2350/(_this.speed/0.25));
+    }, 2350 / (_this.speed / 0.25));
 
   }
-  timecountdown(){
+  timecountdown() {
     var _this = this;
 
-    _this.durationtimer = setInterval(function () {
+    _this.durationtimer = setInterval(function() {
       _this.duration--;
       console.log(_this.duration);
       $('#gameduration').html(_this.duration)
-      if(_this.duration <= 5){
-        $('#gameduration').attr("fill","red")
+      if (_this.duration <= 5) {
+        $('#gameduration').attr("fill", "red")
       }
-      if(_this.duration == 0){
+      if (_this.duration == 0) {
         clearInterval(_this.durationtimer)
         clearInterval(_this.sendNotes)
 
-        if(_this.points < (_this.highscoretoreach*0.8)){
+        if (_this.points < (_this.highscoretoreach * 0.8)) {
           $('#successresponse').html("Schade")
         }
 
@@ -172,14 +198,14 @@ class Game {
           display: "block"
         })
       }
-      if(_this.duration <10){
-        $('#gameduration').html('0'+_this.duration)
+      if (_this.duration < 10) {
+        $('#gameduration').html('0' + _this.duration)
       }
     }, 1000);
   }
 
   lvlloader() {
-    $('#highscoretoreach').html("Erreiche "+this.highscoretoreach*0.8+" Punkte für Level "+(this.lvl+1))
+    $('#highscoretoreach').html("Erreiche " + this.highscoretoreach * 0.8 + " Punkte für Level " + (this.lvl + 1))
     $('#gamelvl').html(this.lvl)
     $('#highscore').html(this.points)
     $('#gameduration').html(this.duration)
