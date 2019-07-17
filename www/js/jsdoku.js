@@ -23,3 +23,10 @@ function getRandomInt(max) {
 //     "background": "#e57b7b"
 //   }).appendTo('#debug')
 // }
+
+//Nächstes LVl generieren
+function generateNextLevel(){
+  $('#dialog').css({display:"none"})
+  start = null;
+
+}

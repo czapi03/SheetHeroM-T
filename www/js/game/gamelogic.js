@@ -10,12 +10,16 @@ class Game {
     this.highscoretoreach = highscoretoreach;
     this.awardname = awardname;
     this.awardpoints = awardpoints;
+    this.media;
+    this.mediaarray;
+    this.self = this;
     this.move;
     this.progressbarupdate = 0;
     this.award = award;
     this.rndnote = 0;
     this.sendNotes;
     this.durationtimer;
+    //refreshbutton
     this.refreshlvl = $('.refreshbutton').on('click', function() {
       $("#gameduration").html(duration)
       $("#highscore").html(points)
@@ -28,8 +32,15 @@ class Game {
       this.duration = duration;
 
     }.bind(this))
-    this.lvlloader();
+    //mutebutton
+    this.mutesound = $('#mutebutton').on('click',function(){
 
+      console.log("mute");
+
+
+
+    }.bind(this))
+    this.lvlloader();
     this.keyhitfunction();
 
     this.pianoOnClick = $('.pianoOnClick').on('click', function() {
@@ -42,22 +53,21 @@ class Game {
       //spielt note
       $('#game').trigger('keyhit', mykey)
 
-
-
-
       //spielt ton
-      var media = new Media('assets/wav/' + mykey + '.wav', function() {
+      this.media = new Media('assets/wav/' + mykey + '.wav', function() {
         // var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
 
-        media.release();
+        console.log(this);
+        this.release();
 
       }, function(err) {
 
         alert(JSON.stringify(err));
 
       });
-      media.play();
+      this.media.play();
 
+      console.log(this.duration);
 
 
 
@@ -68,6 +78,7 @@ class Game {
     this.startButton = $('#gamebutton')
       .on('click', function() {
         $('.cloned').find("*").attr("fill", "#000000")
+        console.log(this);
 
         this.rndnote = getRandomInt(this.notestoplay.length);
 
@@ -213,6 +224,16 @@ class Game {
     $('#awardpoints').html(this.awardpoints)
 
   }
+
+  muteall(mediaarray){
+
+    for(let i in mediaarray){
+      allmediaobjects[i].setVolume('0.0')
+    }
+
+  }
+
+
 
 
 }

@@ -11,14 +11,27 @@ document.addEventListener('deviceready', function() {
     var noten = ["c4","d4","e4","f4","g4","a4","h4", "c5","d5","e5","f5","g5","a5","h5", "c6"]
 
 
-    var start = new Game(1, noten, 0.125, 60, 0,1000, "Anfänger", 150);
+    // var start = new Game(1, noten, 0.125, 60, 0,1000, "Anfänger", 150);
+
+
+    $('#nextlvl >*').on("click",function(){
+      console.log("weiter");
+
+
+      console.log(start);
+
+
+
+
+      generateNextLevel();
+
+    })
 
 
 
 
 
 
-    
 
 
 
