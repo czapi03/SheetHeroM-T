@@ -54,18 +54,18 @@ class Game {
       $('#game').trigger('keyhit', mykey)
 
       //spielt ton
-      this.media = new Media('assets/wav/' + mykey + '.wav', function() {
-        // var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
+       // var media = new Media('assets/wav/' + mykey + '.wav', function() {
+        var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
 
         // console.log(this);
-        this.release();
+        media.release();
 
       }, function(err) {
 
         alert(JSON.stringify(err));
 
       });
-      this.media.play();
+      media.play();
 
       // console.log(this.duration);
 

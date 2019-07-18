@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="at.wifiwien.wienwou" version="0.1.0-b053" xmlns="http://www.w3.org/ns/widget" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="at.wifiwien.wienwou" version="0.1.0-b054" xmlns="http://www.w3.org/ns/widget" xmlns:gap="http://phonegap.com/ns/1.0">
   <name>SheetHero</name>
   <description>Learn Sheet music! Zack Zack Zack</description>
   <author email="manuel.czapek@gmx.net" href="http://www.wifiwien.at">
