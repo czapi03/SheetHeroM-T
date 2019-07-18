@@ -33,7 +33,7 @@ class Game {
 
     }.bind(this))
     //mutebutton
-    this.mutesound = $('#mutebutton').on('click',function(){
+    this.mutesound = $('#mutebutton').on('click', function() {
 
       console.log("mute");
 
@@ -46,7 +46,7 @@ class Game {
     this.pianoOnClick = $('.pianoOnClick').on('click', function() {
 
       var mykey = $(this).attr('id');
-      console.log(this);
+      // console.log(this);
 
 
 
@@ -57,7 +57,7 @@ class Game {
       this.media = new Media('assets/wav/' + mykey + '.wav', function() {
         // var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
 
-        console.log(this);
+        // console.log(this);
         this.release();
 
       }, function(err) {
@@ -67,7 +67,7 @@ class Game {
       });
       this.media.play();
 
-      console.log(this.duration);
+      // console.log(this.duration);
 
 
 
@@ -106,11 +106,11 @@ class Game {
 
 
       if (keyplayed == $(highestNote).attr("id")) {
-        keyplayed = keyplayed.slice(1,3)
+        keyplayed = keyplayed.slice(1, 3)
 
-        $('#'+keyplayed).addClass("colorhitrightkey");
+        $('#' + keyplayed).addClass("colorhitrightkey");
         setTimeout(function() {
-          $('#'+keyplayed).removeClass('colorhitrightkey')
+          $('#' + keyplayed).removeClass('colorhitrightkey')
 
         }, 300);
 
@@ -119,7 +119,7 @@ class Game {
         $(highestNote).addClass('hit')
 
         this.points += (this.highscoretoreach / 25) * (0.25 / this.speed);
-        this.progressbarupdate += 50;
+        this.progressbarupdate += 5;
 
         $('#progressbar').css({
           width: this.progressbarupdate + "%"
@@ -134,17 +134,17 @@ class Game {
 
       } else {
         this.points -= this.highscoretoreach / 25;
-        keyplayed = keyplayed.slice(1,3)
+        keyplayed = keyplayed.slice(1, 3)
 
-        $('#'+keyplayed).addClass("colorhitwrongkey");
-
-
-          setTimeout(function() {
-            $('#'+keyplayed).removeClass('colorhitwrongkey')
+        $('#' + keyplayed).addClass("colorhitwrongkey");
 
 
+        setTimeout(function() {
+          $('#' + keyplayed).removeClass('colorhitwrongkey')
 
-          }, 300);
+
+
+        }, 300);
       }
       if (this.points < 0) {
         $('#highscore').attr("fill", "#F80E0E");
@@ -192,7 +192,6 @@ class Game {
 
     _this.durationtimer = setInterval(function() {
       _this.duration--;
-      console.log(_this.duration);
       $('#gameduration').html(_this.duration)
       if (_this.duration <= 5) {
         $('#gameduration').attr("fill", "red")
@@ -225,9 +224,9 @@ class Game {
 
   }
 
-  muteall(mediaarray){
+  muteall(mediaarray) {
 
-    for(let i in mediaarray){
+    for (let i in mediaarray) {
       allmediaobjects[i].setVolume('0.0')
     }
 
