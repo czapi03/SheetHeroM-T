@@ -199,6 +199,8 @@ class Game {
       if (_this.duration == 0) {
         clearInterval(_this.durationtimer)
         clearInterval(_this.sendNotes)
+        _this.stop();
+        $('.cloned').remove();
 
         if (_this.points < (_this.highscoretoreach * 0.8)) {
           $('#successresponse').html("Schade")
@@ -232,6 +234,15 @@ class Game {
 
   }
 
+  stop(){
+    $('.refreshbutton').off("click")
+     $('#mutebutton').off("click")
+     $('.pianoOnClick').off("click")
+     $('#gamebutton').off("click")
+     $('#game').off("click")
+     console.log("stoped lvl"+ this.lvl);
+
+  }
 
 
 
