@@ -248,7 +248,7 @@ class Game {
   }
 
   stop(){
-    $('#game').off("click")
+    $('#game').off("keyhit")
     $('.refreshbutton').off("click")
      $('#mutebutton').off("click")
      $('.pianoOnClick').off("click")
