@@ -28,6 +28,6 @@ function getRandomInt(max) {
 function generateNextLevel(currentlvl,noten){
   $('#dialog').css({display:"none"})
 
-  var startnextlvl = new Game(currentlvl, noten, 0.5, 10, 0,1000, "Anfänger", 150)
+  var startnextlvl = new Game(currentlvl, noten, 0.5, 15, 0,1200, "Anfänger", 150)
 
 }

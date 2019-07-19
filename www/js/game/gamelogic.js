@@ -4,12 +4,13 @@ class Game {
   constructor(lvl, notestoplay, speed, duration, points, highscoretoreach, awardname, awardpoints, award) {
     this.lvl = lvl;
     this.notestoplay = notestoplay;
-    this.speed = speed;
+    this.speed = $(window).width()*speed/100;
     this.duration = duration;
     this.points = points;
     this.highscoretoreach = highscoretoreach;
     this.awardname = awardname;
     this.awardpoints = awardpoints;
+    this.keyhitfunction(speed);
     this.media;
     this.mediaarray;
     this.self = this;
@@ -21,17 +22,18 @@ class Game {
     this.durationtimer;
     //refreshbutton
     this.refreshlvl = $('.refreshbutton').on('click', function() {
-      $("#gameduration").html(duration)
-      $("#highscore").html(points)
-      this.points = points;
-      clearInterval(this.sendNotes)
-      window.cancelAnimationFrame(this.move.Req)
-      $('.cloned').remove();
-      clearInterval(this.durationtimer)
-      console.log(duration);
-      this.duration = duration;
+
+      this.refresh(points,duration);
 
     }.bind(this))
+    //refreshbutton2
+    // this.refreshbuttondialog = $('#refreshlvldialogbutton').on("click",function(){
+    //   $('#dialog').css({display:"none"});
+    //   this.refresh(points,duration);
+    //   // $('#refreshlvldialogbutton').off("click")
+    //
+    //
+    // }.bind(this))
     //mutebutton
     this.mutesound = $('#mutebutton').on('click', function() {
 
@@ -41,19 +43,20 @@ class Game {
 
     }.bind(this))
     this.lvlloader();
-    this.keyhitfunction();
+
 
     this.pianoOnClick = $('.pianoOnClick').on('click', function() {
 
       var mykey = $(this).attr('id');
       // console.log(this);
 
+      // this.keyhitfunction(speed,mykey)
 
 
       //spielt note
       $('#game').trigger('keyhit', mykey)
 
-      //spielt ton
+      // spielt ton
        // var media = new Media('assets/wav/' + mykey + '.wav', function() {
         var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
 
@@ -78,12 +81,12 @@ class Game {
     this.startButton = $('#gamebutton')
       .on('click', function() {
         $('.cloned').find("*").attr("fill", "#000000")
-        console.log(this);
+        console.log("start");
 
         this.rndnote = getRandomInt(this.notestoplay.length);
 
         this.move = new MoveNote(this.speed, this.notestoplay[this.rndnote]);
-        this.generatenewNote();
+        this.generatenewNote(speed);
         this.timecountdown();
 
 
@@ -92,16 +95,21 @@ class Game {
 
   }
   //spielt note
-  keyhitfunction() {
+  keyhitfunction(speed) {
 
 
     $('#game').on('keyhit', function(event, keyplayed) {
 
       keyplayed = "n" + keyplayed;
 
+    console.log("keyhit");
 
+      // var highestNote = $('.cloned.hitable').toArray().find(function(note) {
+      //   return parseInt($(note).get(0).style.right) < $(window).width()*0.66
+      // })
       var highestNote = $('.cloned.hitable').toArray().find(function(note) {
-        return parseInt($(note).get(0).style.right) < 66
+
+        return parseInt($(note).position().left) > $(window).width()*0.33
       })
 
 
@@ -118,7 +126,7 @@ class Game {
         $(highestNote).find("*").attr("fill", "green")
         $(highestNote).addClass('hit')
 
-        this.points += (this.highscoretoreach / 25) * (0.25 / this.speed);
+        this.points += (this.highscoretoreach / 25) * (0.5 / speed);
         this.progressbarupdate += 5;
 
         $('#progressbar').css({
@@ -176,15 +184,16 @@ class Game {
 
 
 
-  generatenewNote() {
+  generatenewNote(speed) {
     var _this = this;
 
     _this.sendNotes = setInterval(function() {
 
       _this.rndnote = getRandomInt(_this.notestoplay.length);
       _this.move = new MoveNote(_this.speed, _this.notestoplay[_this.rndnote]);
-
-    }, 2350 / (_this.speed / 0.25));
+//
+    }, 2350 / (speed / 0.25));
+  // }, 2350 );
 
   }
   timecountdown() {
@@ -199,11 +208,15 @@ class Game {
       if (_this.duration == 0) {
         clearInterval(_this.durationtimer)
         clearInterval(_this.sendNotes)
+        console.log("dura 0");
         _this.stop();
         $('.cloned').remove();
 
         if (_this.points < (_this.highscoretoreach * 0.8)) {
           $('#successresponse').html("Schade")
+          $('#dialoglinks > h2').html("Level "+_this.lvl+" leider nicht geschafft!")
+          $('#dialogrechts p').html("");
+          // $('#nextlvl').css({display:"none"})
         }
 
         $('#dialog').css({
@@ -235,13 +248,24 @@ class Game {
   }
 
   stop(){
+    $('#game').off("click")
     $('.refreshbutton').off("click")
      $('#mutebutton').off("click")
      $('.pianoOnClick').off("click")
      $('#gamebutton').off("click")
-     $('#game').off("click")
      console.log("stoped lvl"+ this.lvl);
 
+  }
+  refresh(points,duration){
+    $('.cloned').remove();
+    clearInterval(this.durationtimer)
+    window.cancelAnimationFrame(this.move.Req)
+    clearInterval(this.sendNotes)
+    $("#gameduration").html(duration)
+    $("#highscore").html(points)
+    this.points = points;
+    console.log(duration);
+    this.duration = duration;
   }
 
 

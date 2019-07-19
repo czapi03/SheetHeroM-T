@@ -1,0 +1,58 @@
+[
+  {
+    "lvl": 1,
+    "noten": [
+      "c4",
+      "d4",
+      "e4"
+    ],
+    "speed": 0.25,
+    "duration": 60,
+    "highscore": 1000
+  },
+  {
+    "lvl": 2,
+    "noten": [
+      "c4",
+      "d4",
+      "e4"
+    ],
+    "speed": 0.5,
+    "duration": 60,
+    "highscore": 1000
+  },
+  {
+    "lvl": 3,
+    "noten": [
+      "f4",
+      "g4",
+      "a4"
+    ],
+    "speed": 0.25,
+    "duration": 60,
+    "highscore": 1000
+  },
+  {
+    "lvl": 4,
+    "noten": [
+      "f4",
+      "g4",
+      "a4"
+    ],
+    "speed": 0.5,
+    "duration": 60,
+    "highscore": 1000
+  },
+  {
+    "lvl": 5,
+    "noten": [
+      "h4",
+      "c5",
+      "d5"
+    ],
+    "speed": 0.25,
+    "duration": 60,
+    "highscore": 1000
+  }
+
+]

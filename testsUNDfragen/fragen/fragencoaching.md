@@ -33,6 +33,17 @@
 
 
 
+## 19.07.19
+
+*requestAnimationFrame passt?
+*Mutebutton variablen check,
+*performance handy ? auf was achten?
+*google begriff google cloudspeicher
+
+
+
+
+
 
 ## 21.06.2019 COACHING
 
