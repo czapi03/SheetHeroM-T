@@ -57,8 +57,8 @@ class Game {
       $('#game').trigger('keyhit', mykey)
 
       // spielt ton
-       // var media = new Media('assets/wav/' + mykey + '.wav', function() {
-        var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
+       var media = new Media('assets/wav/' + mykey + '.wav', function() {
+        // var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
 
         // console.log(this);
         media.release();
@@ -126,7 +126,7 @@ class Game {
         $(highestNote).find("*").attr("fill", "green")
         $(highestNote).addClass('hit')
 
-        this.points += (this.highscoretoreach / 25) * (0.5 / speed);
+        this.points += (this.highscoretoreach / 25) * (0.25 / speed);
         this.progressbarupdate += 5;
 
         $('#progressbar').css({
@@ -136,20 +136,27 @@ class Game {
           this.progressbarupdate = 0;
 
         }
+        $('.eyes').attr("fill","#56ce46")
+        setTimeout(function() {
+          $('.eyes').attr("fill","#000000")
+
+
+
+        }, 300);
 
 
 
 
       } else {
-        this.points -= this.highscoretoreach / 25;
+        this.points -= this.highscoretoreach / 25*(0.25 / speed);
         keyplayed = keyplayed.slice(1, 3)
 
         $('#' + keyplayed).addClass("colorhitwrongkey");
-
+        $('.eyes').attr("fill","#F80E0E")
 
         setTimeout(function() {
           $('#' + keyplayed).removeClass('colorhitwrongkey')
-
+          $('.eyes').attr("fill","#000000")
 
 
         }, 300);
@@ -211,6 +218,9 @@ class Game {
         console.log("dura 0");
         _this.stop();
         $('.cloned').remove();
+        $('#gameduration').attr("fill", "#3a3a3a")
+        $('#highscore').attr("fill", "#3a3a3a")
+
 
         if (_this.points < (_this.highscoretoreach * 0.8)) {
           $('#successresponse').html("Schade")
@@ -232,6 +242,7 @@ class Game {
   lvlloader() {
     $('#highscoretoreach').html("Erreiche " + this.highscoretoreach * 0.8 + " Punkte für Level " + (this.lvl + 1))
     $('#gamelvl').html(this.lvl)
+
     $('#highscore').html(this.points)
     $('#gameduration').html(this.duration)
     $('#awardname').html(this.awardname)
@@ -266,6 +277,8 @@ class Game {
     this.points = points;
     console.log(duration);
     this.duration = duration;
+    $('#gameduration').attr("fill", "#3a3a3a")
+    $('#highscore').attr("fill", "#3a3a3a")
   }
 
 
