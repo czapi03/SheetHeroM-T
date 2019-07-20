@@ -25,9 +25,9 @@ function getRandomInt(max) {
 // }
 
 //Nächstes LVl generieren
-function generateNextLevel(currentlvl,noten){
-  $('#dialog').css({display:"none"})
-
-  var startnextlvl = new Game(currentlvl, noten, 0.50, 60, 0,1000, "Anfänger", 150)
-
-}
+// function generateNextLevel(currentlvl,noten){
+//   $('#dialog').css({display:"none"})
+//
+//   var startnextlvl = new Game(currentlvl, noten, 0.50, 60, 0,1000, "Anfänger", 150)
+//
+// }

@@ -57,8 +57,8 @@ class Game {
       $('#game').trigger('keyhit', mykey)
 
       // spielt ton
-       var media = new Media('assets/wav/' + mykey + '.wav', function() {
-        // var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
+       // var media = new Media('assets/wav/' + mykey + '.wav', function() {
+        var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
 
         // console.log(this);
         media.release();
@@ -220,6 +220,7 @@ class Game {
         $('.cloned').remove();
         $('#gameduration').attr("fill", "#3a3a3a")
         $('#highscore').attr("fill", "#3a3a3a")
+        $('#afterpoints').html("Punkte: "+_this.points).css({"color":"black"})
 
 
         if (_this.points < (_this.highscoretoreach * 0.8)) {
