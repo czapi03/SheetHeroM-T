@@ -83,7 +83,7 @@ class Game {
       .on('click', function() {
         $('.cloned').find("*").attr("fill", "#000000")
         console.log("start");
-        console.log(this.nextnote);
+        // console.log(this.nextnote);
 
 
         this.rndnote = getRandomInt(this.notestoplay.length);
@@ -105,7 +105,7 @@ class Game {
 
       keyplayed = "n" + keyplayed;
 
-    console.log("keyhit");
+    // console.log("keyhit");
 
       // var highestNote = $('.cloned.hitable').toArray().find(function(note) {
       //   return parseInt($(note).get(0).style.right) < $(window).width()*0.66
@@ -129,7 +129,8 @@ class Game {
         $(highestNote).find("*").attr("fill", "green")
         $(highestNote).addClass('hit')
 
-        this.points += (this.highscoretoreach / 25) * (0.25 / speed);
+        // this.points += (this.highscoretoreach / 25) * (0.25 / speed);
+        this.points +=100;
         this.progressbarupdate += 5;
 
         $('#progressbar').css({
@@ -228,13 +229,15 @@ class Game {
       if (_this.duration == 0) {
         clearInterval(_this.durationtimer)
         clearInterval(_this.sendNotes)
-        console.log("dura 0");
+        // console.log("dura 0");
         _this.stop();
         $('.cloned').remove();
         $('#gameduration').attr("fill", "#3a3a3a")
         $('#highscore').attr("fill", "#3a3a3a")
         $('#afterpoints').html("Punkte: "+_this.points).css({"color":"black"})
         $('#notelistingnames').html("Es wird schneller!").css({"color":"black"})
+        $('#dialoglinks > h2').html("Level "+_this.lvl+" geschafft!")
+        $('#margintop').html("Bereite dich auf Level "+(_this.lvl+1)+"vor!")
 
 
         if((_this.lvl %2)==0 ){
@@ -247,8 +250,17 @@ class Game {
           $('#successresponse').html("Schade")
           $('#dialoglinks > h2').html("Level "+_this.lvl+" leider nicht geschafft!")
           $('#dialogrechts p').html("");
-          // $('#nextlvl').css({display:"none"})
+          $('#refreshlvl >*').css({
+              position: "absolute",
+              width: "45%",
+              height: "28%",
+              left: "27%",
+              top: "33%"
+          })
+          $('#refreshlvl').css({"margin-top": "71%"})
+          $('#nextlvl').css({display:"none"})
         }
+        console.log(_this.points);
 
         $('#dialog').css({
           display: "block"

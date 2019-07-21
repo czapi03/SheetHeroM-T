@@ -8,6 +8,7 @@ document.addEventListener('deviceready', function() {
     console.log('--app.js--');
     var lvliterator = 0;
     var nextnotecheck = 2;
+    var startnextlvl;
 
 
     $.getJSON("js/game/levelcollection.json", function(levelcol) {
@@ -20,7 +21,7 @@ document.addEventListener('deviceready', function() {
         var currenthighscore = levelcol[0].highscore;
 
         var nextnote = levelcol[lvliterator+nextnotecheck].noten[levelcol[lvliterator+nextnotecheck].noten.length-1];
-        console.log(nextnote);
+        // console.log(nextnote);
 
 
 
@@ -39,7 +40,7 @@ document.addEventListener('deviceready', function() {
             alert("Spiel durchgespielt")
           }
 
-          var startnextlvl = new Game(levelcol[lvliterator].lvl, levelcol[lvliterator].noten,levelcol[lvliterator].speed,levelcol[lvliterator].duration, 0,levelcol[lvliterator].highscore,levelcol[lvliterator+nextnotecheck].noten[levelcol[lvliterator+nextnotecheck].noten.length-1], "Anfänger", 150)
+          startnextlvl = new Game(levelcol[lvliterator].lvl, levelcol[lvliterator].noten,levelcol[lvliterator].speed,levelcol[lvliterator].duration, 0,levelcol[lvliterator].highscore,levelcol[lvliterator+nextnotecheck].noten[levelcol[lvliterator+nextnotecheck].noten.length-1], "Anfänger", 150)
 
 
         })
@@ -48,6 +49,7 @@ document.addEventListener('deviceready', function() {
         $('#refreshlvldialogbutton').on("click",function(){
           $('#dialog').css({display:"none"});
           var refreshlvl = new Game(levelcol[lvliterator].lvl, levelcol[lvliterator].noten,levelcol[lvliterator].speed,levelcol[lvliterator].duration, 0,levelcol[lvliterator].highscore,levelcol[lvliterator+nextnotecheck].noten[levelcol[lvliterator+nextnotecheck].noten.length-1], "Anfänger", 150)
+
 
         })
 
@@ -59,7 +61,7 @@ document.addEventListener('deviceready', function() {
 
 
 
-    // window.ubansu = new Game(lvltest, noten, 0.125, 60, 0,1000, "Anfänger", 150)
+
 
 
 
