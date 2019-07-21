@@ -1,7 +1,7 @@
 console.log("--gamelogic--");
 
 class Game {
-  constructor(lvl, notestoplay, speed, duration, points, highscoretoreach, awardname, awardpoints, award) {
+  constructor(lvl, notestoplay, speed, duration, points, highscoretoreach, nextnote,awardname, awardpoints) {
     this.lvl = lvl;
     this.notestoplay = notestoplay;
     this.speed = $(window).width()*speed/100;
@@ -10,27 +10,28 @@ class Game {
     this.highscoretoreach = highscoretoreach;
     this.awardname = awardname;
     this.awardpoints = awardpoints;
+    this.nextnote = nextnote;
     this.keyhitfunction(speed);
     this.media;
     this.mediaarray;
     this.self = this;
     this.move;
     this.progressbarupdate = 0;
-    this.award = award;
+    // this.award = award;
     this.rndnote = 0;
     this.sendNotes;
     this.durationtimer;
     //refreshbutton
     this.refreshlvl = $('.refreshbutton').on('click', function() {
 
-      this.refresh(points,duration);
+      this.refreshduringgame(points,duration);
 
     }.bind(this))
     //refreshbutton2
     // this.refreshbuttondialog = $('#refreshlvldialogbutton').on("click",function(){
     //   $('#dialog').css({display:"none"});
-    //   this.refresh(points,duration);
-    //   // $('#refreshlvldialogbutton').off("click")
+    //   this.refreshaftergame(points,duration);
+    //   $('#refreshlvldialogbutton').off("click")
     //
     //
     // }.bind(this))
@@ -57,8 +58,8 @@ class Game {
       $('#game').trigger('keyhit', mykey)
 
       // spielt ton
-       // var media = new Media('assets/wav/' + mykey + '.wav', function() {
-        var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
+       var media = new Media('assets/wav/' + mykey + '.wav', function() {
+        // var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
 
         // console.log(this);
         media.release();
@@ -82,6 +83,8 @@ class Game {
       .on('click', function() {
         $('.cloned').find("*").attr("fill", "#000000")
         console.log("start");
+        console.log(this.nextnote);
+
 
         this.rndnote = getRandomInt(this.notestoplay.length);
 
@@ -133,7 +136,7 @@ class Game {
           width: this.progressbarupdate + "%"
         })
         if (this.progressbarupdate >= 100) {
-          this.progressbarupdate = 0;
+          this.progressbarupdate = 100;
 
         }
         $('.eyes').attr("fill","#56ce46")
@@ -160,6 +163,16 @@ class Game {
 
 
         }, 300);
+        this.progressbarupdate -= 5;
+        if (this.progressbarupdate <=0) {
+          this.progressbarupdate = 0;
+
+        }
+
+        $('#progressbar').css({
+          width: this.progressbarupdate + "%"
+        })
+
       }
       if (this.points < 0) {
         $('#highscore').attr("fill", "#F80E0E");
@@ -221,6 +234,13 @@ class Game {
         $('#gameduration').attr("fill", "#3a3a3a")
         $('#highscore').attr("fill", "#3a3a3a")
         $('#afterpoints').html("Punkte: "+_this.points).css({"color":"black"})
+        $('#notelistingnames').html("Es wird schneller!").css({"color":"black"})
+
+
+        if((_this.lvl %2)==0 ){
+
+          $('#notelistingnames').html("Es kommt dazu: "+_this.nextnote).css({"color":"black"})
+        }
 
 
         if (_this.points < (_this.highscoretoreach * 0.8)) {
@@ -241,6 +261,7 @@ class Game {
   }
 
   lvlloader() {
+
     $('#highscoretoreach').html("Erreiche " + this.highscoretoreach * 0.8 + " Punkte für Level " + (this.lvl + 1))
     $('#gamelvl').html(this.lvl)
 
@@ -268,7 +289,7 @@ class Game {
      console.log("stoped lvl"+ this.lvl);
 
   }
-  refresh(points,duration){
+  refreshduringgame(points,duration){
     $('.cloned').remove();
     clearInterval(this.durationtimer)
     window.cancelAnimationFrame(this.move.Req)
@@ -281,6 +302,19 @@ class Game {
     $('#gameduration').attr("fill", "#3a3a3a")
     $('#highscore').attr("fill", "#3a3a3a")
   }
+  // refreshaftergame(points,duration){
+  //   $('.cloned').remove();
+  //   clearInterval(this.durationtimer)
+  //
+  //   clearInterval(this.sendNotes)
+  //   $("#gameduration").html(duration)
+  //   $("#highscore").html(points)
+  //   this.points = points;
+  //   console.log("refresh");
+  //   this.duration = duration;
+  //   $('#gameduration').attr("fill", "#3a3a3a")
+  //   $('#highscore').attr("fill", "#3a3a3a")
+  // }
 
 
 
