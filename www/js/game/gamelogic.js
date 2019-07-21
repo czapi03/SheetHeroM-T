@@ -27,11 +27,11 @@ class Game {
       this.refreshduringgame(points,duration);
 
     }.bind(this))
-    //refreshbutton2
+    // refreshbutton2
     // this.refreshbuttondialog = $('#refreshlvldialogbutton').on("click",function(){
     //   $('#dialog').css({display:"none"});
     //   this.refreshaftergame(points,duration);
-    //   $('#refreshlvldialogbutton').off("click")
+    //   // $('#refreshlvldialogbutton').off("click")
     //
     //
     // }.bind(this))
@@ -129,8 +129,8 @@ class Game {
         $(highestNote).find("*").attr("fill", "green")
         $(highestNote).addClass('hit')
 
-        // this.points += (this.highscoretoreach / 25) * (0.25 / speed);
-        this.points +=100;
+        this.points += (this.highscoretoreach / 25) * (0.25 / speed);
+        // this.points +=100;
         this.progressbarupdate += 5;
 
         $('#progressbar').css({
@@ -222,6 +222,7 @@ class Game {
 
     _this.durationtimer = setInterval(function() {
       _this.duration--;
+      console.log(_this.duration);
       $('#gameduration').html(_this.duration)
       if (_this.duration <= 5) {
         $('#gameduration').attr("fill", "red")
@@ -229,7 +230,7 @@ class Game {
       if (_this.duration == 0) {
         clearInterval(_this.durationtimer)
         clearInterval(_this.sendNotes)
-        // console.log("dura 0");
+        console.log(_this);
         _this.stop();
         $('.cloned').remove();
         $('#gameduration').attr("fill", "#3a3a3a")
@@ -250,6 +251,7 @@ class Game {
           $('#successresponse').html("Schade")
           $('#dialoglinks > h2').html("Level "+_this.lvl+" leider nicht geschafft!")
           $('#dialogrechts p').html("");
+          console.log("duration negativ", _this);
           $('#refreshlvl >*').css({
               position: "absolute",
               width: "45%",
@@ -317,7 +319,6 @@ class Game {
   // refreshaftergame(points,duration){
   //   $('.cloned').remove();
   //   clearInterval(this.durationtimer)
-  //
   //   clearInterval(this.sendNotes)
   //   $("#gameduration").html(duration)
   //   $("#highscore").html(points)

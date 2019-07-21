@@ -46,9 +46,20 @@ document.addEventListener('deviceready', function() {
         })
         //refreshlvl
 
-        $('#refreshlvldialogbutton').on("click",function(){
+        $('#refreshlvldialogbutton').one("click",function(){
           $('#dialog').css({display:"none"});
           var refreshlvl = new Game(levelcol[lvliterator].lvl, levelcol[lvliterator].noten,levelcol[lvliterator].speed,levelcol[lvliterator].duration, 0,levelcol[lvliterator].highscore,levelcol[lvliterator+nextnotecheck].noten[levelcol[lvliterator+nextnotecheck].noten.length-1], "Anfänger", 150)
+          $('#successresponse').html("Super!")
+          $('#nextlvl').css({display:"flex"})
+          $('#refreshlvl >*').css({
+            position: "absolute",
+            width: "8%",
+            height: "8%",
+            left: "25%",
+            top: "1%"
+          })
+          $('#refreshlvl').css({"margin-top": "3%"})
+
 
 
         })
