@@ -1,0 +1,19 @@
+{
+  "vio": {
+    "lvl": 2,
+    "noten": [
+      "e4",
+      "c4",
+      "f5"
+    ],
+    "speed": 0.5,
+    "duration": 60,
+    "highscore": 1000
+  },
+
+  "bass": {
+
+  }
+
+
+}
