@@ -13,6 +13,7 @@
       "g4"
     ],
     "speed": 0.25,
+    "difficulty": 0.8,
     "duration": 60,
     "highscore": 1000,
     "nextnote": "e5"

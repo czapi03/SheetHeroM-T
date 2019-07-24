@@ -18,6 +18,7 @@
       "f4"
     ],
     "speed": 0.50,
+    "difficulty": 0.8,
     "duration": 60,
     "highscore": 1000,
     "nextnote": "d5"

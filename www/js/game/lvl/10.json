@@ -11,6 +11,7 @@
       "c4"
     ],
     "speed": 0.5,
+    "difficulty": 0.8,
     "duration": 60,
     "highscore": 1000,
     "nextnote": "g5"

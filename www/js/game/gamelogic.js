@@ -1,8 +1,9 @@
 console.log("--gamelogic--");
 
 class Game {
-  constructor(lvl, notestoplay, speed, duration, points, highscoretoreach, nextnote,awardname, awardpoints) {
+  constructor(lvl,difficulty, notestoplay, speed, duration, points, highscoretoreach, nextnote,awardname, awardpoints) {
     this.lvl = lvl;
+    this.difficulty = difficulty;
     this.notestoplay = notestoplay;
     this.speed = $(window).width()*speed/100;
     this.duration = duration;
@@ -238,7 +239,7 @@ class Game {
         $('#afterpoints').html("Punkte: "+_this.points).css({"color":"black"})
         $('#notelistingnames').html("Es wird schneller!").css({"color":"black"})
         $('#dialoglinks > h2').html("Level "+_this.lvl+" geschafft!")
-        
+
         $('#margintop').html("Bereite dich auf Level "+(_this.lvl+1)+"vor!")
 
 
@@ -248,7 +249,7 @@ class Game {
         }
 
 
-        if (_this.points < (_this.highscoretoreach * 0.8)) {
+        if (_this.points < (_this.highscoretoreach * _this.difficulty)) {
           $('#successresponse').html("Schade")
           $('#dialoglinks > h2').html("Level "+_this.lvl+" leider nicht geschafft!")
           $('#dialogrechts p').html("");
@@ -277,7 +278,7 @@ class Game {
 
   lvlloader() {
 
-    $('#highscoretoreach').html("Erreiche " + this.highscoretoreach * 0.8 + " Punkte für Level " + (this.lvl + 1))
+    $('#highscoretoreach').html("Erreiche " + this.highscoretoreach * this.difficulty + " Punkte für Level " + (this.lvl + 1))
     $('#gamelvl').html(this.lvl)
 
     $('#highscore').html(this.points)

@@ -14,7 +14,7 @@ document.addEventListener('deviceready', function() {
  $.getJSON("./js/game/lvl/1.json", function(lvl) {
    console.log(lvl);
 
-   var start = new Game(lvl.vio.lvl, lvl.vio.noten,lvl.vio.speed,lvl.vio.duration, 0,lvl.vio.highscore,lvl.vio.nextnote, "Anfänger", 150)
+   var start = new Game(lvl.vio.lvl,lvl.vio.difficulty, lvl.vio.noten,lvl.vio.speed,lvl.vio.duration, 0,lvl.vio.highscore,lvl.vio.nextnote, "Anfänger", 150)
 
  })
  //nextlvlbutton
@@ -27,7 +27,7 @@ document.addEventListener('deviceready', function() {
      alert("Spiel durchgespielt")
    }
    $.getJSON("./js/game/lvl/"+lvliterator+".json", function(lvl) {
-   startnextlvl = new Game(lvl.vio.lvl, lvl.vio.noten,lvl.vio.speed,lvl.vio.duration, 0,lvl.vio.highscore,lvl.vio.nextnote, "Anfänger", 150)
+   startnextlvl = new Game(lvl.vio.lvl, lvl.vio.difficulty,lvl.vio.noten,lvl.vio.speed,lvl.vio.duration, 0,lvl.vio.highscore,lvl.vio.nextnote, "Anfänger", 150)
 
 
   })
@@ -38,7 +38,7 @@ document.addEventListener('deviceready', function() {
 
 
    $.getJSON("./js/game/lvl/"+lvliterator+".json", function(lvl) {
-     startnextlvl = new Game(lvl.vio.lvl, lvl.vio.noten,lvl.vio.speed,lvl.vio.duration, 0,lvl.vio.highscore,lvl.vio.nextnote, "Anfänger", 150)
+     startnextlvl = new Game(lvl.vio.lvl,lvl.vio.difficulty, lvl.vio.noten,lvl.vio.speed,lvl.vio.duration, 0,lvl.vio.highscore,lvl.vio.nextnote, "Anfänger", 150)
 
 
      $('#dialog').css({display:"none"});
