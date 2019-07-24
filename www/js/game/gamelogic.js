@@ -52,31 +52,23 @@ class Game {
 
       var mykey = $(this).attr('id');
 
-
-      // console.log(this);
-
-      // this.keyhitfunction(speed,mykey)
-
-
       //spielt note
       $('#game').trigger('keyhit', mykey)
 
-      // spielt ton
-       var media = new Media('assets/wav/' + mykey + '.wav', function() {
-        // var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
-
-        // console.log(this);
-        media.release();
-
-      }, function(err) {
-
-        alert(JSON.stringify(err));
-
-      });
-      media.play();
-
-      // console.log(this.duration);
-
+      // // spielt ton
+      //  var media = new Media('assets/wav/' + mykey + '.wav', function() {
+      //   // var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
+      //
+      //
+      //   media.release();
+      //
+      // }, function(err) {
+      //
+      //   alert(JSON.stringify(err));
+      //
+      // });
+      // media.play();
+      $("<audio>").attr("autoplay","true").append('<source src="./assets/wav/' + mykey + '.wav" type="audio/ogg" />').appendTo("#audios");
 
 
     })
