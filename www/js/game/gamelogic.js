@@ -24,6 +24,7 @@ class Game {
     this.durationtimer;
     //refreshbutton
     this.refreshlvl = $('.refreshbutton').on('click', function() {
+      $('#gamebutton').css({"pointer-events":"auto"})
 
       this.refreshduringgame(points,duration);
 
@@ -50,6 +51,8 @@ class Game {
     this.pianoOnClick = $('.pianoOnClick').on('click', function() {
 
       var mykey = $(this).attr('id');
+
+
       // console.log(this);
 
       // this.keyhitfunction(speed,mykey)
@@ -84,7 +87,8 @@ class Game {
       .on('click', function() {
         $('.cloned').find("*").attr("fill", "#000000")
         console.log("start");
-        // console.log(this.nextnote);
+
+        $('#gamebutton').css({"pointer-events":"none"})
 
 
         this.rndnote = getRandomInt(this.notestoplay.length);

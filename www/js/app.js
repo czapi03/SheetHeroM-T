@@ -35,6 +35,7 @@ document.addEventListener('deviceready', function() {
  })
  //refreshlvl
  $('#refreshlvldialogbutton').on("click",function(){
+   $('#gamebutton').css({"pointer-events":"auto"})
 
 
    $.getJSON("./js/game/lvl/"+lvliterator+".json", function(lvl) {
