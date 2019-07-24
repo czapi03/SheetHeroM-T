@@ -38,13 +38,7 @@ class Game {
     //
     // }.bind(this))
     //mutebutton
-    this.mutesound = $('#mutebutton').on('click', function() {
 
-      console.log("mute");
-
-
-
-    }.bind(this))
     this.lvlloader();
 
 
@@ -68,9 +62,18 @@ class Game {
       //
       // });
       // media.play();
-      $("<audio>").attr("autoplay","true").append('<source src="./assets/wav/' + mykey + '.wav" type="audio/ogg" />').appendTo("#audios");
+      if($('#audios').hasClass("muteall")){
+        console.log("muted");
+        var media = $("<audio>").attr({class:"playing"}).append('<source src="./assets/wav/' + mykey + '.wav" type="audio/ogg" />').appendTo("#audios");
+      }else{
 
+        var media = $("<audio>").attr({"autoplay":"true",class:"playing"}).append('<source src="./assets/wav/' + mykey + '.wav" type="audio/ogg" />').appendTo("#audios");
+      }
+      console.log(media);
 
+      setTimeout(function () {
+        media.remove()
+      }, 1500);
     })
 
 
@@ -284,13 +287,7 @@ class Game {
 
   }
 
-  muteall(mediaarray) {
 
-    for (let i in mediaarray) {
-      allmediaobjects[i].setVolume('0.0')
-    }
-
-  }
 
   stop(){
     $('#game').off("keyhit")
@@ -314,18 +311,7 @@ class Game {
     $('#gameduration').attr("fill", "#3a3a3a")
     $('#highscore').attr("fill", "#3a3a3a")
   }
-  // refreshaftergame(points,duration){
-  //   $('.cloned').remove();
-  //   clearInterval(this.durationtimer)
-  //   clearInterval(this.sendNotes)
-  //   $("#gameduration").html(duration)
-  //   $("#highscore").html(points)
-  //   this.points = points;
-  //   console.log("refresh");
-  //   this.duration = duration;
-  //   $('#gameduration').attr("fill", "#3a3a3a")
-  //   $('#highscore').attr("fill", "#3a3a3a")
-  // }
+
 
 
 

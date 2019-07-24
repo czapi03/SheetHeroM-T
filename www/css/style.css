@@ -12,6 +12,15 @@
   top: 0;
   left: 0;
 }
+#muteblank{
+  position: absolute;
+  display: none;
+  top: 2.5%;
+  right: 14%;
+  width: 4.5%;
+
+
+}
 
 /* * {
   padding: 0;

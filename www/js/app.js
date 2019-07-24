@@ -9,6 +9,7 @@ document.addEventListener('deviceready', function() {
     var lvliterator = 1;
     var nextnotecheck = 2;
     var startnextlvl;
+    var muteswitch = false;
 
 //lvlloader
  $.getJSON("./js/game/lvl/1.json", function(lvl) {
@@ -82,6 +83,25 @@ document.addEventListener('deviceready', function() {
       $("#dialog2").css({
         display: "block"
       })
+
+    })
+    $('#mutebutton').on("click", function() {
+      console.log(muteswitch);
+      if(muteswitch== false){
+        $('#muteblank').css({display:"block"})
+        $('#audios').attr("class","muteall")
+        $(".playing").each(function(){
+          $(this).get(0).muted = true;
+        })
+        muteswitch = true;
+      }else{
+        $('#muteblank').css({display:"none"})
+        $('#audios').removeClass("muteall")
+        $(".playing").each(function(){
+          $(this).get(0).muted = false;
+        })
+        muteswitch = false;
+      }
 
     })
 
