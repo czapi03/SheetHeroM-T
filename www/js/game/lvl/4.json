@@ -1,15 +1,17 @@
 {
   "vio": {
-      "lvl": 1,
-      "noten": [
-        "e4",
-        "c4",
-        "f5"
-      ],
-      "speed": 0.25,
-      "duration": 60,
-      "highscore": 1000
-    },
+    "lvl": 4,
+    "noten": [
+      "e4",
+      "c4",
+      "f5",
+      "c6"
+    ],
+    "speed": 0.5,
+    "duration": 60,
+    "highscore": 1000,
+    "nextnote": "a4"
+  },
 
   "bass": {
 

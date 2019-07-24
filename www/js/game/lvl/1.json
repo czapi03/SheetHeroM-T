@@ -8,7 +8,8 @@
       ],
       "speed": 0.25,
       "duration": 60,
-      "highscore": 1000
+      "highscore": 1000,
+      "nextnote": "c6"
     },
 
   "bass": {

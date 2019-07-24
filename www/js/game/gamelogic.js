@@ -238,6 +238,7 @@ class Game {
         $('#afterpoints').html("Punkte: "+_this.points).css({"color":"black"})
         $('#notelistingnames').html("Es wird schneller!").css({"color":"black"})
         $('#dialoglinks > h2').html("Level "+_this.lvl+" geschafft!")
+        
         $('#margintop').html("Bereite dich auf Level "+(_this.lvl+1)+"vor!")
 
 
