@@ -69,9 +69,28 @@ document.addEventListener('deviceready', function() {
 
 
 
+ //mutebutton
+ $('#mutebutton').on("click", function() {
+   console.log(muteswitch);
+   if(muteswitch== false){
+     $('#muteblank').css({display:"block"})
+     $('#audios').attr("class","muteall")
+     $(".playing").each(function(){
+       $(this).get(0).muted = true;
+     })
+     muteswitch = true;
+   }else{
+     $('#muteblank').css({display:"none"})
+     $('#audios').removeClass("muteall")
+     $(".playing").each(function(){
+       $(this).get(0).muted = false;
+     })
+     muteswitch = false;
+   }
+ })
 
 //popuprechts
-
+    //closes dialog2
     $('#dialog2 div:nth-child(3)').on("click", function() {
 
       $("#dialog2").css({
@@ -79,6 +98,8 @@ document.addEventListener('deviceready', function() {
       })
 
     })
+
+    //show dialog2
     $('#help').on("click", function() {
 
       $("#dialog2").css({
@@ -86,25 +107,38 @@ document.addEventListener('deviceready', function() {
       })
 
     })
-    $('#mutebutton').on("click", function() {
-      console.log(muteswitch);
-      if(muteswitch== false){
-        $('#muteblank').css({display:"block"})
-        $('#audios').attr("class","muteall")
-        $(".playing").each(function(){
-          $(this).get(0).muted = true;
-        })
-        muteswitch = true;
-      }else{
-        $('#muteblank').css({display:"none"})
-        $('#audios').removeClass("muteall")
-        $(".playing").each(function(){
-          $(this).get(0).muted = false;
-        })
-        muteswitch = false;
-      }
+    //opens Version
+    $('#dialog2version').on("click",function(){
+      $("#dialog2").css({
+        display: "none"
+      })
+      $("#dialogversion").css({
+        display: "flex"
+      })
+    })
+  //  opens Credits
+    $('#dialog2credits').on("click",function(){
+      $("#dialog2").css({
+        display: "none"
+      })
+      $("#dialogcredits").css({
+        display: "flex"
+      })
 
     })
+    //closes dialogversion 2
+    $('#dialogversion div:nth-child(2)').on("click",function(){
+      $("#dialogversion").css({
+        display: "none"
+      })
+    })
+    $('#dialogcredits div:nth-child(2) ').on("click",function(){
+      $("#dialogcredits").css({
+        display: "none"
+      })
+    })
+
+
 
 
 

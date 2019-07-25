@@ -434,6 +434,7 @@ tspan {
   top: 0;
   right: 0;
 }
+
 .dialog2class {
   width: 100%;
   height: 40%;
@@ -451,5 +452,69 @@ tspan {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 2em;
+}
+
+#dialogversion {
+  width: 28%;
+  height: 61%;
+  /* border: 1px solid red; */
+  display: none;
+  flex-direction: column;
+  border-radius: 10px 10px 10px 10px;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#dialogversion div:first-child {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid black;
+  font-size: 2em;
+}
+#dialogversion div:nth-child(2) {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #a9a9a9;
+  border-radius: 0px 0px 10px 10px;
+  font-size: 3em;
+}
+#dialogcredits {
+  width: 28%;
+  height: 61%;
+  /* border: 1px solid red; */
+  display: none;
+  flex-direction: column;
+  border-radius: 10px 10px 10px 10px;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#dialogcredits > div:first-child {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid black;
+  font-size: 1em;
+}
+#dialogcredits > div:nth-child(2) {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #a9a9a9;
+  border-radius: 0px 0px 10px 10px;
   font-size: 2em;
 }
