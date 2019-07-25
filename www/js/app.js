@@ -20,6 +20,7 @@ document.addEventListener('deviceready', function() {
  })
  //nextlvlbutton
  $('#nextlvl > *').on("click", function() {
+   $('#gamebutton').css({"pointer-events":"auto"})
    $('#dialog').css({display:"none"})
    console.log("weiter");
    lvliterator++;
