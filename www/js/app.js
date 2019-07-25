@@ -72,7 +72,7 @@ document.addEventListener('deviceready', function() {
 
 //popuprechts
 
-    $('#dialog2 > *').on("click", function() {
+    $('#dialog2 div:nth-child(3)').on("click", function() {
 
       $("#dialog2").css({
         display: "none"

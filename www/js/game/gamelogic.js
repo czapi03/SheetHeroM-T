@@ -292,14 +292,18 @@ class Game {
 
 
   stop(){
-    this.midiinput.removeListener("noteon");
-    WebMidi.disable();
     $('#game').off("keyhit")
     $('.refreshbutton').off("click")
      $('#mutebutton').off("click")
      $('.pianoOnClick').off("click")
      $('#gamebutton').off("click")
      console.log("stoped lvl"+ this.lvl);
+     console.log(typeof WebMidi === "object");
+     if(typeof this.midiinput.removeListener === "function"){
+       console.log("disable");
+       this.midiinput.removeListener("noteon");
+       WebMidi.disable();
+     }
 
   }
   refreshduringgame(points,duration){
@@ -461,9 +465,9 @@ class Game {
     var mykey;
 
     WebMidi.enable(function () {
+      console.log(typeof WebMidi === "object");
 
       this.midiinput = WebMidi.getInputByName("microKEY-37");
-
       this.midiinput.addListener('noteon', 'all',
         function (e) {
             console.log("Received 'noteon' message (" + e.note.name + e.note.octave + ").");
