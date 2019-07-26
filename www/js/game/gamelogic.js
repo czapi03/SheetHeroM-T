@@ -13,11 +13,10 @@ class Game {
     this.awardpoints = awardpoints;
     this.nextnote = nextnote;
     this.keyhitfunction(speed);
-    this.media;
-    this.mediaarray;
     this.midiinput;
     this.self = this;
     this.move;
+    this.midistatus = true;
     this.progressbarupdate = 0;
     // this.award = award;
     this.rndnote = 0;
@@ -276,11 +275,11 @@ class Game {
      console.log("stoped lvl"+ this.lvl);
      console.log(typeof WebMidi === "object");
      WebMidi.disable();
-     
+
      if(typeof this.midiinput.removeListener === "function"){
        console.log("disable");
        this.midiinput.removeListener("noteon");
-       WebMidi.disable();
+
      }
 
   }
@@ -292,161 +291,46 @@ class Game {
     $("#gameduration").html(duration)
     $("#highscore").html(points)
     this.points = points;
-    console.log(duration);
+    // console.log(duration);
     this.duration = duration;
     $('#gameduration').attr("fill", "#3a3a3a")
     $('#highscore').attr("fill", "#3a3a3a")
   }
 
 
-  // midipiano(){
-  //
-  //       var mykey= 0;
-  //
-  //         if (navigator.requestMIDIAccess) {
-  //           console.log('This browser supports WebMIDI!');
-  //         } else {
-  //           console.log('WebMIDI is not supported in this browser.');
-  //         }
-  //
-  //         navigator.requestMIDIAccess()
-  //         .then(onMIDISuccess, onMIDIFailure)
-  //         .then(function(sd){
-  //           console.log(sd);
-  //         })
-  //
-  //
-  //         function onMIDIFailure() {
-  //           console.log('Could not access your MIDI devices.');
-  //         }
-  //
-  //         function onMIDISuccess(midiAccess) {
-  //           for (var input of midiAccess.inputs.values()){
-  //             input.onmidimessage = getMIDIMessage;
-  //             console.log(midiAccess);
-  //           }
-  //         }
-  //
-  //         function getMIDIMessage(midiMessage) {
-  //
-  //           console.log(midiMessage);
-  //           // console.log(testdsd);
-  //           switch (midiMessage.data[1]) {
-  //             case 60: mykey = "c4"
-  //
-  //               break;
-  //             case 61: mykey = "csharpdflat4"
-  //
-  //               break;
-  //             case 62: mykey = "d4"
-  //
-  //               break;
-  //             case 63: mykey = "dsharpeflat4"
-  //
-  //               break;
-  //             case 64: mykey = "e4"
-  //
-  //               break;
-  //             case 65: mykey = "f4"
-  //
-  //               break;
-  //             case 66: mykey = "fsharpgflat4"
-  //
-  //               break;
-  //             case 67: mykey = "g4"
-  //
-  //               break;
-  //             case 68: mykey = "gsharpaflat4"
-  //
-  //               break;
-  //             case 69: mykey = "a4"
-  //
-  //               break;
-  //             case 70: mykey = "asharpbflat4"
-  //
-  //               break;
-  //             case 71: mykey = "h4"
-  //
-  //               break;
-  //             case 72: mykey = "c5"
-  //
-  //               break;
-  //             case 73: mykey = "csharpdflat5"
-  //
-  //               break;
-  //             case 74: mykey = "d5"
-  //
-  //               break;
-  //             case 75: mykey = "dsharpeflat5"
-  //
-  //               break;
-  //             case 76: mykey = "e5"
-  //
-  //               break;
-  //             case 77: mykey = "f5"
-  //
-  //               break;
-  //             case 78: mykey = "fsharpgflat5"
-  //
-  //               break;
-  //             case 79: mykey = "g5"
-  //
-  //               break;
-  //             case 80: mykey = "gsharpaflat5"
-  //
-  //               break;
-  //             case 81: mykey = "a5"
-  //
-  //               break;
-  //             case 82: mykey = "asharpbflat5"
-  //
-  //               break;
-  //             case 83: mykey = "h5"
-  //
-  //               break;
-  //             case 84: mykey = "c6"
-  //
-  //               break;
-  //
-  //
-  //             default: console.log("nicht die taste");
-  //
-  //               break;
-  //
-  //           }
-  //           if($('#audios').hasClass("muteall")){
-  //             console.log("muted");
-  //             var media = $("<audio>").attr({class:"playing"}).append('<source src="./assets/wav/' + mykey + '.wav" type="audio/ogg" />').appendTo("#audios");
-  //           }else{
-  //
-  //             var media = $("<audio>").attr({"autoplay":"true",class:"playing"}).append('<source src="./assets/wav/' + mykey + '.wav" type="audio/ogg" />').appendTo("#audios");
-  //           }
-  //           // console.log(media);
-  //
-  //           setTimeout(function () {
-  //             media.remove()
-  //           }, 1500);
-  //
-  //           $('#game').trigger('keyhit', mykey)
-  //           return mykey;
-  //
-  //         }
-  //
-  //
-  //
-  //
-  //
-  // }
-
   midipiano2(){
+    var _this = this;
 
     var mykey;
-
     WebMidi.enable(function () {
-      console.log(typeof WebMidi === "object");
+      // console.log(typeof WebMidi === "object");
+      console.log(WebMidi);
 
-      this.midiinput = WebMidi.getInputByName("microKEY-37");
-      this.midiinput.addListener('noteon', 'all',
+      //Midi watcher
+      setInterval(function () {
+        if(WebMidi._inputs.length > 0){
+
+          $('#midikreis').attr("fill","#56ce46");
+          $('#midiindicator div:nth-child(2)').html('-keyboard on')
+          if (_this.midistatus == false){
+            $('#midikreis').attr("fill","#F80E0E");
+            $('#midiindicator div:nth-child(2)').html('keyboard off,starte App neu')
+
+          }
+
+        }else{
+          $('#midikreis').attr("fill","#F80E0E");
+          $('#midiindicator div:nth-child(2)').html('-keyboard off')
+          _this.midistatus = false;
+        }
+
+      }, 100);
+
+
+      var keyboardid = WebMidi._inputs[0].id
+      // console.logi);
+      _this.midiinput = WebMidi.getInputById(keyboardid);
+      -this.midiinput.addListener('noteon', 'all',
         function (e) {
             console.log("Received 'noteon' message (" + e.note.name + e.note.octave + ").");
             switch (e.note.name + e.note.octave) {

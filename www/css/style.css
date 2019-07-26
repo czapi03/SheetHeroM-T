@@ -518,3 +518,19 @@ tspan {
   border-radius: 0px 0px 10px 10px;
   font-size: 2em;
 }
+
+#midiindicator{
+  /* border: 1px solid red; */
+      position: absolute;
+      display: flex;
+      align-items: center;
+      bottom: 25.5%;
+      right: 15%;
+      flex-direction: row;
+      width: 20%;
+      height: 6%;
+      z-index: -1;
+}
+#midiindicator > svg:first-child{
+width: 10% !important;
+}
