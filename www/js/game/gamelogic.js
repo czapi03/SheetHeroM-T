@@ -131,8 +131,8 @@ class Game {
         $(highestNote).find("*").attr("fill", "green")
         $(highestNote).addClass('hit')
 
-        this.points += (this.highscoretoreach / 25) * (0.25 / speed);
-        // this.points +=100;
+        // this.points += (this.highscoretoreach / 25) * (0.25 / speed);
+        this.points +=100;
         this.progressbarupdate += 5;
 
         $('#progressbar').css({

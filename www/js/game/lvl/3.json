@@ -9,8 +9,8 @@
     ],
     "speed": 0.25,
     "difficulty": 0.8,
-    "duration": 60,
-    "highscore": 1000,
+    "duration": 5,
+    "highscore": 100,
     "nextnote": "a4"
   },
 

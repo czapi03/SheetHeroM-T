@@ -40,6 +40,17 @@
 *performance handy ? auf was achten?
 *google begriff google cloudspeicher
 
+##26.07.19
+
+#lvl bug, wenn kein midi angeschlossen
+#Bug speichern in browser?
+#knockout.js
+# Dokumentation?
+# prüfungsbeispiel?
+#zeit bedenken?
+
+
+
 
 
 
