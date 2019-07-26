@@ -275,6 +275,8 @@ class Game {
      $('#gamebutton').off("click")
      console.log("stoped lvl"+ this.lvl);
      console.log(typeof WebMidi === "object");
+     WebMidi.disable();
+     
      if(typeof this.midiinput.removeListener === "function"){
        console.log("disable");
        this.midiinput.removeListener("noteon");
