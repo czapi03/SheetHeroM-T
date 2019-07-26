@@ -30,16 +30,6 @@ class Game {
       this.refreshduringgame(points,duration);
 
     }.bind(this))
-    // refreshbutton2
-    // this.refreshbuttondialog = $('#refreshlvldialogbutton').on("click",function(){
-    //   $('#dialog').css({display:"none"});
-    //   this.refreshaftergame(points,duration);
-    //   // $('#refreshlvldialogbutton').off("click")
-    //
-    //
-    // }.bind(this))
-    //mutebutton
-
     this.lvlloader();
     this.midipiano2();
 
@@ -51,19 +41,6 @@ class Game {
       //spielt note
       $('#game').trigger('keyhit', mykey)
 
-      // // spielt ton
-      //  var media = new Media('assets/wav/' + mykey + '.wav', function() {
-      //   // var media = new Media("/android_asset/www/assets/wav/"+ mykey +".wav", function() {
-      //
-      //
-      //   media.release();
-      //
-      // }, function(err) {
-      //
-      //   alert(JSON.stringify(err));
-      //
-      // });
-      // media.play();
       if($('#audios').hasClass("muteall")){
         console.log("muted");
         var media = $("<audio>").attr({class:"playing"}).append('<source src="./assets/wav/' + mykey + '.wav" type="audio/ogg" />').appendTo("#audios");
@@ -71,7 +48,7 @@ class Game {
 
         var media = $("<audio>").attr({"autoplay":"true",class:"playing"}).append('<source src="./assets/wav/' + mykey + '.wav" type="audio/ogg" />').appendTo("#audios");
       }
-      console.log(media);
+
 
       setTimeout(function () {
         media.remove()
@@ -294,7 +271,6 @@ class Game {
   stop(){
     $('#game').off("keyhit")
     $('.refreshbutton').off("click")
-     $('#mutebutton').off("click")
      $('.pianoOnClick').off("click")
      $('#gamebutton').off("click")
      console.log("stoped lvl"+ this.lvl);
