@@ -13,7 +13,9 @@ class Game {
     this.awardpoints = awardpoints;
     this.nextnote = nextnote;
     this.keyhitfunction(speed);
+    this.localstorage = {};
     this.midiinput;
+    this.midicheck;
     this.self = this;
     this.move;
     this.midistatus = true;
@@ -268,19 +270,29 @@ class Game {
 
 
   stop(){
+
+    this.localstorage.oldlvl = this.lvl+1;
+    this.localstorage.learnprogress = this.progressbarupdate
+
+    localStorage.setItem('savefile',JSON.stringify(this.localstorage))
+
+    clearInterval(this.midicheck)
+
+
+
     $('#game').off("keyhit")
     $('.refreshbutton').off("click")
      $('.pianoOnClick').off("click")
      $('#gamebutton').off("click")
      console.log("stoped lvl"+ this.lvl);
-     console.log(typeof WebMidi === "object");
-     WebMidi.disable();
 
-     if(typeof this.midiinput.removeListener === "function"){
-       console.log("disable");
+
+     if(WebMidi._inputs.length > 0){
+       console.log("disable-midiinput");
        this.midiinput.removeListener("noteon");
 
      }
+     WebMidi.disable();
 
   }
   refreshduringgame(points,duration){
@@ -303,11 +315,9 @@ class Game {
 
     var mykey;
     WebMidi.enable(function () {
-      // console.log(typeof WebMidi === "object");
-      console.log(WebMidi);
-
+    
       //Midi watcher
-      setInterval(function () {
+      _this.midicheck = setInterval(function () {
         if(WebMidi._inputs.length > 0){
 
           $('#midikreis').attr("fill","#56ce46");

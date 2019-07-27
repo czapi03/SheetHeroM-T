@@ -7,13 +7,24 @@ document.addEventListener('deviceready', function() {
   $('document').ready(function() {
     console.log('--app.js--');
     var lvliterator = 1;
-    var nextnotecheck = 2;
     var startnextlvl;
     var muteswitch = false;
 
+    if(localStorage.getItem('savefile')== null){
+      lvliterator = 1;
+      console.log("--------------------------------------nix im speicher--------------------------------------");
+    }else{
+
+      var storage = JSON.parse(localStorage.getItem('savefile'));
+      lvliterator = storage.oldlvl;
+    }
+
+
+
+
 //lvlloader
- $.getJSON("./js/game/lvl/1.json", function(lvl) {
-   console.log(lvl);
+ $.getJSON("./js/game/lvl/"+lvliterator+".json", function(lvl) {
+   
 
    var start = new Game(lvl.vio.lvl,lvl.vio.difficulty, lvl.vio.noten,lvl.vio.speed,lvl.vio.duration, 0,lvl.vio.highscore,lvl.vio.nextnote, "Anfänger", 150)
 
