@@ -7,6 +7,8 @@ document.addEventListener('deviceready', function() {
 
   $('document').ready(function() {
     console.log('--app.js--');
+
+
     var lvliterator = 1;
     var start;
     var storage = {
@@ -17,11 +19,13 @@ document.addEventListener('deviceready', function() {
     var muteswitch = false;
 
     if (localStorage.getItem('savefile') == null) {
+
       console.log("--------------------------------------nix im speicher--------------------------------------");
     } else {
 
       storage = JSON.parse(localStorage.getItem('savefile'));
       lvliterator = storage.oldlvl;
+
 
     }
 

@@ -12,6 +12,7 @@ class Game {
     this.nextnote = nextnote;
     this.keyhitfunction(speed);
     this.localstorage = {};
+    this.gamerunning = false;
     this.midiinput;
     this.midicheck;
     this.self = this;
@@ -59,7 +60,7 @@ class Game {
       .on('click', function() {
         $('.cloned').find("*").attr("fill", "#000000")
         console.log("start");
-
+        this.gamerunning = true;
         $('#gamebutton').css({"pointer-events":"none"})
 
 
@@ -106,8 +107,13 @@ class Game {
         $(highestNote).find("*").attr("fill", "green")
         $(highestNote).addClass('hit')
 
-        // this.points += (this.highscoretoreach / 25) * (0.25 / speed);
-        this.points +=100;
+
+
+
+          this.points += (this.highscoretoreach / 25) * (0.25 / speed);
+
+
+        // this.points +=100;
 
         if (this.learnprogress < 400) {
           this.learnprogress += 0.25
@@ -171,7 +177,14 @@ class Game {
 
 
       } else {
-        this.points -= this.highscoretoreach / 25*(0.25 / speed);
+        console.log(this.gamerunning);
+        if(this.gamerunning == true){
+
+
+          this.points -= this.highscoretoreach / 25*(0.25 / speed);
+          this.learnprogress -= 0.25;
+        }
+
         keyplayed = keyplayed.slice(1, 3)
 
         $('#' + keyplayed).addClass("colorhitwrongkey");
@@ -183,15 +196,42 @@ class Game {
 
 
         }, 300);
-        this.learnprogress -= 0.25;
+
+
         if (this.learnprogress <=0) {
           this.learnprogress = 0;
 
         }
-
         $('#progressbar').css({
           width: this.learnprogress + "%"
         })
+        if(this.learnprogress > 100 && this.learnprogress <=200){
+          $('#learnprogressname').html('Fortgeschrittener')
+          $('#progressbar').css({
+            width: this.learnprogress-100 + "%"
+          })
+
+        }
+        if(this.learnprogress > 200 && this.learnprogress <=300){
+          $('#learnprogressname').html('Profi')
+          $('#progressbar').css({
+            width: this.learnprogress-200 + "%"
+          })
+
+        }
+        if(this.learnprogress > 300 && this.learnprogress <=400){
+          $('#learnprogressname').html('Meister')
+          $('#progressbar').css({
+            width: this.learnprogress-300 + "%"
+          })
+
+        }
+
+
+
+
+
+
 
       }
       if (this.points < 0) {
@@ -342,7 +382,7 @@ class Game {
 
     clearInterval(this.midicheck)
 
-
+    this.gamerunning = false;
     nextstorage = this.learnprogress;
     console.log('--'+nextstorage+'--');
     $('#game').off("keyhit")
@@ -350,7 +390,7 @@ class Game {
      $('.pianoOnClick').off("click")
      $('#gamebutton').off("click")
      console.log("stoped lvl"+ this.lvl);
-
+     window.plugins.insomnia.allowSleepAgain();
 
      if(WebMidi._inputs.length > 0){
        console.log("disable-midiinput");
@@ -361,6 +401,7 @@ class Game {
 
   }
   refreshduringgame(points,duration){
+    this.gamerunning = false;
     $('.cloned').remove();
     clearInterval(this.durationtimer)
     window.cancelAnimationFrame(this.move.Req)
@@ -383,6 +424,7 @@ class Game {
 
       //Midi watcher
       _this.midicheck = setInterval(function () {
+        window.plugins.insomnia.keepAwake();
         if(WebMidi._inputs.length > 0){
 
           $('#midikreis').attr("fill","#56ce46");
@@ -399,7 +441,7 @@ class Game {
           _this.midistatus = false;
         }
 
-      }, 100);
+      }, 1000);
 
 
       var keyboardid = WebMidi._inputs[0].id
