@@ -37,7 +37,7 @@ document.addEventListener('deviceready', function() {
     })
     //nextlvlbutton
     $('#nextlvl > *').on("click", function() {
-      console.log(teststorage);
+      console.log(nextstorage);
       $('#gamebutton').css({
         "pointer-events": "auto"
       })

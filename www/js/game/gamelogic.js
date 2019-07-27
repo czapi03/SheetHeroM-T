@@ -343,8 +343,8 @@ class Game {
     clearInterval(this.midicheck)
 
 
-    teststorage = this.learnprogress;
-    console.log('--'+teststorage+'--');
+    nextstorage = this.learnprogress;
+    console.log('--'+nextstorage+'--');
     $('#game').off("keyhit")
     $('.refreshbutton').off("click")
      $('.pianoOnClick').off("click")
