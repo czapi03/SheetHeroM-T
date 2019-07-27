@@ -1,4 +1,5 @@
 //some code
+var nextstorage;
 document.addEventListener('deviceready', function() {
 
   // console.log(Media);
@@ -7,70 +8,89 @@ document.addEventListener('deviceready', function() {
   $('document').ready(function() {
     console.log('--app.js--');
     var lvliterator = 1;
+    var start;
+    var storage = {
+      oldlvl: 0,
+      learnprogress: 0
+    }
     var startnextlvl;
     var muteswitch = false;
 
-    if(localStorage.getItem('savefile')== null){
-      lvliterator = 1;
+    if (localStorage.getItem('savefile') == null) {
       console.log("--------------------------------------nix im speicher--------------------------------------");
-    }else{
+    } else {
 
-      var storage = JSON.parse(localStorage.getItem('savefile'));
+      storage = JSON.parse(localStorage.getItem('savefile'));
       lvliterator = storage.oldlvl;
+
     }
 
 
 
 
-//lvlloader
- $.getJSON("./js/game/lvl/"+lvliterator+".json", function(lvl) {
-   
-
-   var start = new Game(lvl.vio.lvl,lvl.vio.difficulty, lvl.vio.noten,lvl.vio.speed,lvl.vio.duration, 0,lvl.vio.highscore,lvl.vio.nextnote, "Anfänger", 150)
-
- })
- //nextlvlbutton
- $('#nextlvl > *').on("click", function() {
-   $('#gamebutton').css({"pointer-events":"auto"})
-   $('#dialog').css({display:"none"})
-   console.log("weiter");
-   lvliterator++;
-
-   if(lvliterator > 25){
-     alert("Spiel durchgespielt")
-   }
-   $.getJSON("./js/game/lvl/"+lvliterator+".json", function(lvl) {
-   startnextlvl = new Game(lvl.vio.lvl, lvl.vio.difficulty,lvl.vio.noten,lvl.vio.speed,lvl.vio.duration, 0,lvl.vio.highscore,lvl.vio.nextnote, "Anfänger", 150)
+    //lvlloader
+    $.getJSON("./js/game/lvl/" + lvliterator + ".json", function(lvl) {
 
 
-  })
+      start = new Game(lvl.vio.lvl, lvl.vio.difficulty, lvl.vio.noten, lvl.vio.speed, lvl.vio.duration, 0, lvl.vio.highscore, lvl.vio.nextnote, storage.learnprogress)
 
- })
- //refreshlvl
- $('#refreshlvldialogbutton').on("click",function(){
-   $('#gamebutton').css({"pointer-events":"auto"})
+    })
+    //nextlvlbutton
+    $('#nextlvl > *').on("click", function() {
+      console.log(teststorage);
+      $('#gamebutton').css({
+        "pointer-events": "auto"
+      })
+      $('#dialog').css({
+        display: "none"
+      })
+      console.log("weiter");
+      console.log(start.learnprogress);
+      lvliterator++;
 
-
-   $.getJSON("./js/game/lvl/"+lvliterator+".json", function(lvl) {
-     startnextlvl = new Game(lvl.vio.lvl,lvl.vio.difficulty, lvl.vio.noten,lvl.vio.speed,lvl.vio.duration, 0,lvl.vio.highscore,lvl.vio.nextnote, "Anfänger", 150)
-
-
-     $('#dialog').css({display:"none"});
-     $('#successresponse').html("Super!")
-     $('#nextlvl').css({display:"flex"})
-     $('#refreshlvl >*').css({
-       position: "absolute",
-       width: "8%",
-       height: "8%",
-       left: "25%",
-       top: "1%"
-     })
-     $('#refreshlvl').css({"margin-top": "3%"})
-   })
+      if (lvliterator > 25) {
+        alert("Spiel durchgespielt")
+      }
+      $.getJSON("./js/game/lvl/" + lvliterator + ".json", function(lvl) {
+        startnextlvl = new Game(lvl.vio.lvl, lvl.vio.difficulty, lvl.vio.noten, lvl.vio.speed, lvl.vio.duration, 0, lvl.vio.highscore, lvl.vio.nextnote,nextstorage)
 
 
+      })
 
- })
+    })
+    //refreshlvl
+    $('#refreshlvldialogbutton').on("click", function() {
+      $('#gamebutton').css({
+        "pointer-events": "auto"
+      })
+
+
+      $.getJSON("./js/game/lvl/" + lvliterator + ".json", function(lvl) {
+        startnextlvl = new Game(lvl.vio.lvl, lvl.vio.difficulty, lvl.vio.noten, lvl.vio.speed, lvl.vio.duration, 0, lvl.vio.highscore, lvl.vio.nextnote,nextstorage)
+
+
+        $('#dialog').css({
+          display: "none"
+        });
+        $('#successresponse').html("Super!")
+        $('#nextlvl').css({
+          display: "flex"
+        })
+        $('#refreshlvl >*').css({
+          position: "absolute",
+          width: "8%",
+          height: "8%",
+          left: "25%",
+          top: "1%"
+        })
+        $('#refreshlvl').css({
+          "margin-top": "3%"
+        })
+      })
+
+
+
+    })
 
 
 
@@ -80,27 +100,31 @@ document.addEventListener('deviceready', function() {
 
 
 
- //mutebutton
- $('#mutebutton').on("click", function() {
-   console.log(muteswitch);
-   if(muteswitch== false){
-     $('#muteblank').css({display:"block"})
-     $('#audios').attr("class","muteall")
-     $(".playing").each(function(){
-       $(this).get(0).muted = true;
-     })
-     muteswitch = true;
-   }else{
-     $('#muteblank').css({display:"none"})
-     $('#audios').removeClass("muteall")
-     $(".playing").each(function(){
-       $(this).get(0).muted = false;
-     })
-     muteswitch = false;
-   }
- })
+    //mutebutton
+    $('#mutebutton').on("click", function() {
+      console.log(muteswitch);
+      if (muteswitch == false) {
+        $('#muteblank').css({
+          display: "block"
+        })
+        $('#audios').attr("class", "muteall")
+        $(".playing").each(function() {
+          $(this).get(0).muted = true;
+        })
+        muteswitch = true;
+      } else {
+        $('#muteblank').css({
+          display: "none"
+        })
+        $('#audios').removeClass("muteall")
+        $(".playing").each(function() {
+          $(this).get(0).muted = false;
+        })
+        muteswitch = false;
+      }
+    })
 
-//popuprechts
+    //popuprechts
     //closes dialog2
     $('#dialog2 div:nth-child(3)').on("click", function() {
 
@@ -119,7 +143,7 @@ document.addEventListener('deviceready', function() {
 
     })
     //opens Version
-    $('#dialog2version').on("click",function(){
+    $('#dialog2version').on("click", function() {
       $("#dialog2").css({
         display: "none"
       })
@@ -127,8 +151,8 @@ document.addEventListener('deviceready', function() {
         display: "flex"
       })
     })
-  //  opens Credits
-    $('#dialog2credits').on("click",function(){
+    //  opens Credits
+    $('#dialog2credits').on("click", function() {
       $("#dialog2").css({
         display: "none"
       })
@@ -138,12 +162,12 @@ document.addEventListener('deviceready', function() {
 
     })
     //closes dialogversion 2
-    $('#dialogversion div:nth-child(2)').on("click",function(){
+    $('#dialogversion div:nth-child(2)').on("click", function() {
       $("#dialogversion").css({
         display: "none"
       })
     })
-    $('#dialogcredits div:nth-child(2) ').on("click",function(){
+    $('#dialogcredits div:nth-child(2) ').on("click", function() {
       $("#dialogcredits").css({
         display: "none"
       })
@@ -157,7 +181,5 @@ document.addEventListener('deviceready', function() {
 
 
 
-
-
-  })//window ready
-})//deviceready
+  }) //window ready
+}) //deviceready

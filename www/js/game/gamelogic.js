@@ -1,7 +1,7 @@
 console.log("--gamelogic--");
 
 class Game {
-  constructor(lvl,difficulty, notestoplay, speed, duration, points, highscoretoreach, nextnote,awardname, awardpoints) {
+  constructor(lvl,difficulty, notestoplay, speed, duration, points, highscoretoreach, nextnote,learnprogress) {
     this.lvl = lvl;
     this.difficulty = difficulty;
     this.notestoplay = notestoplay;
@@ -9,8 +9,6 @@ class Game {
     this.duration = duration;
     this.points = points;
     this.highscoretoreach = highscoretoreach;
-    this.awardname = awardname;
-    this.awardpoints = awardpoints;
     this.nextnote = nextnote;
     this.keyhitfunction(speed);
     this.localstorage = {};
@@ -19,8 +17,7 @@ class Game {
     this.self = this;
     this.move;
     this.midistatus = true;
-    this.progressbarupdate = 0;
-    // this.award = award;
+    this.learnprogress = learnprogress;
     this.rndnote = 0;
     this.sendNotes;
     this.durationtimer;
@@ -111,15 +108,57 @@ class Game {
 
         // this.points += (this.highscoretoreach / 25) * (0.25 / speed);
         this.points +=100;
-        this.progressbarupdate += 5;
 
-        $('#progressbar').css({
-          width: this.progressbarupdate + "%"
-        })
-        if (this.progressbarupdate >= 100) {
-          this.progressbarupdate = 100;
+        if (this.learnprogress < 400) {
+          this.learnprogress += 0.25
 
-        }
+          $('#progressbar').css({
+            width: this.learnprogress + "%"
+          })
+
+
+          if(this.learnprogress > 100 && this.learnprogress <=200){
+            $('#learnprogressname').html('Fortgeschrittener')
+            $('#progressbar').css({
+              width: this.learnprogress-100 + "%"
+            })
+
+          }
+          if(this.learnprogress > 200 && this.learnprogress <=300){
+            $('#learnprogressname').html('Profi')
+            $('#progressbar').css({
+              width: this.learnprogress-200 + "%"
+            })
+
+          }
+          if(this.learnprogress > 300 && this.learnprogress <=400){
+            $('#learnprogressname').html('Meister')
+            $('#progressbar').css({
+              width: this.learnprogress-300 + "%"
+            })
+
+          }
+
+
+
+
+
+
+          }
+
+
+
+        // switch (this.learnprogress) {
+        //   case 100: $('#learnprogressname').html('Profi')
+        //
+        //     break;
+        //   default:
+        //
+        // }
+
+
+
+
         $('.eyes').attr("fill","#56ce46")
         setTimeout(function() {
           $('.eyes').attr("fill","#000000")
@@ -144,14 +183,14 @@ class Game {
 
 
         }, 300);
-        this.progressbarupdate -= 5;
-        if (this.progressbarupdate <=0) {
-          this.progressbarupdate = 0;
+        this.learnprogress -= 0.25;
+        if (this.learnprogress <=0) {
+          this.learnprogress = 0;
 
         }
 
         $('#progressbar').css({
-          width: this.progressbarupdate + "%"
+          width: this.learnprogress + "%"
         })
 
       }
@@ -172,14 +211,7 @@ class Game {
 
     }.bind(this))
   }
-  progressbarfiller(progress) {
 
-    $('#progressbar').css({
-      width: progress + '%'
-    })
-
-
-  }
 
 
 
@@ -202,7 +234,7 @@ class Game {
 
     _this.durationtimer = setInterval(function() {
       _this.duration--;
-      console.log(_this.duration);
+
       $('#gameduration').html(_this.duration)
       if (_this.duration <= 5) {
         $('#gameduration').attr("fill", "red")
@@ -210,8 +242,9 @@ class Game {
       if (_this.duration == 0) {
         clearInterval(_this.durationtimer)
         clearInterval(_this.sendNotes)
-        console.log(_this);
-        _this.stop();
+
+
+        // _this.stop();
         $('.cloned').remove();
         $('#gameduration').attr("fill", "#3a3a3a")
         $('#highscore').attr("fill", "#3a3a3a")
@@ -229,6 +262,7 @@ class Game {
 
 
         if (_this.points < (_this.highscoretoreach * _this.difficulty)) {
+          _this.lvl-=1;
           $('#successresponse').html("Schade")
           $('#dialoglinks > h2').html("Level "+_this.lvl+" leider nicht geschafft!")
           $('#dialogrechts p').html("");
@@ -243,7 +277,7 @@ class Game {
           $('#refreshlvl').css({"margin-top": "71%"})
           $('#nextlvl').css({display:"none"})
         }
-        console.log(_this.points);
+        _this.stop();
 
         $('#dialog').css({
           display: "block"
@@ -259,11 +293,40 @@ class Game {
 
     $('#highscoretoreach').html("Erreiche " + this.highscoretoreach * this.difficulty + " Punkte für Level " + (this.lvl + 1))
     $('#gamelvl').html(this.lvl)
-
+    $('#progressbar').css({
+      width: this.learnprogress + '%'
+    })
     $('#highscore').html(this.points)
     $('#gameduration').html(this.duration)
-    $('#awardname').html(this.awardname)
-    $('#awardpoints').html(this.awardpoints)
+
+    if(this.learnprogress >= 100 && this.learnprogress <=200){
+      $('#learnprogressname').html('Fortgeschrittener')
+      $('#progressbar').css({
+        width: this.learnprogress-100 + "%"
+      })
+
+    }
+    if(this.learnprogress >= 200 && this.learnprogress <=300){
+      $('#learnprogressname').html('Profi')
+      $('#progressbar').css({
+        width: this.learnprogress-200 + "%"
+      })
+
+    }
+    if(this.learnprogress >= 300 && this.learnprogress <=400){
+      $('#learnprogressname').html('Meister')
+      $('#progressbar').css({
+        width: this.learnprogress-300 + "%"
+      })
+
+    }
+
+
+
+
+
+
+
 
   }
 
@@ -271,15 +334,17 @@ class Game {
 
   stop(){
 
+
     this.localstorage.oldlvl = this.lvl+1;
-    this.localstorage.learnprogress = this.progressbarupdate
+    this.localstorage.learnprogress = this.learnprogress;
 
     localStorage.setItem('savefile',JSON.stringify(this.localstorage))
 
     clearInterval(this.midicheck)
 
 
-
+    teststorage = this.learnprogress;
+    console.log('--'+teststorage+'--');
     $('#game').off("keyhit")
     $('.refreshbutton').off("click")
      $('.pianoOnClick').off("click")
@@ -315,7 +380,7 @@ class Game {
 
     var mykey;
     WebMidi.enable(function () {
-    
+
       //Midi watcher
       _this.midicheck = setInterval(function () {
         if(WebMidi._inputs.length > 0){
