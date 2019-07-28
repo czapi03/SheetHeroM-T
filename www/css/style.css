@@ -80,6 +80,11 @@ tspan {
 
 .note {
   display: none;
+  z-index: 1;
+}
+
+#violinschlüssel{
+  display: none;
 }
 
 #nc4 {
@@ -119,7 +124,7 @@ tspan {
   height: 5%;
   width: 3.5%;
   top: 41.9%;
-  right: 0;
+  right: 0%;
 }
 
 #na4 {
@@ -239,7 +244,7 @@ tspan {
   height: 5%;
   width: 3.5%;
   top: 41.9%;
-  right: 0;
+  right: 0%;
 }
 
 #clonena4 {
@@ -355,6 +360,7 @@ tspan {
   -webkit-box-shadow: 10px 10px 5px -5px rgba(112, 112, 112, 1);
   -moz-box-shadow: 10px 10px 5px -5px rgba(112, 112, 112, 1);
   box-shadow: 10px 10px 5px -5px rgba(112, 112, 112, 1);
+  z-index: 5;
 }
 
 #dialogcontainer {
@@ -433,6 +439,7 @@ tspan {
   position: absolute;
   top: 0;
   right: 0;
+  z-index: 3;
 }
 
 .dialog2class {

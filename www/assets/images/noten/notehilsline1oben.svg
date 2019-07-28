@@ -1,3 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="391.87500000000006 87.96875 29.68750000000017 15.312500000000028" width="29.69" height="15.31"><defs><path d="M397.81 96.41C397.81 100.2 401.8 103.28 406.72 103.28C411.63 103.28 415.63 100.2 415.63 96.41C415.63 92.61 411.63 89.53 406.72 89.53C401.8 89.53 397.81 92.61 397.81 96.41Z" id="d4MFeoIfC2"></path><path d="M421.56 87.97L391.88 87.97L391.88 89.5C394.23 89.5 397.89 89.5 402.83 89.5C403.18 89.5 403.71 89.5 404.43 89.5L421.56 89.5L421.56 87.97Z" id="d2V9yQ5NA"></path></defs><g><g><g><use xlink:href="#d4MFeoIfC2" opacity="1" fill="#000000" fill-opacity="1"></use></g><g><use xlink:href="#d2V9yQ5NA" opacity="1" fill="#3a3a3a" fill-opacity="1"></use></g></g></g></svg>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="391.87500000000006 87.96875 29.68750000000017 15.312500000000028" width="29.69" height="15.31">
+  <defs>
+    <path d="M397.81 96.41C397.81 100.2 401.8 103.28 406.72 103.28C411.63 103.28 415.63 100.2 415.63 96.41C415.63 92.61 411.63 89.53 406.72 89.53C401.8 89.53 397.81 92.61 397.81 96.41Z" id="d4MFeoIfC2"></path>
+    <path d="M421.56 87.97L391.88 87.97L391.88 89.5C394.23 89.5 397.89 89.5 402.83 89.5C403.18 89.5 403.71 89.5 404.43 89.5L421.56 89.5L421.56 87.97Z" id="d2V9yQ5NA"></path>
+  </defs>
+  <g>
+    <g>
+      <g>
+        <use xlink:href="#d4MFeoIfC2" opacity="1" fill="#000000" fill-opacity="1"></use>
+      </g>
+      <g>
+        <use xlink:href="#d2V9yQ5NA" opacity="1" fill="#3a3a3a" fill-opacity="1"></use>
+      </g>
+    </g>
+  </g>
+</svg>

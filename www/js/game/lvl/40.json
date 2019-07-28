@@ -1,0 +1,30 @@
+{
+  "vio": {
+
+  },
+
+  "bass": {
+    "lvl": 40,
+    "noten": [
+      "e2",
+      "c2",
+      "f3",
+      "c4",
+      "a2",
+      "a3",
+      "c3",
+      "g3",
+      "g2"
+
+
+    ],
+    "speed": 0.50,
+    "difficulty": 0.8,
+    "duration": 60,
+    "highscore": 1000,
+    "nextnote": "e3"
+
+  }
+
+
+}

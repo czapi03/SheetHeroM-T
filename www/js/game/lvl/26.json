@@ -20,9 +20,9 @@
     ],
     "speed": 0.50,
     "difficulty": 0.8,
-    "duration": 60,
-    "highscore": 1000,
-    "nextnote": ""
+    "duration": 5,
+    "highscore": 100,
+    "nextnote": "bassschlüssel c2,d2,c4"
   },
 
   "bass": {

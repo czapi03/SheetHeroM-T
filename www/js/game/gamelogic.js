@@ -1,11 +1,11 @@
 console.log("--gamelogic--");
 
 class Game {
-  constructor(lvl,difficulty, notestoplay, speed, duration, points, highscoretoreach, nextnote,learnprogress) {
+  constructor(lvl, difficulty, notestoplay, speed, duration, points, highscoretoreach, nextnote, learnprogress) {
     this.lvl = lvl;
     this.difficulty = difficulty;
     this.notestoplay = notestoplay;
-    this.speed = $(window).width()*speed/100;
+    this.speed = $(window).width() * speed / 100;
     this.duration = duration;
     this.points = points;
     this.highscoretoreach = highscoretoreach;
@@ -24,9 +24,11 @@ class Game {
     this.durationtimer;
     //refreshbutton
     this.refreshlvl = $('.refreshbutton').on('click', function() {
-      $('#gamebutton').css({"pointer-events":"auto"})
+      $('#gamebutton').css({
+        "pointer-events": "auto"
+      })
 
-      this.refreshduringgame(points,duration);
+      this.refreshduringgame(points, duration);
 
     }.bind(this))
     this.lvlloader();
@@ -36,20 +38,47 @@ class Game {
     this.pianoOnClick = $('.pianoOnClick').on('click', function() {
 
       var mykey = $(this).attr('id');
+      var myoctave = mykey.slice(-1);
 
-      //spielt note
-      $('#game').trigger('keyhit', mykey)
+      if (lvliterator > 26) {
 
-      if($('#audios').hasClass("muteall")){
-        console.log("muted");
-        var media = $("<audio>").attr({class:"playing"}).append('<source src="./assets/wav/' + mykey + '.wav" type="audio/ogg" />').appendTo("#audios");
-      }else{
+        if(myoctave == 4){
+          mykey = mykey.slice(0,-1) + '2';
 
-        var media = $("<audio>").attr({"autoplay":"true",class:"playing"}).append('<source src="./assets/wav/' + mykey + '.wav" type="audio/ogg" />').appendTo("#audios");
+        }
+        if(myoctave == 5){
+          mykey = mykey.slice(0,-1) + '3';
+        }
+        if(myoctave == 6){
+          mykey = mykey.slice(0,-1) + '4';
+        }
+        // console.log(mykey);
+
+
       }
 
 
-      setTimeout(function () {
+
+
+      // console.log(mykey);
+      //spielt note
+      $('#game').trigger('keyhit', mykey)
+
+      if ($('#audios').hasClass("muteall")) {
+        console.log("muted");
+        var media = $("<audio>").attr({
+          class: "playing"
+        }).append('<source src="./assets/wav/' + mykey + '.wav" type="audio/ogg" />').appendTo("#audios");
+      } else {
+
+        var media = $("<audio>").attr({
+          "autoplay": "true",
+          class: "playing"
+        }).append('<source src="./assets/wav/' + mykey + '.wav" type="audio/ogg" />').appendTo("#audios");
+      }
+
+
+      setTimeout(function() {
         media.remove()
       }, 1500);
     })
@@ -61,7 +90,9 @@ class Game {
         $('.cloned').find("*").attr("fill", "#000000")
         console.log("start");
         this.gamerunning = true;
-        $('#gamebutton').css({"pointer-events":"none"})
+        $('#gamebutton').css({
+          "pointer-events": "none"
+        })
 
 
         this.rndnote = getRandomInt(this.notestoplay.length);
@@ -83,19 +114,45 @@ class Game {
 
       keyplayed = "n" + keyplayed;
 
-    // console.log("keyhit");
+      // console.log("keyhit");
 
       // var highestNote = $('.cloned.hitable').toArray().find(function(note) {
       //   return parseInt($(note).get(0).style.right) < $(window).width()*0.66
       // })
       var highestNote = $('.cloned.hitable').toArray().find(function(note) {
 
-        return parseInt($(note).position().left) > $(window).width()*0.33
+        return parseInt($(note).position().left) > $(window).width() * 0.33
       })
 
 
       if (keyplayed == $(highestNote).attr("id")) {
         keyplayed = keyplayed.slice(1, 3)
+        var myoctave1 = keyplayed.slice(1);
+
+
+        // console.log(myoctave1);
+        console.log(myoctave1);
+        if (lvliterator > 26) {
+
+          if(myoctave1 == 2){
+            keyplayed = keyplayed.slice(0,-1) + '4';
+            console.log(keyplayed);
+
+          }
+          if(myoctave1 == 3){
+            keyplayed = keyplayed.slice(0,-1) + '5';
+            console.log(keyplayed);
+          }
+          if(myoctave1 == 4){
+            keyplayed = keyplayed.slice(0,-1) + '6';
+            console.log(keyplayed);
+          }
+
+
+        }
+
+
+
 
         $('#' + keyplayed).addClass("colorhitrightkey");
         setTimeout(function() {
@@ -110,10 +167,10 @@ class Game {
 
 
 
-          this.points += (this.highscoretoreach / 25) * (0.25 / speed);
+        // this.points += (this.highscoretoreach / 25) * (0.25 / speed);
 
 
-        // this.points +=100;
+        this.points +=100;
 
         if (this.learnprogress < 400) {
           this.learnprogress += 0.25
@@ -123,24 +180,24 @@ class Game {
           })
 
 
-          if(this.learnprogress > 100 && this.learnprogress <=200){
+          if (this.learnprogress > 100 && this.learnprogress <= 200) {
             $('#learnprogressname').html('Fortgeschrittener')
             $('#progressbar').css({
-              width: this.learnprogress-100 + "%"
+              width: this.learnprogress - 100 + "%"
             })
 
           }
-          if(this.learnprogress > 200 && this.learnprogress <=300){
+          if (this.learnprogress > 200 && this.learnprogress <= 300) {
             $('#learnprogressname').html('Profi')
             $('#progressbar').css({
-              width: this.learnprogress-200 + "%"
+              width: this.learnprogress - 200 + "%"
             })
 
           }
-          if(this.learnprogress > 300 && this.learnprogress <=400){
+          if (this.learnprogress > 300 && this.learnprogress <= 400) {
             $('#learnprogressname').html('Meister')
             $('#progressbar').css({
-              width: this.learnprogress-300 + "%"
+              width: this.learnprogress - 300 + "%"
             })
 
           }
@@ -150,7 +207,7 @@ class Game {
 
 
 
-          }
+        }
 
 
 
@@ -165,9 +222,9 @@ class Game {
 
 
 
-        $('.eyes').attr("fill","#56ce46")
+        $('.eyes').attr("fill", "#56ce46")
         setTimeout(function() {
-          $('.eyes').attr("fill","#000000")
+          $('.eyes').attr("fill", "#000000")
 
 
 
@@ -178,51 +235,74 @@ class Game {
 
       } else {
         console.log(this.gamerunning);
-        if(this.gamerunning == true){
+        if (this.gamerunning == true) {
 
 
-          this.points -= this.highscoretoreach / 25*(0.25 / speed);
+          this.points -= this.highscoretoreach / 25 * (0.25 / speed);
           this.learnprogress -= 0.25;
         }
 
         keyplayed = keyplayed.slice(1, 3)
+        var myoctave1 = keyplayed.slice(1);
+
+
+        // console.log(myoctave1);
+
+        if (lvliterator > 26) {
+
+          if(myoctave1 == 2){
+            keyplayed = keyplayed.slice(0,-1) + '4';
+            console.log(keyplayed);
+
+          }
+          if(myoctave1 == 3){
+            keyplayed = keyplayed.slice(0,-1) + '5';
+            console.log(keyplayed);
+          }
+          if(myoctave1 == 4){
+            keyplayed = keyplayed.slice(0,-1) + '6';
+            console.log(keyplayed);
+          }
+
+
+        }
 
         $('#' + keyplayed).addClass("colorhitwrongkey");
-        $('.eyes').attr("fill","#F80E0E")
+        $('.eyes').attr("fill", "#F80E0E")
 
         setTimeout(function() {
           $('#' + keyplayed).removeClass('colorhitwrongkey')
-          $('.eyes').attr("fill","#000000")
+          $('.eyes').attr("fill", "#000000")
 
 
         }, 300);
 
 
-        if (this.learnprogress <=0) {
+        if (this.learnprogress <= 0) {
           this.learnprogress = 0;
 
         }
         $('#progressbar').css({
           width: this.learnprogress + "%"
         })
-        if(this.learnprogress > 100 && this.learnprogress <=200){
+        if (this.learnprogress > 100 && this.learnprogress <= 200) {
           $('#learnprogressname').html('Fortgeschrittener')
           $('#progressbar').css({
-            width: this.learnprogress-100 + "%"
+            width: this.learnprogress - 100 + "%"
           })
 
         }
-        if(this.learnprogress > 200 && this.learnprogress <=300){
+        if (this.learnprogress > 200 && this.learnprogress <= 300) {
           $('#learnprogressname').html('Profi')
           $('#progressbar').css({
-            width: this.learnprogress-200 + "%"
+            width: this.learnprogress - 200 + "%"
           })
 
         }
-        if(this.learnprogress > 300 && this.learnprogress <=400){
+        if (this.learnprogress > 300 && this.learnprogress <= 400) {
           $('#learnprogressname').html('Meister')
           $('#progressbar').css({
-            width: this.learnprogress-300 + "%"
+            width: this.learnprogress - 300 + "%"
           })
 
         }
@@ -264,9 +344,9 @@ class Game {
 
       _this.rndnote = getRandomInt(_this.notestoplay.length);
       _this.move = new MoveNote(_this.speed, _this.notestoplay[_this.rndnote]);
-//
+      //
     }, 2350 / (speed / 0.25));
-  // }, 2350 );
+    // }, 2350 );
 
   }
   timecountdown() {
@@ -288,34 +368,45 @@ class Game {
         $('.cloned').remove();
         $('#gameduration').attr("fill", "#3a3a3a")
         $('#highscore').attr("fill", "#3a3a3a")
-        $('#afterpoints').html("Punkte: "+_this.points).css({"color":"black"})
-        $('#notelistingnames').html("Es wird schneller!").css({"color":"black"})
-        $('#dialoglinks > h2').html("Level "+_this.lvl+" geschafft!")
+        $('#afterpoints').html("Punkte: " + _this.points).css({
+          "color": "black"
+        })
+        $('#notelistingnames').html("Es wird schneller!").css({
+          "color": "black"
+        })
+        $('#dialoglinks > h2').html("Level " + _this.lvl + " geschafft!")
 
-        $('#margintop').html("Bereite dich auf Level "+(_this.lvl+1)+"vor!")
+        $('#margintop').html("Bereite dich auf Level " + (_this.lvl + 1) + "vor!")
+        $('#refreshlvl').hide();
 
+        if ((_this.lvl % 2) == 0) {
 
-        if((_this.lvl %2)==0 ){
-
-          $('#notelistingnames').html("Es kommt dazu: "+_this.nextnote).css({"color":"black"})
+          $('#notelistingnames').html("Es kommt dazu: " + _this.nextnote).css({
+            "color": "black"
+          })
         }
 
 
         if (_this.points < (_this.highscoretoreach * _this.difficulty)) {
-          _this.lvl-=1;
+          _this.lvl -= 1;
+          $('#refreshlvl').show();
           $('#successresponse').html("Schade")
-          $('#dialoglinks > h2').html("Level "+_this.lvl+" leider nicht geschafft!")
+          $('#dialoglinks > h2').html("Level " + (_this.lvl+1) + " leider nicht geschafft!")
           $('#dialogrechts p').html("");
           console.log("duration negativ", _this);
           $('#refreshlvl >*').css({
-              position: "absolute",
-              width: "45%",
-              height: "28%",
-              left: "27%",
-              top: "33%"
+            position: "absolute",
+            width: "45%",
+            height: "28%",
+            left: "27%",
+            top: "33%"
           })
-          $('#refreshlvl').css({"margin-top": "71%"})
-          $('#nextlvl').css({display:"none"})
+          $('#refreshlvl').css({
+            "margin-top": "71%"
+          })
+          $('#nextlvl').css({
+            display: "none"
+          })
         }
         _this.stop();
 
@@ -330,8 +421,13 @@ class Game {
   }
 
   lvlloader() {
-
     $('#highscoretoreach').html("Erreiche " + this.highscoretoreach * this.difficulty + " Punkte für Level " + (this.lvl + 1))
+    if(lvliterator > 51){
+
+      $('#highscoretoreach').html("Erreiche " + this.highscoretoreach * this.difficulty + " für Spiel durchgespielt!").css({color:"green"})
+    }
+
+
     $('#gamelvl').html(this.lvl)
     $('#progressbar').css({
       width: this.learnprogress + '%'
@@ -339,24 +435,24 @@ class Game {
     $('#highscore').html(this.points)
     $('#gameduration').html(this.duration)
 
-    if(this.learnprogress >= 100 && this.learnprogress <=200){
+    if (this.learnprogress >= 100 && this.learnprogress <= 200) {
       $('#learnprogressname').html('Fortgeschrittener')
       $('#progressbar').css({
-        width: this.learnprogress-100 + "%"
+        width: this.learnprogress - 100 + "%"
       })
 
     }
-    if(this.learnprogress >= 200 && this.learnprogress <=300){
+    if (this.learnprogress >= 200 && this.learnprogress <= 300) {
       $('#learnprogressname').html('Profi')
       $('#progressbar').css({
-        width: this.learnprogress-200 + "%"
+        width: this.learnprogress - 200 + "%"
       })
 
     }
-    if(this.learnprogress >= 300 && this.learnprogress <=400){
+    if (this.learnprogress >= 300 && this.learnprogress <= 400) {
       $('#learnprogressname').html('Meister')
       $('#progressbar').css({
-        width: this.learnprogress-300 + "%"
+        width: this.learnprogress - 300 + "%"
       })
 
     }
@@ -372,35 +468,35 @@ class Game {
 
 
 
-  stop(){
+  stop() {
 
 
-    this.localstorage.oldlvl = this.lvl+1;
+    this.localstorage.oldlvl = this.lvl + 1;
     this.localstorage.learnprogress = this.learnprogress;
 
-    localStorage.setItem('savefile',JSON.stringify(this.localstorage))
+    localStorage.setItem('savefile', JSON.stringify(this.localstorage))
 
     clearInterval(this.midicheck)
 
     this.gamerunning = false;
     nextstorage = this.learnprogress;
-    console.log('--'+nextstorage+'--');
+    console.log('--' + nextstorage + '--');
     $('#game').off("keyhit")
     $('.refreshbutton').off("click")
-     $('.pianoOnClick').off("click")
-     $('#gamebutton').off("click")
-     console.log("stoped lvl"+ this.lvl);
-     window.plugins.insomnia.allowSleepAgain();
+    $('.pianoOnClick').off("click")
+    $('#gamebutton').off("click")
+    console.log("stoped lvl" + this.lvl);
+    window.plugins.insomnia.allowSleepAgain();
 
-     if(WebMidi._inputs.length > 0){
-       console.log("disable-midiinput");
-       this.midiinput.removeListener("noteon");
+    if (WebMidi._inputs.length > 0) {
+      console.log("disable-midiinput");
+      this.midiinput.removeListener("noteon");
 
-     }
-     WebMidi.disable();
+    }
+    WebMidi.disable();
 
   }
-  refreshduringgame(points,duration){
+  refreshduringgame(points, duration) {
     this.gamerunning = false;
     $('.cloned').remove();
     clearInterval(this.durationtimer)
@@ -416,27 +512,27 @@ class Game {
   }
 
 
-  midipiano2(){
+  midipiano2() {
     var _this = this;
 
     var mykey;
-    WebMidi.enable(function () {
+    WebMidi.enable(function() {
 
       //Midi watcher
-      _this.midicheck = setInterval(function () {
+      _this.midicheck = setInterval(function() {
         window.plugins.insomnia.keepAwake();
-        if(WebMidi._inputs.length > 0){
+        if (WebMidi._inputs.length > 0) {
 
-          $('#midikreis').attr("fill","#56ce46");
+          $('#midikreis').attr("fill", "#56ce46");
           $('#midiindicator div:nth-child(2)').html('-keyboard on')
-          if (_this.midistatus == false){
-            $('#midikreis').attr("fill","#F80E0E");
+          if (_this.midistatus == false) {
+            $('#midikreis').attr("fill", "#F80E0E");
             $('#midiindicator div:nth-child(2)').html('keyboard off,starte App neu')
 
           }
 
-        }else{
-          $('#midikreis').attr("fill","#F80E0E");
+        } else {
+          $('#midikreis').attr("fill", "#F80E0E");
           $('#midiindicator div:nth-child(2)').html('-keyboard off')
           _this.midistatus = false;
         }
@@ -446,117 +542,239 @@ class Game {
 
       var keyboardid = WebMidi._inputs[0].id
       // console.logi);
-      _this.midiinput = WebMidi.getInputById(keyboardid);
-      -this.midiinput.addListener('noteon', 'all',
-        function (e) {
-            console.log("Received 'noteon' message (" + e.note.name + e.note.octave + ").");
-            switch (e.note.name + e.note.octave) {
-                  case "C4": mykey = "c4"
+      _this.midiinput = WebMidi.getInputById(keyboardid); -
+      this.midiinput.addListener('noteon', 'all',
+        function(e) {
+          console.log("Received 'noteon' message (" + e.note.name + e.note.octave + ").");
+          switch (e.note.name + e.note.octave) {
+            case "C2":
+              mykey = "c2"
 
-                    break;
-                  case "C#4": mykey = "csharpdflat4"
+              break;
+            case "C#2":
+              mykey = "csharpdflat2"
 
-                    break;
-                  case "D4": mykey = "d4"
+              break;
+            case "D2":
+              mykey = "d2"
 
-                    break;
-                  case "D#4": mykey = "dsharpeflat4"
+              break;
+            case "D#2":
+              mykey = "dsharpeflat2"
 
-                    break;
-                  case "E4": mykey = "e4"
+              break;
+            case "E2":
+              mykey = "e2"
 
-                    break;
-                  case "F4": mykey = "f4"
+              break;
+            case "F2":
+              mykey = "f2"
 
-                    break;
-                  case "F#4": mykey = "fsharpgflat4"
+              break;
+            case "F#2":
+              mykey = "fsharpgflat2"
 
-                    break;
-                  case "G4": mykey = "g4"
+              break;
+            case "G2":
+              mykey = "g2"
 
-                    break;
-                  case "G#4": mykey = "gsharpaflat4"
+              break;
+            case "G#2":
+              mykey = "gsharpaflat2"
 
-                    break;
-                  case "A4": mykey = "a4"
-                    break;
-                  case "A#4": mykey = "asharpbflat4"
-                  break;
-                  case "B4": mykey = "h4"
-                  break;
-                  case "C5": mykey = "c5"
+              break;
+            case "A2":
+              mykey = "a2"
+              break;
+            case "A#2":
+              mykey = "asharpbflat2"
+              break;
+            case "B2":
+              mykey = "h2"
+              break;
 
-                    break;
-                  case "C#5": mykey = "csharpdflat5"
+            case "C3":
+              mykey = "c3"
 
-                    break;
-                  case "D5": mykey = "d5"
+              break;
+            case "C#3":
+              mykey = "csharpdflat3"
 
-                    break;
-                  case "D#5": mykey = "dsharpeflat5"
+              break;
+            case "D3":
+              mykey = "d3"
 
-                    break;
-                  case "E5": mykey = "e5"
+              break;
+            case "D#3":
+              mykey = "dsharpeflat3"
 
-                    break;
-                  case "F5": mykey = "f5"
+              break;
+            case "E3":
+              mykey = "e3"
 
-                    break;
-                  case "F#5": mykey = "fsharpgflat5"
+              break;
+            case "F3":
+              mykey = "f3"
 
-                    break;
-                  case "G5": mykey = "g5"
+              break;
+            case "F#3":
+              mykey = "fsharpgflat3"
 
-                    break;
-                  case "G#5": mykey = "gsharpaflat5"
+              break;
+            case "G3":
+              mykey = "g3"
 
-                    break;
-                  case "A5": mykey = "a5"
-                    break;
-                  case "A#5": mykey = "asharpbflat5"
-                  break;
-                  case "B5": mykey = "h5"
-                  break;
-                  case "C6": mykey = "c6"
-                  break;
+              break;
+            case "G#3":
+              mykey = "gsharpaflat3"
 
-                  default:
-                  console.log("not se right key");
-                  mykey = 0;
+              break;
+            case "A3":
+              mykey = "a3"
+              break;
+            case "A#3":
+              mykey = "asharpbflat3"
+              break;
+            case "B3":
+              mykey = "h3"
+              break;
 
-                  break;
-                }//switch
-                    if(typeof mykey === "string"){
+            case "C4":
+              mykey = "c4"
+
+              break;
+            case "C#4":
+              mykey = "csharpdflat4"
+
+              break;
+            case "D4":
+              mykey = "d4"
+
+              break;
+            case "D#4":
+              mykey = "dsharpeflat4"
+
+              break;
+            case "E4":
+              mykey = "e4"
+
+              break;
+            case "F4":
+              mykey = "f4"
+
+              break;
+            case "F#4":
+              mykey = "fsharpgflat4"
+
+              break;
+            case "G4":
+              mykey = "g4"
+
+              break;
+            case "G#4":
+              mykey = "gsharpaflat4"
+
+              break;
+            case "A4":
+              mykey = "a4"
+              break;
+            case "A#4":
+              mykey = "asharpbflat4"
+              break;
+            case "B4":
+              mykey = "h4"
+              break;
+            case "C5":
+              mykey = "c5"
+
+              break;
+            case "C#5":
+              mykey = "csharpdflat5"
+
+              break;
+            case "D5":
+              mykey = "d5"
+
+              break;
+            case "D#5":
+              mykey = "dsharpeflat5"
+
+              break;
+            case "E5":
+              mykey = "e5"
+
+              break;
+            case "F5":
+              mykey = "f5"
+
+              break;
+            case "F#5":
+              mykey = "fsharpgflat5"
+
+              break;
+            case "G5":
+              mykey = "g5"
+
+              break;
+            case "G#5":
+              mykey = "gsharpaflat5"
+
+              break;
+            case "A5":
+              mykey = "a5"
+              break;
+            case "A#5":
+              mykey = "asharpbflat5"
+              break;
+            case "B5":
+              mykey = "h5"
+              break;
+            case "C6":
+              mykey = "c6"
+              break;
+
+            default:
+              console.log("not se right key");
+              mykey = 0;
+
+              break;
+          } //switch
+          if (typeof mykey === "string") {
 
 
-                      if($('#audios').hasClass("muteall")){
-                        console.log("muted");
-                        var media = $("<audio>").attr({class:"playing"}).append('<source src="./assets/wav/' + mykey + '.wav" type="audio/ogg" />').appendTo("#audios");
-                      }else{
+            if ($('#audios').hasClass("muteall")) {
+              console.log("muted");
+              var media = $("<audio>").attr({
+                class: "playing"
+              }).append('<source src="./assets/wav/' + mykey + '.wav" type="audio/ogg" />').appendTo("#audios");
+            } else {
 
-                        var media = $("<audio>").attr({"autoplay":"true",class:"playing"}).append('<source src="./assets/wav/' + mykey + '.wav" type="audio/ogg" />').appendTo("#audios");
-                      }
-                      // console.log(media);
+              var media = $("<audio>").attr({
+                "autoplay": "true",
+                class: "playing"
+              }).append('<source src="./assets/wav/' + mykey + '.wav" type="audio/ogg" />').appendTo("#audios");
+            }
+            // console.log(media);
 
-                      setTimeout(function () {
-                        media.remove()
-                      }, 1500);
+            setTimeout(function() {
+              media.remove()
+            }, 1500);
 
-                      $('#game').trigger('keyhit', mykey)
-                    }
+            $('#game').trigger('keyhit', mykey)
+          }
 
 
 
 
         }
-    );
+      );
 
 
 
 
 
 
-  }.bind(this))
+    }.bind(this))
 
 
 

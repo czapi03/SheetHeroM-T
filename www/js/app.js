@@ -1,22 +1,23 @@
 //some code
 var nextstorage;
+var lvliterator = 1;
+var start;
+var storage = {
+  oldlvl: 0,
+  learnprogress: 0
+}
+var startnextlvl;
+var muteswitch = false;
+var myclef = "vio";
+
+
 document.addEventListener('deviceready', function() {
 
-  // console.log(Media);
+
 
 
   $('document').ready(function() {
     console.log('--app.js--');
-
-
-    var lvliterator = 1;
-    var start;
-    var storage = {
-      oldlvl: 0,
-      learnprogress: 0
-    }
-    var startnextlvl;
-    var muteswitch = false;
 
     if (localStorage.getItem('savefile') == null) {
 
@@ -31,17 +32,51 @@ document.addEventListener('deviceready', function() {
 
 
 
+    if(lvliterator > 26){
+
+      $('#bassschlüssel').show();
+      myclef = "bass";
+      $('#nc4').css({
+        position: "absolute",
+        height: "4%",
+        width: "4.5%",
+        top: "25.2%",
+        right: "0%"
+      })
+    }else{
+
+      $('#violinschlüssel').show();
+    }
+
+
+
 
     //lvlloader
     $.getJSON("./js/game/lvl/" + lvliterator + ".json", function(lvl) {
 
 
-      start = new Game(lvl.vio.lvl, lvl.vio.difficulty, lvl.vio.noten, lvl.vio.speed, lvl.vio.duration, 0, lvl.vio.highscore, lvl.vio.nextnote, storage.learnprogress)
+
+      // start = new Game(lvl.vio.lvl, lvl.vio.difficulty, lvl.vio.noten, lvl.vio.speed, lvl.vio.duration, 0, lvl.vio.highscore, lvl.vio.nextnote, storage.learnprogress)
+      start = new Game(lvl[myclef].lvl, lvl[myclef].difficulty, lvl[myclef].noten, lvl[myclef].speed, lvl[myclef].duration, 0, lvl[myclef].highscore, lvl[myclef].nextnote, storage.learnprogress)
 
     })
     //nextlvlbutton
     $('#nextlvl > *').on("click", function() {
       console.log(nextstorage);
+      if(lvliterator > 25){
+        myclef = "bass";
+        $('#bassschlüssel').show();
+        myclef = "bass";
+        $('#nc4').css({
+          position: "absolute",
+          height: "4%",
+          width: "4.5%",
+          top: "25.2%",
+          right: "0%"
+        })
+        $('#violinschlüssel').hide();
+
+      }
       $('#gamebutton').css({
         "pointer-events": "auto"
       })
@@ -52,11 +87,10 @@ document.addEventListener('deviceready', function() {
       console.log(start.learnprogress);
       lvliterator++;
 
-      if (lvliterator > 25) {
-        alert("Spiel durchgespielt")
-      }
+
       $.getJSON("./js/game/lvl/" + lvliterator + ".json", function(lvl) {
-        startnextlvl = new Game(lvl.vio.lvl, lvl.vio.difficulty, lvl.vio.noten, lvl.vio.speed, lvl.vio.duration, 0, lvl.vio.highscore, lvl.vio.nextnote,nextstorage)
+        // startnextlvl = new Game(lvl.vio.lvl, lvl.vio.difficulty, lvl.vio.noten, lvl.vio.speed, lvl.vio.duration, 0, lvl.vio.highscore, lvl.vio.nextnote,nextstorage)
+        startnextlvl = new Game(lvl[myclef].lvl, lvl[myclef].difficulty, lvl[myclef].noten, lvl[myclef].speed, lvl[myclef].duration, 0, lvl[myclef].highscore, lvl[myclef].nextnote,nextstorage)
 
 
       })
@@ -70,7 +104,21 @@ document.addEventListener('deviceready', function() {
 
 
       $.getJSON("./js/game/lvl/" + lvliterator + ".json", function(lvl) {
-        startnextlvl = new Game(lvl.vio.lvl, lvl.vio.difficulty, lvl.vio.noten, lvl.vio.speed, lvl.vio.duration, 0, lvl.vio.highscore, lvl.vio.nextnote,nextstorage)
+        if(lvliterator > 26){
+          myclef = "bass";
+          $('#bassschlüssel').show();
+          myclef = "bass";
+          $('#nc4').css({
+            position: "absolute",
+            height: "4%",
+            width: "4.5%",
+            top: "25.2%",
+            right: "0%"
+          })
+          $('#violinschlüssel').hide();
+        }
+        // startnextlvl = new Game(lvl.vio.lvl, lvl.vio.difficulty, lvl.vio.noten, lvl.vio.speed, lvl.vio.duration, 0, lvl.vio.highscore, lvl.vio.nextnote,nextstorage)
+        startnextlvl = new Game(lvl[myclef].lvl, lvl[myclef].difficulty, lvl[myclef].noten, lvl[myclef].speed, lvl[myclef].duration, 0, lvl[myclef].highscore, lvl[myclef].nextnote,nextstorage)
 
 
         $('#dialog').css({
