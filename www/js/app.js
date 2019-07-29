@@ -208,11 +208,19 @@ document.addEventListener('deviceready', function() {
 
     $('#dialog2 div:nth-child(3)').on("click", function() {
       $("#dialog2").hide();
-      $("#dialogcredits").css({
+
+      $("#dialoghelp").css({
         display: "flex"
-      })
-      $("#dialog2creditscontent").html("Support: manuel.czapek@gmx.net");
+      });
     })
+
+    //closes dialoghelp
+    $("#dialoghelp > div:nth-child(2)").on("click",function(){
+      $("#dialoghelp").hide();
+    })
+
+
+
     //closes dialogversion 2
     $('#dialogversion div:nth-child(2)').on("click", function() {
       $("#dialogversion").hide();
