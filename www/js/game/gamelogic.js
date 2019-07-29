@@ -167,10 +167,10 @@ class Game {
 
 
 
-        // this.points += (this.highscoretoreach / 25) * (0.25 / speed);
+        this.points += (this.highscoretoreach / 25) * (0.25 / speed);
 
 
-        this.points +=100;
+        // this.points +=100;
 
         if (this.learnprogress < 400) {
           this.learnprogress += 0.25
