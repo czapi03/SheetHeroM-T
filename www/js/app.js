@@ -180,34 +180,26 @@ document.addEventListener('deviceready', function() {
     //closes dialog2
     $('#dialog2 div:nth-child(3)').on("click", function() {
 
-      $("#dialog2").css({
-        display: "none"
-      })
+      $("#dialog2").hide();
 
     })
 
     //show dialog2
     $('#help').on("click", function() {
 
-      $("#dialog2").css({
-        display: "block"
-      })
+      $("#dialog2").show();
 
     })
     //opens Version
     $('#dialog2version').on("click", function() {
-      $("#dialog2").css({
-        display: "none"
-      })
+      $("#dialog2").hide();
       $("#dialogversion").css({
         display: "flex"
       })
     })
     //  opens Credits
     $('#dialog2credits').on("click", function() {
-      $("#dialog2").css({
-        display: "none"
-      })
+      $("#dialog2").hide();
       $("#dialogcredits").css({
         display: "flex"
       })
@@ -215,14 +207,22 @@ document.addEventListener('deviceready', function() {
     })
     //closes dialogversion 2
     $('#dialogversion div:nth-child(2)').on("click", function() {
-      $("#dialogversion").css({
-        display: "none"
-      })
+      $("#dialogversion").hide();
     })
     $('#dialogcredits div:nth-child(2) ').on("click", function() {
-      $("#dialogcredits").css({
-        display: "none"
-      })
+      $("#dialogcredits").hide();
+    })
+
+    //open dialogprofil
+
+    $('.buttonprofil').on("click",function(){
+      $('#dialogprofil').css({display:"flex"});
+    })
+
+    //closes dialogprofil
+
+    $("#dialogprofil > div:nth-child(3)").on("click",function(){
+      $('#dialogprofil').hide();
     })
 
 

@@ -3,9 +3,19 @@
   src: url('../assets/fonts/PollerOne.ttf') format('truetype');
 }
 
-@media screen and (min-width: 960px){
-    body{ font-size: 50%; }
+@media screen and (max-width: 1000px){
+    body div {
+      font-size: 70%;
+    }
+
+    #appversion{
+      font-size: 80% !important;
+    }
+
+
+
 }
+
 
 #debug {
   position: absolute;
@@ -27,7 +37,7 @@
   margin: 0;
 } */
 body, html {
-  font-size: 100%;
+  /* font-size: 100%; */
   font-family: PollerOne;
   padding: 0;
   margin: 0;
@@ -207,7 +217,7 @@ tspan {
   right: 0%;
 }
 
-#clonenc4 {
+/* #clonenc4 {
   position: absolute;
   height: 4%;
   width: 4.5%;
@@ -325,7 +335,7 @@ tspan {
   width: 4.5%;
   top: 21.6%;
   right: 0%;
-}
+} */
 
 .dnone {
   display: none;
@@ -449,7 +459,7 @@ tspan {
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid black;
-  font-size: 3em;
+  font-size: 2em;
 
 }
 #dialog2exit {
@@ -481,7 +491,7 @@ tspan {
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid black;
-  font-size: 2em;
+  font-size: 1em;
 }
 #dialogversion div:nth-child(2) {
   width: 100%;
@@ -491,7 +501,7 @@ tspan {
   align-items: center;
   background-color: #a9a9a9;
   border-radius: 0px 0px 10px 10px;
-  font-size: 3em;
+  font-size: 1em;
 }
 #dialogcredits {
   width: 28%;
@@ -513,7 +523,7 @@ tspan {
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid black;
-  font-size: 1em;
+  font-size: 0.5em;
 }
 #dialogcredits > div:nth-child(2) {
   width: 100%;
@@ -523,7 +533,7 @@ tspan {
   align-items: center;
   background-color: #a9a9a9;
   border-radius: 0px 0px 10px 10px;
-  font-size: 2em;
+  font-size: 1em;
 }
 
 #midiindicator{

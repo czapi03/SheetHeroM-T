@@ -376,7 +376,7 @@ class Game {
         })
         $('#dialoglinks > h2').html("Level " + _this.lvl + " geschafft!")
 
-        $('#margintop').html("Bereite dich auf Level " + (_this.lvl + 1) + "vor!")
+        $('#margintop').html("Bereite dich auf Level " + (_this.lvl + 1) + " vor!")
         $('#refreshlvl').hide();
 
         if ((_this.lvl % 2) == 0) {
@@ -421,11 +421,14 @@ class Game {
   }
 
   lvlloader() {
+    $('#dialogprofil > div:nth-child(2)').html("Spielfortschritt: "+(Math.round((this.lvl-1)/(52)*100))+"%");
+
     $('#highscoretoreach').html("Erreiche " + this.highscoretoreach * this.difficulty + " Punkte für Level " + (this.lvl + 1))
     if(lvliterator > 51){
 
       $('#highscoretoreach').html("Erreiche " + this.highscoretoreach * this.difficulty + " für Spiel durchgespielt!").css({color:"green"})
     }
+
 
 
     $('#gamelvl').html(this.lvl)
@@ -481,6 +484,8 @@ class Game {
     this.gamerunning = false;
     nextstorage = this.learnprogress;
     console.log('--' + nextstorage + '--');
+
+    $('#dialogprofil > div:nth-child(2)').html("Spielfortschritt: "+(Math.round((this.lvl-1)/(52)*100))+" %");
     $('#game').off("keyhit")
     $('.refreshbutton').off("click")
     $('.pianoOnClick').off("click")
@@ -542,8 +547,12 @@ class Game {
 
       var keyboardid = WebMidi._inputs[0].id
       // console.logi);
-      _this.midiinput = WebMidi.getInputById(keyboardid); -
-      this.midiinput.addListener('noteon', 'all',
+      // _this.midiinput = WebMidi.getInputById(keyboardid);
+      _this.midiinput = WebMidi.inputs[0];
+
+
+
+      _this.midiinput.addListener('noteon', 'all',
         function(e) {
           console.log("Received 'noteon' message (" + e.note.name + e.note.octave + ").");
           switch (e.note.name + e.note.octave) {

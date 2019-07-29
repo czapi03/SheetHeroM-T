@@ -1,0 +1,57 @@
+@media screen and (max-width: 1200px){
+  #dialogprofil > * {
+    font-size: 90% !important;
+  }
+
+}
+
+
+
+
+
+
+#dialogprofil {
+  width: 28%;
+  height: 61%;
+  /* border: 1px solid red; */
+  display: none;
+  flex-direction: column;
+  border-radius: 10px 10px 10px 10px;
+  background-color: white;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+}
+#dialogprofil > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+height: 15%;
+width: 100%;
+background-color: #a9a9a9;
+font-size: 2em;
+
+
+}
+
+#dialogprofil > div:nth-child(2) {
+  height: 65%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+
+
+}
+#dialogprofil > div:nth-child(3) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
+  width: 100%;
+  background-color: #a9a9a9;
+  border-top: 1px solid black;
+  border-radius: 0px 0px 10px 10px;
+  font-size: 2em;
+}
