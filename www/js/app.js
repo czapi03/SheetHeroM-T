@@ -178,7 +178,7 @@ document.addEventListener('deviceready', function() {
 
     //popuprechts
     //closes dialog2
-    $('#dialog2 div:nth-child(3)').on("click", function() {
+    $('#dialog2 div:nth-child(4)').on("click", function() {
 
       $("#dialog2").hide();
 
@@ -197,13 +197,21 @@ document.addEventListener('deviceready', function() {
         display: "flex"
       })
     })
-    //  opens Credits
+    //  opens Help
     $('#dialog2credits').on("click", function() {
       $("#dialog2").hide();
       $("#dialogcredits").css({
         display: "flex"
       })
+    })
 
+
+    $('#dialog2 div:nth-child(3)').on("click", function() {
+      $("#dialog2").hide();
+      $("#dialogcredits").css({
+        display: "flex"
+      })
+      $("#dialog2creditscontent").html("Support: manuel.czapek@gmx.net");
     })
     //closes dialogversion 2
     $('#dialogversion div:nth-child(2)').on("click", function() {
