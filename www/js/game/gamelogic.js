@@ -1,7 +1,7 @@
 console.log("--gamelogic--");
 
 class Game {
-  constructor(lvl, difficulty, notestoplay, speed, duration, points, highscoretoreach, nextnote, learnprogress) {
+  constructor(lvl, difficulty, notestoplay, speed, duration, points, highscoretoreach, nextnote, learnprogress,clef) {
     this.lvl = lvl;
     this.difficulty = difficulty;
     this.notestoplay = notestoplay;
@@ -10,6 +10,7 @@ class Game {
     this.points = points;
     this.highscoretoreach = highscoretoreach;
     this.nextnote = nextnote;
+    this.clef = clef;
     this.keyhitfunction(speed);
     this.localstorage = {};
     this.gamerunning = false;
@@ -40,7 +41,7 @@ class Game {
       var mykey = $(this).attr('id');
       var myoctave = mykey.slice(-1);
 
-      if (lvliterator > 26) {
+      if (myclef == "bass") {
 
         if(myoctave == 4){
           mykey = mykey.slice(0,-1) + '2';
@@ -132,7 +133,7 @@ class Game {
 
         // console.log(myoctave1);
         console.log(myoctave1);
-        if (lvliterator > 26) {
+        if (myclef == "bass")  {
 
           if(myoctave1 == 2){
             keyplayed = keyplayed.slice(0,-1) + '4';
@@ -167,10 +168,10 @@ class Game {
 
 
 
-        this.points += (this.highscoretoreach / 25) * (0.25 / speed);
+        // this.points += (this.highscoretoreach / 25) * (0.25 / speed);
 
 
-        // this.points +=100;
+        this.points +=100;
 
         if (this.learnprogress < 400) {
           this.learnprogress += 0.25
@@ -202,24 +203,7 @@ class Game {
 
           }
 
-
-
-
-
-
         }
-
-
-
-        // switch (this.learnprogress) {
-        //   case 100: $('#learnprogressname').html('Profi')
-        //
-        //     break;
-        //   default:
-        //
-        // }
-
-
 
 
         $('.eyes').attr("fill", "#56ce46")
@@ -248,7 +232,7 @@ class Game {
 
         // console.log(myoctave1);
 
-        if (lvliterator > 26) {
+        if (myclef == "bass")  {
 
           if(myoctave1 == 2){
             keyplayed = keyplayed.slice(0,-1) + '4';
@@ -281,6 +265,9 @@ class Game {
         if (this.learnprogress <= 0) {
           this.learnprogress = 0;
 
+        }
+        if(this.learnprogress == 400){
+          this.learnprogress = 400;
         }
         $('#progressbar').css({
           width: this.learnprogress + "%"
@@ -371,9 +358,12 @@ class Game {
         $('#afterpoints').html("Punkte: " + _this.points).css({
           "color": "black"
         })
-        $('#notelistingnames').html("Es wird schneller!").css({
-          "color": "black"
-        })
+        if(_this.speed > 0.25){
+
+          $('#notelistingnames').html("Es wird schneller!").css({
+            "color": "black"
+          })
+        }
         $('#dialoglinks > h2').html("Level " + _this.lvl + " geschafft!")
 
         $('#margintop').html("Bereite dich auf Level " + (_this.lvl + 1) + " vor!")
@@ -421,12 +411,18 @@ class Game {
   }
 
   lvlloader() {
+
+    $('#dialogprofil > div:nth-child(3)').html("Lernfortschritt: "+(Math.round((this.learnprogress/400)*100))+"%");
     $('#dialogprofil > div:nth-child(2)').html("Spielfortschritt: "+(Math.round((this.lvl-1)/(52)*100))+"%");
 
     $('#highscoretoreach').html("Erreiche " + this.highscoretoreach * this.difficulty + " Punkte für Level " + (this.lvl + 1))
     if(lvliterator > 51){
 
       $('#highscoretoreach').html("Erreiche " + this.highscoretoreach * this.difficulty + " für Spiel durchgespielt!").css({color:"green"})
+    }
+
+    if(this.learnprogress == 400){
+      this.learnprogress = 400;
     }
 
 
@@ -459,7 +455,6 @@ class Game {
       })
 
     }
-
 
 
 

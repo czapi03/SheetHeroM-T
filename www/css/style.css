@@ -437,6 +437,7 @@ tspan {
       width: 20%;
       height: 6%;
       z-index: -1;
+      font-size: 0.8em;
 }
 #midiindicator > svg:first-child{
 width: 10% !important;

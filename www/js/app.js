@@ -12,10 +12,6 @@ var myclef = "vio";
 
 
 document.addEventListener('deviceready', function() {
-
-
-
-
   $('document').ready(function() {
     console.log('--app.js--');
 
@@ -23,48 +19,16 @@ document.addEventListener('deviceready', function() {
 
       console.log("--------------------------------------nix im speicher--------------------------------------");
     } else {
-
       storage = JSON.parse(localStorage.getItem('savefile'));
       lvliterator = storage.oldlvl;
-
-
     }
-
-
-
-    if(lvliterator > 26){
-
-      $('#bassschlüssel').show();
-      myclef = "bass";
-      $('#nc4').css({
-        position: "absolute",
-        height: "4%",
-        width: "4.5%",
-        top: "25.2%",
-        right: "0%"
-      })
-    }else{
-
-      $('#violinschlüssel').show();
-    }
-
-
 
 
     //lvlloader
     $.getJSON("./js/game/lvl/" + lvliterator + ".json", function(lvl) {
 
+      if (lvl.clef == "bass") {
 
-
-      // start = new Game(lvl.vio.lvl, lvl.vio.difficulty, lvl.vio.noten, lvl.vio.speed, lvl.vio.duration, 0, lvl.vio.highscore, lvl.vio.nextnote, storage.learnprogress)
-      start = new Game(lvl[myclef].lvl, lvl[myclef].difficulty, lvl[myclef].noten, lvl[myclef].speed, lvl[myclef].duration, 0, lvl[myclef].highscore, lvl[myclef].nextnote, storage.learnprogress)
-
-    })
-    //nextlvlbutton
-    $('#nextlvl > *').on("click", function() {
-      console.log(nextstorage);
-      if(lvliterator > 25){
-        myclef = "bass";
         $('#bassschlüssel').show();
         myclef = "bass";
         $('#nc4').css({
@@ -74,9 +38,16 @@ document.addEventListener('deviceready', function() {
           top: "25.2%",
           right: "0%"
         })
-        $('#violinschlüssel').hide();
+      } else {
 
+        $('#violinschlüssel').show();
       }
+      start = new Game(lvl[myclef].lvl, lvl[myclef].difficulty, lvl[myclef].noten, lvl[myclef].speed, lvl[myclef].duration, 0, lvl[myclef].highscore, lvl[myclef].nextnote, storage.learnprogress)
+
+    })
+    //nextlvlbutton
+    $('#nextlvl > *').on("click", function() {
+      console.log(nextstorage);
       $('#gamebutton').css({
         "pointer-events": "auto"
       })
@@ -87,14 +58,24 @@ document.addEventListener('deviceready', function() {
       console.log(start.learnprogress);
       lvliterator++;
 
-
       $.getJSON("./js/game/lvl/" + lvliterator + ".json", function(lvl) {
-        // startnextlvl = new Game(lvl.vio.lvl, lvl.vio.difficulty, lvl.vio.noten, lvl.vio.speed, lvl.vio.duration, 0, lvl.vio.highscore, lvl.vio.nextnote,nextstorage)
-        startnextlvl = new Game(lvl[myclef].lvl, lvl[myclef].difficulty, lvl[myclef].noten, lvl[myclef].speed, lvl[myclef].duration, 0, lvl[myclef].highscore, lvl[myclef].nextnote,nextstorage)
 
+        if (lvl.clef == "bass") {
+          myclef = "bass";
+          $('#bassschlüssel').show();
+          myclef = "bass";
+          $('#nc4').css({
+            position: "absolute",
+            height: "4%",
+            width: "4.5%",
+            top: "25.2%",
+            right: "0%"
+          })
+          $('#violinschlüssel').hide();
 
+        }
+        startnextlvl = new Game(lvl[myclef].lvl, lvl[myclef].difficulty, lvl[myclef].noten, lvl[myclef].speed, lvl[myclef].duration, 0, lvl[myclef].highscore, lvl[myclef].nextnote, nextstorage)
       })
-
     })
     //refreshlvl
     $('#refreshlvldialogbutton').on("click", function() {
@@ -104,7 +85,7 @@ document.addEventListener('deviceready', function() {
 
 
       $.getJSON("./js/game/lvl/" + lvliterator + ".json", function(lvl) {
-        if(lvliterator > 26){
+        if (lvl.clef == "bass") {
           myclef = "bass";
           $('#bassschlüssel').show();
           myclef = "bass";
@@ -117,8 +98,8 @@ document.addEventListener('deviceready', function() {
           })
           $('#violinschlüssel').hide();
         }
-        // startnextlvl = new Game(lvl.vio.lvl, lvl.vio.difficulty, lvl.vio.noten, lvl.vio.speed, lvl.vio.duration, 0, lvl.vio.highscore, lvl.vio.nextnote,nextstorage)
-        startnextlvl = new Game(lvl[myclef].lvl, lvl[myclef].difficulty, lvl[myclef].noten, lvl[myclef].speed, lvl[myclef].duration, 0, lvl[myclef].highscore, lvl[myclef].nextnote,nextstorage)
+
+        var refreshlvl = new Game(lvl[myclef].lvl, lvl[myclef].difficulty, lvl[myclef].noten, lvl[myclef].speed, lvl[myclef].duration, 0, lvl[myclef].highscore, lvl[myclef].nextnote, nextstorage)
 
 
         $('#dialog').css({
@@ -139,18 +120,7 @@ document.addEventListener('deviceready', function() {
           "margin-top": "3%"
         })
       })
-
-
-
     })
-
-
-
-
-
-
-
-
 
     //mutebutton
     $('#mutebutton').on("click", function() {
@@ -205,7 +175,6 @@ document.addEventListener('deviceready', function() {
       })
     })
 
-
     $('#dialog2 div:nth-child(3)').on("click", function() {
       $("#dialog2").hide();
 
@@ -215,11 +184,9 @@ document.addEventListener('deviceready', function() {
     })
 
     //closes dialoghelp
-    $("#dialoghelp > div:nth-child(2)").on("click",function(){
+    $("#dialoghelp > div:nth-child(2)").on("click", function() {
       $("#dialoghelp").hide();
     })
-
-
 
     //closes dialogversion 2
     $('#dialogversion div:nth-child(2)').on("click", function() {
@@ -231,23 +198,16 @@ document.addEventListener('deviceready', function() {
 
     //open dialogprofil
 
-    $('.buttonprofil').on("click",function(){
-      $('#dialogprofil').css({display:"flex"});
+    $('.buttonprofil').on("click", function() {
+      $('#dialogprofil').css({
+        display: "flex"
+      });
     })
 
     //closes dialogprofil
 
-    $("#dialogprofil > div:nth-child(3)").on("click",function(){
+    $("#dialogprofil > div:nth-child(4)").on("click", function() {
       $('#dialogprofil').hide();
     })
-
-
-
-
-
-
-
-
-
   }) //window ready
 }) //deviceready

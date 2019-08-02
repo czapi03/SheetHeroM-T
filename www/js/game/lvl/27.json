@@ -1,6 +1,12 @@
-{
+{"clef":"bass",
   "vio": {
-
+    "lvl": null,
+    "noten": [],
+    "speed": "",
+    "difficulty": "",
+    "duration": 60,
+    "highscore": 1000,
+    "nextnote": ""
   },
 
   "bass": {
@@ -14,8 +20,8 @@
     ],
     "speed": 0.25,
     "difficulty": 0.8,
-    "duration": 60,
-    "highscore": 1000,
+    "duration": 5,
+    "highscore": 100,
     "nextnote": "c4"
 
   }

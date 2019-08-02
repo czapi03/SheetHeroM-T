@@ -1,4 +1,4 @@
-{
+{"clef":"vio",
   "vio": {
     "lvl": 7,
     "noten": [
@@ -17,7 +17,13 @@
   },
 
   "bass": {
-
+    "lvl": "",
+    "noten": [],
+    "speed": "",
+    "difficulty": "",
+    "duration": 60,
+    "highscore": 1000,
+    "nextnote": ""
   }
 
 
