@@ -3,7 +3,7 @@
   src: url('../assets/fonts/PollerOne.ttf') format('truetype');
 }
 
-@media only screen and (max-device-width: 1800px){
+@media screen and (max-width: 1000px){
     body div {
       font-size: 70%;
     }
