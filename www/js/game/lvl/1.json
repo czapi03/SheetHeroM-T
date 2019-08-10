@@ -1,18 +1,18 @@
-{ "clef":"vio",
+{
+  "clef": "vio",
   "vio": {
-      "lvl": 1,
-      "noten": [
-        "e4",
-        "c4",
-        "f5"
-      ],
-      "speed": 0.25,
-      "difficulty": 0.8,
-      "duration": 5,
-      "highscore": 100,
-      "nextnote": "c6"
-    },
-
+    "lvl": 1,
+    "noten": [
+      "e4",
+      "c4",
+      "f5"
+    ],
+    "speed": 0.25,
+    "difficulty": 0.8,
+    "duration": 60,
+    "highscore": 1000,
+    "nextnote": "c6"
+  },
   "bass": {
     "lvl": "",
     "noten": [],
@@ -21,9 +21,5 @@
     "duration": 60,
     "highscore": 1000,
     "nextnote": ""
-
-
   }
-
-
 }
