@@ -53,15 +53,7 @@ class Game {
         if(myoctave == 6){
           mykey = mykey.slice(0,-1) + '4';
         }
-        // console.log(mykey);
-
-
       }
-
-
-
-
-      // console.log(mykey);
       //spielt note
       $('#game').trigger('keyhit', mykey)
 
@@ -77,13 +69,10 @@ class Game {
           class: "playing"
         }).append('<source src="./assets/wav/' + mykey + '.wav" type="audio/ogg" />').appendTo("#audios");
       }
-
-
       setTimeout(function() {
         media.remove()
       }, 1500);
     })
-
 
     //startet gamelogic
     this.startButton = $('#gamebutton')
@@ -94,32 +83,19 @@ class Game {
         $('#gamebutton').css({
           "pointer-events": "none"
         })
-
-
         this.rndnote = getRandomInt(this.notestoplay.length);
 
         this.move = new MoveNote(this.speed, this.notestoplay[this.rndnote]);
         this.generatenewNote(speed);
         this.timecountdown();
-
-
-
       }.bind(this))
-
   }
   //spielt note
   keyhitfunction(speed) {
-
-
     $('#game').on('keyhit', function(event, keyplayed) {
 
       keyplayed = "n" + keyplayed;
 
-      // console.log("keyhit");
-
-      // var highestNote = $('.cloned.hitable').toArray().find(function(note) {
-      //   return parseInt($(note).get(0).style.right) < $(window).width()*0.66
-      // })
       var highestNote = $('.cloned.hitable').toArray().find(function(note) {
 
         return parseInt($(note).position().left) > $(window).width() * 0.33
@@ -130,9 +106,6 @@ class Game {
         keyplayed = keyplayed.slice(1, 3)
         var myoctave1 = keyplayed.slice(1);
 
-
-        // console.log(myoctave1);
-        console.log(myoctave1);
         if (myclef == "bass")  {
 
           if(myoctave1 == 2){
@@ -152,9 +125,6 @@ class Game {
 
         }
 
-
-
-
         $('#' + keyplayed).addClass("colorhitrightkey");
         setTimeout(function() {
           $('#' + keyplayed).removeClass('colorhitrightkey')
@@ -165,15 +135,14 @@ class Game {
         $(highestNote).find("*").attr("fill", "green")
         $(highestNote).addClass('hit')
 
+        this.points += (this.highscoretoreach / 25) * (0.25 / speed);
 
-
-
-        // this.points += (this.highscoretoreach / 25) * (0.25 / speed);
-
-
-        this.points +=100;
+        //für Präsentation
+        // this.points +=100;
 
         if (this.learnprogress < 400) {
+          //für Präsentation
+          // this.learnprogress += 1
           this.learnprogress += 0.25
 
           $('#progressbar').css({
@@ -200,25 +169,14 @@ class Game {
             $('#progressbar').css({
               width: this.learnprogress - 300 + "%"
             })
-
           }
-
         }
-
-
         $('.eyes').attr("fill", "#56ce46")
         setTimeout(function() {
           $('.eyes').attr("fill", "#000000")
-
-
-
         }, 300);
-
-
-
-
       } else {
-        console.log(this.gamerunning);
+
         if (this.gamerunning == true) {
 
 
@@ -228,9 +186,6 @@ class Game {
 
         keyplayed = keyplayed.slice(1, 3)
         var myoctave1 = keyplayed.slice(1);
-
-
-        // console.log(myoctave1);
 
         if (myclef == "bass")  {
 
@@ -247,8 +202,6 @@ class Game {
             keyplayed = keyplayed.slice(0,-1) + '6';
             console.log(keyplayed);
           }
-
-
         }
 
         $('#' + keyplayed).addClass("colorhitwrongkey");
@@ -257,10 +210,7 @@ class Game {
         setTimeout(function() {
           $('#' + keyplayed).removeClass('colorhitwrongkey')
           $('.eyes').attr("fill", "#000000")
-
-
         }, 300);
-
 
         if (this.learnprogress <= 0) {
           this.learnprogress = 0;
@@ -291,15 +241,7 @@ class Game {
           $('#progressbar').css({
             width: this.learnprogress - 300 + "%"
           })
-
         }
-
-
-
-
-
-
-
       }
       if (this.points < 0) {
         $('#highscore').attr("fill", "#F80E0E");
@@ -310,19 +252,9 @@ class Game {
         $('#highscore').attr("fill", "#56ce46");
       }
 
-      $('#highscore').html(this.points)
-
-
-
-
-
+      $('#highscore').html(this.points);
     }.bind(this))
   }
-
-
-
-
-
 
   generatenewNote(speed) {
     var _this = this;
@@ -333,7 +265,7 @@ class Game {
       _this.move = new MoveNote(_this.speed, _this.notestoplay[_this.rndnote]);
       //
     }, 2350 / (speed / 0.25));
-    // }, 2350 );
+
 
   }
   timecountdown() {
@@ -350,8 +282,6 @@ class Game {
         clearInterval(_this.durationtimer)
         clearInterval(_this.sendNotes)
 
-
-        // _this.stop();
         $('.cloned').remove();
         $('#gameduration').attr("fill", "#3a3a3a")
         $('#highscore').attr("fill", "#3a3a3a")
@@ -453,22 +383,9 @@ class Game {
       $('#progressbar').css({
         width: this.learnprogress - 300 + "%"
       })
-
     }
-
-
-
-
-
-
-
   }
-
-
-
   stop() {
-
-
     this.localstorage.oldlvl = this.lvl + 1;
     this.localstorage.learnprogress = this.learnprogress;
 
@@ -478,7 +395,7 @@ class Game {
 
     this.gamerunning = false;
     nextstorage = this.learnprogress;
-    console.log('--' + nextstorage + '--');
+
 
     $('#dialogprofil > div:nth-child(2)').html("Spielfortschritt: "+(Math.round((this.lvl-1)/(52)*100))+" %");
     $('#game').off("keyhit")
@@ -517,7 +434,6 @@ class Game {
 
     var mykey;
     WebMidi.enable(function() {
-
       //Midi watcher
       _this.midicheck = setInterval(function() {
         window.plugins.insomnia.keepAwake();
@@ -528,7 +444,6 @@ class Game {
           if (_this.midistatus == false) {
             $('#midikreis').attr("fill", "#F80E0E");
             $('#midiindicator div:nth-child(2)').html('keyboard off,starte App neu')
-
           }
 
         } else {
@@ -536,16 +451,9 @@ class Game {
           $('#midiindicator div:nth-child(2)').html('-keyboard off')
           _this.midistatus = false;
         }
-
       }, 1000);
-
-
       var keyboardid = WebMidi._inputs[0].id
-      // console.logi);
-      // _this.midiinput = WebMidi.getInputById(keyboardid);
       _this.midiinput = WebMidi.inputs[0];
-
-
 
       _this.midiinput.addListener('noteon', 'all',
         function(e) {
@@ -766,25 +674,8 @@ class Game {
 
             $('#game').trigger('keyhit', mykey)
           }
-
-
-
-
         }
       );
-
-
-
-
-
-
     }.bind(this))
-
-
-
   }
-
-
-
-
 }
